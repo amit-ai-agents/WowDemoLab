@@ -1,0 +1,282 @@
+﻿[
+  {
+    "id": 1,
+    "name": "AI-powered Network Incident Agent",
+    "industries": [ "Telecom", "IT Services" ],
+    "domains": [ "Network Management", "Troubleshooting" ],
+    "description": "Predicts and resolves network outages using Graph-based AI Agents.",
+    "tech_stack": "Python, NetworkX, Neo4j, Mistral, LangGraph",
+    "icon": "🧠",
+    "category": "Agent AI"
+  },
+  {
+    "id": 2,
+    "name": "Conversational AI for Insurance Claims",
+    "industries": [ "Finance" ],
+    "domains": [ "Customer Support", "Claims" ],
+    "description": "Handles FNOL and claim status inquiries with contextual AI agents.",
+    "tech_stack": "Mistral, RAG, Flask, LangGraph",
+    "icon": "💬",
+    "category": "Agent AI"
+  },
+  {
+    "id": 3,
+    "name": "Generative AI Drug Discovery Assistant",
+    "industries": [ "Life Sciences" ],
+    "domains": [ "R&D", "Drug Discovery" ],
+    "description": "Maps omics data to known targets using generative models.",
+    "tech_stack": "Faiss, HuggingFace, SQLite, BioPython",
+    "icon": "🧬",
+    "category": "Gen AI"
+  },
+  {
+    "id": 4,
+    "name": "AI Agent for Telecom Escalations",
+    "industries": [ "Telecom" ],
+    "domains": [ "Customer Care", "Sentiment Analysis" ],
+    "description": "Detects frustration in voice/text and auto-triggers supervisor routing.",
+    "tech_stack": "Phi-2, LangGraph, DistilBERT, Flask",
+    "icon": "📞",
+    "category": "Agent AI"
+  },
+  {
+    "id": 5,
+    "name": "Data Modernization Quality Auditor",
+    "industries": [ "Retail", "Finance" ],
+    "domains": [ "Data Engineering", "Governance" ],
+    "description": "Autonomous agent audits modernized data pipelines for compliance.",
+    "tech_stack": "Python, Pandas, Great Expectations",
+    "icon": "📊",
+    "category": "Data Modernization"
+  },
+  {
+    "id": 6,
+    "name": "Smart City Dashboard",
+    "industries": [ "Government" ],
+    "domains": [ "IoT", "Analytics" ],
+    "description": "City-wide metrics in real-time. Detailed overview of sensors, utilities, and citizen services integrated into a unified dashboard.",
+    "tech_stack": "Node.js, ECharts, MongoDB",
+    "icon": "🌆",
+    "category": "Agent AI"
+  },
+  {
+    "id": 7,
+    "name": "Retail Footfall Heatmap",
+    "industries": [ "Retail" ],
+    "domains": [ "Computer Vision" ],
+    "description": "Visualize store traffic and optimize layout using real-time camera feeds to generate traffic heatmaps.",
+    "tech_stack": "Python, OpenCV, Flask",
+    "icon": "🛍️",
+    "category": "Agent AI"
+  },
+  {
+    "id": 8,
+    "name": "Healthcare Patient Flow",
+    "industries": [ "Healthcare" ],
+    "domains": [ "Optimization" ],
+    "description": "Track and optimize patient movement across departments with recommendations on resource usage.",
+    "tech_stack": "React, Flask, Neo4j",
+    "icon": "🏥",
+    "category": "Agent AI"
+  },
+  {
+    "id": 9,
+    "name": "Agent AI for Network Troubleshooting",
+    "industries": [ "Telecom" ],
+    "domains": [ "Network Operations" ],
+    "description": "Autonomous agent system that monitors and resolves telecom network issues.",
+    "tech_stack": "LangGraph, Neo4j, Python, SLMs",
+    "icon": "📶",
+    "category": "Agent AI"
+  },
+  {
+    "id": 10,
+    "name": "Generative AI for Marketing Copy",
+    "industries": [ "Retail", "Media" ],
+    "domains": [ "Marketing" ],
+    "description": "GenAI model to create SEO-friendly and personalized marketing content.",
+    "tech_stack": "Mistral-7B, Flask, Prompt Templates",
+    "icon": "📝",
+    "category": "Gen AI"
+  },
+  {
+    "id": 11,
+    "name": "Agent-based Drug Discovery",
+    "industries": [ "Life Sciences" ],
+    "domains": [ "R&D" ],
+    "description": "Multi-agent pipeline to analyze omics and literature data for novel drugs.",
+    "tech_stack": "Python, SQLite, BioBERT, Neo4j",
+    "icon": "🧬",
+    "category": "Agent AI"
+  },
+  {
+    "id": 12,
+    "name": "Contact Center Sentiment Agent",
+    "industries": [ "Telecom", "BFSI" ],
+    "domains": [ "Customer Support" ],
+    "description": "Real-time agent detects customer sentiment and escalates calls if needed.",
+    "tech_stack": "DistilBERT, Flask, LangGraph",
+    "icon": "📞",
+    "category": "Agent AI"
+  },
+  {
+    "id": 13,
+    "name": "AI Resume Parser + Ranker",
+    "industries": [ "IT Services" ],
+    "domains": [ "Recruitment" ],
+    "description": "Parse, extract and rank resumes using AI for faster hiring.",
+    "tech_stack": "Python, Spacy, Flask",
+    "icon": "📄",
+    "category": "Agent AI"
+  },
+  {
+    "id": 14,
+    "name": "Financial Document Analyzer Agent",
+    "industries": [ "BFSI" ],
+    "domains": [ "Risk & Compliance" ],
+    "description": "Agent that reads and flags anomalies in financial reports.",
+    "tech_stack": "LangChain, OCR, RAG",
+    "icon": "💰",
+    "category": "Agent AI"
+  },
+  {
+    "id": 15,
+    "name": "Smart Claims Processing Bot",
+    "industries": [ "Finance" ],
+    "domains": [ "Claims" ],
+    "description": "Agentic workflow for processing and validating insurance claims.",
+    "tech_stack": "Neo4j, Python, NER",
+    "icon": "🧾",
+    "category": "Agent AI"
+  },
+  {
+    "id": 16,
+    "name": "ChatGPT for Smart HR",
+    "industries": [ "IT Services" ],
+    "domains": [ "HR Operations" ],
+    "description": "Advanced AI HR Assistant that handles internal employee queries.",
+    "tech_stack": "GPT-3.5, Retrieval-Augmented Generation",
+    "icon": "👥",
+    "category": "Gen AI"
+  },
+  {
+    "id": 17,
+    "name": "Predictive Maintenance Agent",
+    "industries": [ "Manufacturing" ],
+    "domains": [ "Plant Operations" ],
+    "description": "Sensor-based agent to forecast machine failures and suggest repairs.",
+    "tech_stack": "Time Series, GNN, MQTT",
+    "icon": "🛠️",
+    "category": "Agent AI"
+  },
+  {
+    "id": 18,
+    "name": "Retail Shelf Monitoring Agent",
+    "industries": [ "Retail" ],
+    "domains": [ "Store Ops" ],
+    "description": "Agent-based CV pipeline to monitor shelf stock in real-time.",
+    "tech_stack": "YOLOv8, OpenCV, LangGraph",
+    "icon": "🛒",
+    "category": "Agent AI"
+  },
+  {
+    "id": 19,
+    "name": "CX Journey Analyzer",
+    "industries": [ "BFSI", "Retail" ],
+    "domains": [ "Customer Experience" ],
+    "description": "Multi-channel analytics agent to decode user satisfaction patterns.",
+    "tech_stack": "Faiss, Neo4j, Sentiment Models",
+    "icon": "🌐",
+    "category": "Agent AI"
+  },
+  {
+    "id": 20,
+    "name": "Smart IoT Data Aggregator",
+    "industries": [ "Government" ],
+    "domains": [ "Sensor Management" ],
+    "description": "Agent-driven ingestion, cleaning, fusion of IoT sensor data.",
+    "tech_stack": "Kafka, LangChain, Python",
+    "icon": "🏙️",
+    "category": "Agent AI"
+  },
+  {
+    "id": 21,
+    "name": "Generative AI Contract Review",
+    "industries": [ "Legal" ],
+    "domains": [ "Legal Ops" ],
+    "description": "GenAI bot for summarizing and spotting risks in contracts.",
+    "tech_stack": "LLaMA2, RAG, OCR",
+    "icon": "📜",
+    "category": "Gen AI"
+  },
+  {
+    "id": 22,
+    "name": "Sustainability Impact Tracker",
+    "industries": [ "Energy" ],
+    "domains": [ "ESG" ],
+    "description": "AI-driven dashboard to track sustainability KPIs.",
+    "tech_stack": "PowerBI, Python, JSON API",
+    "icon": "♻️",
+    "category": "Data Modernization"
+  },
+  {
+    "id": 23,
+    "name": "Voice-to-Action Support Agent",
+    "industries": [ "Telecom", "Utilities" ],
+    "domains": [ "IVR Automation" ],
+    "description": "Voice-enabled agent for resolving support queries in IVR systems.",
+    "tech_stack": "Speech-to-Text, LangGraph, Faiss",
+    "icon": "🎤",
+    "category": "Agent AI"
+  },
+  {
+    "id": 24,
+    "name": "Personalized Learning Assistant",
+    "industries": [ "Education" ],
+    "domains": [ "eLearning" ],
+    "description": "Agent that adapts content based on learner pace and history.",
+    "tech_stack": "Mistral-7B, SQLite, Flask",
+    "icon": "🎓",
+    "category": "Agent AI"
+  },
+  {
+    "id": 25,
+    "name": "Real-time Logistics AI Tracker",
+    "industries": [ "Logistics" ],
+    "domains": [ "Supply Chain" ],
+    "description": "AI-driven vehicle monitoring, route optimization and delay alerts.",
+    "tech_stack": "Python, MQTT, GPS APIs",
+    "icon": "🚛",
+    "category": "Agent AI"
+  },
+  {
+    "id": 26,
+    "name": "Digital Twin for Manufacturing",
+    "industries": [ "Manufacturing" ],
+    "domains": [ "Digital Twin" ],
+    "description": "Real-time mirrored digital twin using agent architecture.",
+    "tech_stack": "Unity3D, MQTT, LangGraph",
+    "icon": "🏭",
+    "category": "Agent AI"
+  },
+  {
+    "id": 27,
+    "name": "Medical Transcription Agent",
+    "industries": [ "Healthcare" ],
+    "domains": [ "Clinical" ],
+    "description": "Convert voice notes to structured medical records.",
+    "tech_stack": "Whisper, NLP, Flask",
+    "icon": "🩺",
+    "category": "Agent AI"
+  },
+  {
+    "id": 28,
+    "name": "Pharma Literature Analyzer",
+    "industries": [ "Life Sciences" ],
+    "domains": [ "Clinical Trials" ],
+    "description": "Summarizes trial literature for key drug efficacy and safety.",
+    "tech_stack": "RAG, PubMed APIs, Python",
+    "icon": "🔬",
+    "category": "Gen AI"
+  }
+]
