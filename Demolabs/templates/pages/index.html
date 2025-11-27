@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wow Demo Lab</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet" />
+
+    <!-- Bootstrap 5 + Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- ECharts -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #080c13;
+            --bg-elev: rgba(255,255,255,0.04);
+            --glass: rgba(255,255,255,0.06);
+            --stroke: rgba(255,255,255,0.12);
+            --accent: #5ee6eb;
+            --accent-2: #7aa2ff;
+            --text: #eef2f6;
+            --text-dim: rgba(238,242,246,0.72);
+            --shadow: 0 10px 30px rgba(0,0,0,0.4);
+            --radius: 18px;
+            --footer-h: 64px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: radial-gradient(1200px 600px at 20% -10%, rgba(94,230,235,0.18), transparent), radial-gradient(1000px 600px at 100% 0%, rgba(122,162,255,0.14), transparent), var(--bg-dark);
+            color: var(--text);
+            padding-bottom: calc(var(--footer-h) + 12px);
+            letter-spacing: 0.1px;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+            a:hover {
+                color: #39d9dd;
+            }
+
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(180deg, rgba(8,12,19,0.9), rgba(8,12,19,0.6));
+            backdrop-filter: saturate(140%) blur(8px);
+            border-bottom: 1px solid var(--stroke);
+        }
+
+        .btn-accent {
+            --bs-btn-color: #061017;
+            --bs-btn-bg: var(--accent);
+            --bs-btn-border-color: var(--accent);
+            --bs-btn-hover-bg: #39d9dd;
+            --bs-btn-hover-border-color: #39d9dd;
+            border-radius: 999px;
+            padding: 0.55rem 1.05rem;
+            font-weight: 600;
+        }
+
+        .btn-ghost {
+            border: 1px solid var(--stroke);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 0.55rem 1.05rem;
+            font-weight: 600;
+            background: transparent;
+        }
+
+            .btn-ghost:hover {
+                background: var(--glass);
+            }
+
+        /* Hero */
+        .hero {
+            padding: 6.5rem 0 3.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+            .hero h1 {
+                font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+                font-weight: 800;
+                line-height: 1.12;
+                background: linear-gradient(90deg, var(--accent), var(--accent-2));
+                -webkit-background-clip: text;
+                color: transparent;
+            }
+
+            .hero p {
+                color: var(--text-dim);
+                font-size: 1.1rem;
+                margin-top: 1rem;
+                max-width: 760px;
+                margin-inline: auto;
+            }
+
+        /* Cards */
+        .glass-card {
+            background: var(--bg-elev);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.6rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+            .glass-card:hover {
+                transform: translateY(-4px);
+                border-color: rgba(94,230,235,0.5);
+            }
+
+        /* KPI */
+        .kpi-num {
+            font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* Footer */
+        footer.site-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: var(--footer-h);
+            background: linear-gradient(180deg, rgba(8,12,19,0.95), rgba(8,12,19,0.9));
+            border-top: 1px solid var(--stroke);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" style="color: var(--accent)">
+                <i class="bi bi-stars me-1"></i> Wow Demo Lab
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="/home" style="color:white;"><i class="bi bi-grid-3x3-gap me-2"></i> Explore Catalog</a></li>
+
+                    <!-- Video modal trigger -->
+                    <!--<li class="nav-item"><button class="btn btn-accent" data-bs-toggle="modal" data-bs-target="#videoModal"><i class="bi bi-play-circle me-1"></i> Play 60-second Overview</button></li>-->
+
+                    <!-- Executive Brief modal trigger -->
+                    <li class="nav-item"><button class="btn btn-ghost" data-bs-toggle="modal" data-bs-target="#brief"><i class="bi bi-file-text me-1"></i> About Lab</button></li>
+
+                    <!-- Request CXO Demo modal trigger -->
+                    <li class="nav-item"><button class="btn btn-ghost" data-bs-toggle="modal" data-bs-target="#book"><i class="bi bi-lightning-charge me-1"></i> Request a CXO Demo</button></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <div class="container">
+            <h1>Wow Demo Lab</h1>
+            <p><strong>Rapid simulations</strong> in <span style="color:var(--accent)">AI & Data Analytics</span> 
+            <br />Crafted to showcase <span style="color:#8ed4ef ">art of possible</span> to business Leads</p>
+        </div>
+    </header>
+
+    <!-- Purpose Section -->
+    <!-- Purpose Section -->
+    <section class="container py-5">
+        <div class="d-flex align-items-center mb-5" style="gap: 12px;">
+            <!--<div class="flex-shrink-0">
+        <i class="bi bi-bullseye text-accent fs-3"></i>
+    </div>
+    <div>
+        <h5 class="mb-1 fw-bold" style="color:var(--accent)">Purpose</h5>
+        <p class="mb-0 text-secondary small">
+            Quick, client-specific simulations to accelerate conversations —
+            <strong>not production, just sharp demos</strong>.
+        </p>
+    </div>-->
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="glass-card h-100">
+                    <h5>🎯 Targeted</h5>
+                    <p>One client problem, one sharp demo. No distractions.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card h-100">
+                    <h5>⚡ Fast</h5>
+                    <p>Designed quickly to support RFPs and proactive engagement.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="glass-card h-100">
+                    <h5>🌐 Illustrative</h5>
+                    <p>Clear integration view, illustrative — never final.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">© 2025 Wow Demo Lab • <span class="text-danger ms-2">Non Production</span></footer>
+
+    <!-- Modals (Video, Brief, Request Demo) -->
+    <!-- Video Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="background: #0b111a; border: 1px solid var(--stroke); border-radius: var(--radius);">
+                <div class="modal-header" style="border-bottom: 1px solid var(--stroke);">
+                    <h5 class="modal-title" id="videoModalLabel">Wow Demo Factory — 60-second Overview</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0" style="aspect-ratio: 16/9;">
+                    <!-- Replace src with your video/url -->
+                    <iframe title="Overview Video" width="100%" height="100%" src="https://www.youtube.com/embed/44tt4t4t4" allowfullscreen style="border:0; border-radius: 0 0 var(--radius) var(--radius);"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Executive Brief Modal -->
+    <div class="modal fade" id="brief" tabindex="-1" aria-labelledby="briefLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="background:#0b111a; border:1px solid var(--stroke); border-radius:var(--radius);">
+                <div class="modal-header" style="border-bottom:1px solid var(--stroke);">
+                    <h5 class="modal-title" id="briefLabel">About — Wow Demo Lab</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="lead" style="color:var(--text-dim);">
+                        <strong>Purpose:</strong> Wow Demo Lab builds rapid, client-specific agentic AI simulations to illustrate feasibility,
+                        integration architecture, and potential business impact. These are <strong>illustrative demos</strong> meant to accelerate client conversations.
+                    </p>
+                    <div class="row">
+                        <div col="col-md-8">
+                            <img src="/static/imgs/WowDemoLabAboutUs-v2.gif"style="width:80%" />
+                        </div>
+                    </div>
+                    <br />
+                    <ul style="color:var(--text-dim);">
+                        <li><strong>Not production:</strong> Deliverables are "art of possible" — not production systems.</li>
+                        <li><strong>Targeted:</strong> Each demo focuses on one client problem to keep discussions crisp.</li>
+                        <li><strong>Outcome:</strong> Faster decisions, clearer roadmaps, and aligned next steps for potential PoCs.</li>
+                    </ul>
+                    <div class="mt-3">
+                        <a href="executive_brief.pdf" class="btn btn-accent me-2" download><i class="bi bi-file-earmark-pdf me-1"></i> Download Brief (PDF)</a>
+                        <button class="btn btn-ghost" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request CXO Demo Modal -->
+    <div class="modal fade" id="book" tabindex="-1" aria-labelledby="bookLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="background:#0b111a; border:1px solid var(--stroke); border-radius:var(--radius);">
+                <div class="modal-header" style="border-bottom:1px solid var(--stroke);">
+                    <h5 class="modal-title" id="bookLabel">Request a CXO Demo</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="demoRequestForm" class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Your name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="reqName" placeholder="Full name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Email <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="reqEmail" placeholder="you@company.com" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Purpose <span class="text-danger">*</span></label>
+                            <select id="reqPurpose" class="form-select" required>
+                                <option value="">Select</option>
+                                <option>RFP</option>
+                                <option>Proactive engagement</option>
+                                <option>Proof-of-concept</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Client / Account</label>
+                            <input type="text" id="reqClient" class="form-control" placeholder="Client name (optional)">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Industry</label>
+                            <input type="text" id="reqIndustry" class="form-control" placeholder="Industry (optional)">
+                        </div>
+
+                        <div class="col-md-6 d-flex align-items-center gap-3">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="hasProjectCode">
+                                <label class="form-check-label" for="hasProjectCode">Has Project Code?</label>
+                            </div>
+                            <input type="text" id="projectCode" class="form-control" placeholder="Project code" style="display:none;">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="form-label">Business context / Details <span class="text-danger">*</span></label>
+                            <textarea id="reqDetails" class="form-control" rows="4" placeholder="Describe the problem & expected outcome" required></textarea>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Priority</label>
+                            <select id="reqPriority" class="form-select">
+                                <option>Normal</option>
+                                <option>High</option>
+                                <option>Critical</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Attachment (optional)</label>
+                            <input type="file" id="reqAttachment" class="form-control">
+                        </div>
+
+                        <div class="col-12 text-end">
+                            <button type="reset" class="btn btn-ghost me-2">Reset</button>
+                            <button id="submitDemoReq" type="submit" class="btn btn-accent"><i class="bi bi-send me-1"></i> Request Demo</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="toastSuccess" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Request submitted — we'll follow up by email.</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Counter animation
+        const easeOut = t => 1 - Math.pow(1 - t, 3);
+        document.querySelectorAll('.counter').forEach(el => {
+            const target = +el.dataset.target;
+            const start = performance.now();
+            const step = now => {
+                const p = Math.min(1, (now - start) / 1200);
+                el.textContent = Math.round(easeOut(p) * target);
+                if (p < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        });
+
+        // ECharts demo chart
+        const chart = echarts.init(document.getElementById('kpiChart'));
+        chart.setOption({
+            tooltip: { trigger: 'axis' },
+            xAxis: { type: 'category', data: ['Q1', 'Q2', 'Q3', 'Q4'], axisLabel: { color: '#94a3b8' } },
+            yAxis: { type: 'value', axisLabel: { color: '#94a3b8' } },
+            series: [
+                { type: 'line', data: [90, 92, 94, 95], smooth: true },
+                { type: 'bar', data: [60, 65, 68, 70], barWidth: '30%' }
+            ]
+        });
+        window.addEventListener('resize', () => chart.resize());
+    </script>
+</body>
+</html>

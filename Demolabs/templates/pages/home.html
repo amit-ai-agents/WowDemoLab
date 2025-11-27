@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>🚀 Wow Demo Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <!-- Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
+    <link href="static/css/demoListPage.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="header-section">
+        <div class="header-left">
+            <a href="/" style="text-decoration:none"<i class="fas fa-diagram-project header-icon"></i></a>
+            <div>
+                <div class="header-title"><a class="navbar-brand fw-bold" href="#" style="color: var(--accent)">
+    <i class="bi bi-stars me-1"></i> Wow Demo Lab
+</a> </div>
+                <div class="header-subtitle">Rapid, client-specific agentic AI simulations</div>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#newRequestModal">
+                📝 New Request
+            </button>
+            <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#feedbackModal">
+                💬 Feedback
+            </button>
+            <button id="btnDarkMode" class="btn btn-outline-secondary btn-sm" title="Toggle theme">
+                <i class="bi bi-moon-stars"></i>
+            </button>
+            <!--<button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#chatbotModal">
+                🤖 Copilot
+            </button>-->
+            <!--<i class="fas fa-plus-circle quick-link" title="New Request"></i>
+            <i class="fas fa-comment-dots quick-link" title="Feedbacks"></i>
+            <i class="fas fa-robot quick-link" title="Copilot"></i>-->
+            <i class="fas fa-bell quick-link" title="Notifications"></i>
+            <i class="fas fa-question-circle quick-link" title="Help"></i>
+            <i class="fas fa-cog quick-link" title="Settings"></i>
+            <img src="static/imgs/amit.jpg" alt="User" class="user-avatar" title="Amit Chopra" />
+        </div>
+    </div>
+
+    <div class="container my-4">
+        <!--<h2 class="text mb-4"><i class="fas fa-diagram-project header-icon"></i> DI Demo Factory </h2>-->
+
+        <div class="top-controls d-flex align-items-center">
+            <!-- Search bar -->
+            <input type="text" id="searchInput" class="form-control me-2" placeholder="🔍 Search demos and keywords..." aria-label="Search demos" />
+
+            <!-- Grid/List toggle -->
+            <div class="view-toggle ms-2">
+                <button id="gridViewBtn" class="btn btn-outline-secondary active" title="Grid View"><i class="fas fa-th"></i></button>
+                <button class="btn btn-outline-secondary" title="List View" id="listViewBtn" aria-pressed="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <!-- Live/All toggle -->
+            <div class="demo-status-toggle me-3">
+                <div class="btn-group btn-group-toggle" role="group" aria-label="Demo Status Toggle">
+                    <input type="radio" class="btn-check" name="demoStatus" id="allDemos" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="allDemos">All Demos</label>
+
+                    <input type="radio" class="btn-check" name="demoStatus" id="liveDemos" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="liveDemos">Live Demos</label>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="filter-section row">
+                    <div class="filter-label col-1"><h5> Industry: </h5></div>
+                    <div id="industryFilters" class="btn-group flex-wrap col-10" role="group"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="filter-section row">
+                    <div class="filter-label col-1"><h5>Domain:</h5></div>
+                    <div id="domainFilters" class="btn-group flex-wrap col-11" role="group"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row grid-view" id="demoContainer">
+
+
+        </div>
+    </div>
+
+    <!-- Demo Modal -->
+    <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="demoModalLabel">Demo Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="demoModalBody"></div>
+            </div>
+        </div>
+    </div>
+    {% include 'partials/DemoStepsModal.html' %}
+
+    <!-- Customize Modal -->
+    <div class="modal fade" id="customizeModal" tabindex="-1" aria-labelledby="customizeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customizeModalLabel">Customize Demo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customizeForm">
+                        <div class="mb-3">
+                            <label for="customName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="customName" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="customEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="customEmail" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="customDetails" class="form-label">Customization Requirements</label>
+                            <textarea class="form-control" id="customDetails" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Request Modal -->
+    <div class="modal fade" id="newRequestModal" tabindex="-1" aria-labelledby="newRequestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title" id="newRequestModalLabel">📝 Submit a New Request</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="requestTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="requestTitle" placeholder="Enter request title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="requestDetails" class="form-label">Details</label>
+                            <textarea class="form-control" id="requestDetails" rows="4" placeholder="Describe your request..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header bg-secondary text-white rounded-top-4">
+                    <h5 class="modal-title" id="feedbackModalLabel">💬 Submit Feedback</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="feedbackCategory" class="form-label">Category</label>
+                            <select class="form-select" id="feedbackCategory">
+                                <option>UI/UX</option>
+                                <option>Feature Request</option>
+                                <option>Bug Report</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="feedbackMessage" class="form-label">Your Feedback</label>
+                            <textarea class="form-control" id="feedbackMessage" rows="4" placeholder="Share your thoughts..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <!--<div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header bg-success text-white rounded-top-4">
+                    <h5 class="modal-title" id="chatbotModalLabel">🤖 Copilot Chat</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" style="height: 400px; overflow-y: auto;">-->
+    <!-- Replace this with your chatbot integration (iframe / widget / live chat) -->
+    <!--<p class="text-muted">Your AI Copilot will appear here...</p>
+    <div class="border rounded p-3 bg-light">
+        <p><strong>Copilot:</strong> Hello! How can I assist you today?</p>-->
+    <!-- Optional Input Field for Simulated Chat -->
+    <!--<input type="text" class="form-control mt-3" placeholder="Type your message here...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!-- Chatbot Modal -->
+    <div class="modal fade" id="chatbotModal" tabindex="-1" aria-labelledby="chatbotModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow rounded-4">
+                <div class="modal-header bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title" id="chatbotModalLabel">🤖 Copilot Chat</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" style="height: 400px; overflow-y: auto;">
+                    <!-- Placeholder Copilot -->
+                    <center><p class="text " style="color:white;background-color:orangered">This functionality will be shortly available!</p></center>
+                    <div class="border rounded p-3 bg-light">
+                        <p><strong>Copilot:</strong> Hello! How can I assist you today?</p>
+                        <input type="text" class="form-control mt-3" placeholder="Type your message...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="demoDetailsForm" method="POST" action="/DemoDetails" style="display: none;">
+        <input type="hidden" name="demoID" id="demoIDField" />
+    </form>
+
+    <!-- JavaScript -->
+    <script src="/static/js/demoList.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <button type="button" class="btn btn-outline-primary rounded-circle shadow-lg" id="copilotFab" data-bs-toggle="modal" data-bs-target="#chatbotModal" title="Open Copilot">
+        🤖
+    </button>
+    <div class="footer-section">
+        &copy; 2025 DI Demo Factory | Powered by Agentic AI Workflows
+    </div>
+    <script>
+        const state = {
+            range: '24h',
+            domain: 'All',
+            env: 'Staging',
+            compute: 'Databricks',
+            tier: 'All',
+            owners: ['Team Atlas', 'Team Nova'],
+            slos: { pipeline: 97, dq: 95, freshnessMin: 30 },
+            theme: 'dark',
+            seed: 7
+        };
+        $('#btnDarkMode').on('click', () => {
+            const html = document.documentElement;
+            alert('Toggling theme');
+            const current = html.getAttribute('data-bs-theme') || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', next);
+            state.theme = next;
+            // trigger resize so echarts adapts theme background
+            setTimeout(() => window.dispatchEvent(new Event('resize')), 60);
+        });
+    </script>
+</body>
+</html>

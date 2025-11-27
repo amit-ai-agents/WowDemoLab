@@ -1,0 +1,147 @@
+    <!-- Customize Modal -->
+<div class="modal fade" id="demostepdetailsModal" tabindex="-1" aria-labelledby="demostepdetailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="row" style="width:100%">
+                    <div class="col-md-8">
+                        <h5 class="modal-title" id="demostepdetailsModalLabel">🚀 Demo Steps Walkthrough</h5>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="#" id="lnkToDemo" target="_blank">Go to the demo</a>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <!-- Timeline -->
+                <div id="timeline" class="timeline"></div>
+
+                <!-- Details -->
+                <div id="details" class="details-container"></div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    body {
+        background: #f8f9fa;
+    }
+
+    .timeline {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0;
+        gap: 20px;
+    }
+
+    .timeline-step {
+        cursor: pointer;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+        .timeline-step .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            line-height: 50px;
+            background: #dee2e6;
+            color: #6c757d;
+            margin: auto;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .timeline-step.active .circle {
+            background: #0d6efd;
+            color: white;
+            box-shadow: 0 0 10px rgba(13,110,253,0.6);
+        }
+
+        .timeline-step.inactive {
+            opacity: 0.5;
+        }
+
+    .details-container {
+        max-width: 900px;
+        margin: auto;
+        margin-top: 30px;
+    }
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+</style>
+
+
+<script>
+    var steps = [];
+    function InitiateFlow(id = -1) {
+        if (id == -1) {
+            alert("This demo is not available right now.");
+            return;
+        }
+        jsonURL = "/static/DemoDetailsRepo/" + id + ".json";
+        alert("Loading demo steps from: " + jsonURL);
+        $.getJSON(jsonURL)
+            .done(function (data) {
+                //alert("Data loaded successfully!" + JSON.stringify(steps));
+                if (!data.DemoSteps) {
+                    console.warn("Demo Steps are not yet defined");
+                    return;
+                }
+                steps = data.DemoSteps;
+                //$('#lnkToDemo').text('New Demo Title')        // Change the visible text
+                $('#lnkToDemo').attr('href', data.demoURL); // Update the link
+
+                renderTimeline();
+                renderDetails(0); // start with first step active
+
+                $(document).on("click", ".timeline-step", function () {
+                    const stepId = parseInt($(this).data("id"));
+                    renderDetails(stepId);
+                });
+            })
+            .fail(function (xhr, status, err) {
+                console.error("Failed to load /static/data/DODemoSteps.json:", status, err);
+            });
+    }
+    function renderTimeline() {
+        $("#timeline").empty();
+        steps.forEach((step, index) => {
+            $("#timeline").append(`
+              <div class="timeline-step inactive" data-id="${step.id}">
+                <div class="circle">${index }</div>
+                <small>${step.title}</small>
+              </div>
+            `);
+        });
+    }
+
+    function renderDetails(stepId) {
+        const step = steps.find(s => s.id === stepId);
+        $(".timeline-step").addClass("inactive").removeClass("active");
+        $(`.timeline-step[data-id=${stepId}]`).addClass("active").removeClass("inactive");
+
+        $("#details").html(`
+            <div class="card p-4">
+              <h4 class="text-primary">${step.title}</h4>
+              <p><strong>Input:</strong> ${step.input}</p>
+              <p><strong>Output:</strong> ${step.output}</p>
+              <p><strong>Next Steps:</strong></p>
+              <ul>
+                ${step.nextSteps.map(ns => `<li>${ns}</li>`).join("")}
+              </ul>
+            </div>
+          `);
+    }
+
+    //$(document).ready(function () {
+    //    InitiateFlow();
+    //});
+</script>
