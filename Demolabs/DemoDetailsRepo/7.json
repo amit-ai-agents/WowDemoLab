@@ -1,0 +1,104 @@
+{
+  "id": 7,
+  "demoID": "Retail_FootfallHeatmap",
+  "UseCaseTitle": "Real-Time Retail Footfall & Heatmap Analytics",
+  "Purpose": "To visualize store traffic and customer movement in real-time using live camera feeds, enabling retailers to optimize store layout, staffing, and promotional strategies.",
+  "ExecSummary": "Brick-and-mortar retailers often lack insights into in-store customer behavior, leading to inefficient layouts and missed sales opportunities. This live footfall heatmap agent leverages computer vision to capture movement patterns and inform real-time operational and strategic decisions.",
+  "ExecSummaryKeyAsks": [
+    "Capture customer footfall in real-time",
+    "Generate intuitive heatmaps for store zones",
+    "Use data to optimize staffing and layouts",
+    "Integrate analytics seamlessly with existing store systems"
+  ],
+  "BusinessObjectives": [
+    "Improve in-store shopper experience through layout optimization",
+    "Increase conversion rates by placing staff strategically",
+    "Reduce operational waste and queue delays",
+    "Make data-driven decisions on promotions and store planning"
+  ],
+  "BusinessBenefits": [
+    "15-25% lift in conversion from better traffic flow",
+    "Optimize staffing schedules to match peak hours",
+    "Reduce time customers spend in queues by 20%",
+    "Enable evidence-based merchandising and campaign planning"
+  ],
+  "overview": "This demo showcases a live computer vision AI system that processes camera feeds to detect people, track movement patterns, and render real-time footfall heatmaps. Built on Python, OpenCV, and Flask, it offers visual analytics for store operations.",
+  "business": "Retailers need deeper insights into how customers move through physical spaces to improve layout, restocking, promotions, and staffing. Manual observation is inconsistent and not scalable.",
+  "approach": "The system ingests video feed from in-store cameras, runs real-time detection and tracking via OpenCV models, and aggregates positional data into heatmap layers. Insights are served through a Flask-based dashboard.",
+  "BusinessDrivers": [
+    "Need for smarter, data-driven store operations",
+    "Visualize high-traffic zones and bottlenecks",
+    "Reduce lost sales from understaffing or stockouts",
+    "Support agile store reconfiguration based on real data"
+  ],
+  "BusinessChallanges": [
+    "Limited visibility into physical customer behaviors",
+    "Inadequate manual methods for aisle or zone optimization",
+    "Difficulty adapting staff allocation in real-time",
+    "No easy integration between vision analytics and operations"
+  ],
+  "FunctionalOverview": [
+    "Footfall Detection: Detects and counts people in camera frames.",
+    "Zone Tracking: Monitors customer movement across predefined store zones.",
+    "Heatmap Generation: Aggregates traffic density into visual heatmaps.",
+    "Analytics Dashboard: Displays metrics, trends, and zone insights.",
+    "Alerting: Identifies unusually high footfall or queue build-ups."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "People Detection & Tracking Module",
+      "Description": "Uses OpenCV to detect and track individuals in live video streams.",
+      "KeyFeatures": [
+        "Pretrained models for person detection",
+        "Real-time multi-object tracking in crowded scenes",
+        "Zone ingress/egress counting"
+      ],
+      "BusinessImpact": [
+        "Provides accurate footfall data per zone",
+        "Enables live monitoring of customer movement",
+        "Lays foundation for store layout optimization"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Heatmap Aggregation & Visualization",
+      "Description": "Transforms tracking data into time-series heatmaps accessible via dashboard.",
+      "KeyFeatures": [
+        "Temporal and spatial aggregation",
+        "Dynamic heatmap rendering",
+        "Integration via Flask API"
+      ],
+      "BusinessImpact": [
+        "Enables insight-driven operational decisions",
+        "Highlights high/low-traffic zones",
+        "Improves staff deployment strategies"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Live camera feed processed by OpenCV detection & tracking",
+    "Heatmap visualizations rendered via ECharts (or Flask UI)",
+    "Analytics served live through Flask dashboard",
+    "Supports integration with POS or staffing systems"
+  ],
+  "SolutionComponents": [
+    "Detection & Tracking Engine (Python + OpenCV)",
+    "Heatmap Aggregator",
+    "Analytics Dashboard (Flask)",
+    "Zone Definition Configurator",
+    "Alert & Reporting Module",
+    "Data Store for zone metrics"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Live video streams feed into the detection engine, which identifies and tracks individual movement across zones. Aggregated positional data is processed into heatmap layers and sent to the Flask dashboard for visualization and alerting.",
+  "design": "A modular microservice architecture using Python and OpenCV for detection/tracking, Flask for UI, and a lightweight data store to buffer zone metrics. Components support horizontal scaling across multiple stores.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "CV Model Integration & Tracking": "3 weeks",
+    "Dashboard & Heatmap UI": "2 weeks",
+    "Integration & Testing": "1 week"
+  },
+  "cost": {
+    "CAPEX": "45,000 � includes CV model setup, dashboard development, and edge deployments",
+    "OPEX": "4,500/month � covers compute, storage, monitoring, and support"
+  }
+}

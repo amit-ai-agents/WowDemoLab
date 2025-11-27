@@ -1,0 +1,107 @@
+{
+  "id": 5,
+  "demoID": "DataAuditor_ModernPipelines",
+  "UseCaseTitle": "Autonomous Data Quality Auditor for Modernized Pipelines",
+  "Purpose": "To automate quality checks and compliance audits across modern data platforms, ensuring trustworthy analytics and regulatory adherence.",
+  "ExecSummary": "Enterprises modernizing their data platforms often struggle with ensuring data quality and compliance across distributed pipelines. Manual audits are inconsistent and non-scalable, leading to reporting risks and operational inefficiencies.",
+  "ExecSummaryKeyAsks": [
+    "Automate data quality validation across pipelines",
+    "Continuously monitor schema, nulls, duplicates, and business rules",
+    "Ensure auditability and traceability of all data assets",
+    "Generate real-time compliance dashboards"
+  ],
+  "BusinessObjectives": [
+    "Improve trust in analytical outcomes",
+    "Reduce manual effort in data audits",
+    "Ensure compliance with internal & external standards (e.g., GDPR, SOX)",
+    "Establish a repeatable and scalable data validation framework"
+  ],
+  "BusinessBenefits": [
+    "80% reduction in manual audit effort",
+    "Early detection of quality issues",
+    "Consistent and auditable compliance reporting",
+    "Improved decision-making with clean, validated data"
+  ],
+  "overview": "This demo introduces an AI-powered agent that autonomously audits enterprise-grade data pipelines post-modernization. The agent validates against predefined quality rules, identifies anomalies, and generates human-readable reports for compliance and operations teams.",
+  "business": "As enterprises shift to modern data stacks (cloud warehouses, lakehouses), data governance becomes a critical priority. Ensuring data quality across multiple ingestion points and formats is non-trivial and demands intelligent, continuous monitoring.",
+  "approach": "The system uses rule-based validation (via Great Expectations), anomaly detection in Pandas, and intelligent rule triggering. Audit results are compiled and logged through Python scripts, with flexibility to plug into CI/CD and orchestration tools.",
+  "BusinessDrivers": [
+    "Enable trusted decision-making through high-quality data",
+    "Minimize regulatory risks with continuous audit logging",
+    "Support real-time analytics by validating incoming data streams",
+    "Automate what was previously manual and reactive QA"
+  ],
+  "BusinessChallanges": [
+    "Lack of visibility into pipeline-level data issues",
+    "Manual audits are time-consuming and error-prone",
+    "Scaling compliance as data volume grows",
+    "Delayed detection of schema and null-based errors"
+  ],
+  "FunctionalOverview": [
+    "Data Quality Validation: Continuous verification of schema, nulls, duplicates, and value distributions.",
+    "Compliance Monitoring: Mapping data checks to regulatory/business rules.",
+    "Reporting & Alerting: Automatic generation of reports for audit trails or operational review.",
+    "Scalability: Can audit batch and streaming pipelines alike.",
+    "Integration Ready: Hooks available for Airflow, dbt, CI/CD tools."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Quality Validation Engine",
+      "Description": "Executes quality checks using Great Expectations and Pandas across data sources.",
+      "KeyFeatures": [
+        "Schema conformity validation",
+        "Missing/nulls detection",
+        "Value range & type enforcement",
+        "Custom business rule checks",
+        "Pluggable validators for custom domains"
+      ],
+      "BusinessImpact": [
+        "Improves accuracy of downstream analytics",
+        "Accelerates QA cycles",
+        "Ensures standardization across teams"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Compliance Auditing Module",
+      "Description": "Maps technical validations to business/regulatory compliance needs.",
+      "KeyFeatures": [
+        "Traceable audit logs with time-stamps",
+        "Rule-matching framework for GDPR/SOX mappings",
+        "Change detection & drift monitoring"
+      ],
+      "BusinessImpact": [
+        "Reduces compliance overhead",
+        "Provides real-time governance assurance",
+        "Supports external and internal audits"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "AI Agent for autonomous pipeline auditing",
+    "Runs pre/post data load checks across cloud warehouses and lakes",
+    "Python-based system integrated with Great Expectations",
+    "Modular, CI/CD compatible validation rules",
+    "Supports both scheduled and event-triggered audits"
+  ],
+  "SolutionComponents": [
+    "Quality Validation Agent",
+    "Compliance Mapping Engine",
+    "Audit Log Generator",
+    "Rule Orchestrator (Python + Great Expectations)",
+    "Custom Pandas-based Validators"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Raw or processed data is passed to the Quality Validation Agent. Each dataset undergoes a series of defined tests via Great Expectations. Any failed checks are logged and optionally routed to alerting modules. Audit logs are persisted and linked to compliance rules for traceability.",
+  "design": "Agents are built as lightweight Python microservices, optionally containerized. The design allows plug-and-play rules, supporting both batch pipelines and streaming data validation in real-time environments.",
+  "effort": {
+    "Architecture & Design": "1.5 weeks",
+    "Agent Development": "2.5 weeks",
+    "Testing & Validation": "1 week",
+    "Reporting UI": "1 week",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "30,000 - initial design, setup, and validation rules",
+    "OPEX": "3,000/month - includes cloud runs, logging, monitoring"
+  }
+}

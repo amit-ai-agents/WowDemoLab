@@ -1,0 +1,83 @@
+{
+  "ModernDataAIReferenceArchitecture": {
+    "Layers": [
+      {
+        "name": "Data Sources Layer",
+        "purpose": "Origination point for customer interactions, claim systems, and policy knowledge.",
+        "orientation": "vertical",
+        "components": {
+          "InternalSystems": [ "CRM", "Claims Management System", "Policy Administration System" ],
+          "ExternalSources": [ "Document Uploads", "Third-Party APIs for Verification" ],
+          "AgenticInputs": [ "Agent logs", "Claim summaries", "Session memory states" ],
+          "GenAISignals": [ "Chat transcripts", "Prompt flows", "User intents", "Embeddings" ]
+        }
+      },
+      {
+        "name": "Data Ingestion & Acquisition Layer",
+        "purpose": "Ingest real-time customer queries, agent outputs, and policy data from APIs.",
+        "orientation": "vertical",
+        "components": {
+          "APIIngestion": true,
+          "RealTimeStreams": true,
+          "AgenticTriggers": true,
+          "FileAndBlobIngestion": true
+        }
+      },
+      {
+        "name": "Unified Data Consolidation & Transformation Layer",
+        "purpose": "Prepare and organize policy data, FNOL inputs, and session context for AI use.",
+        "orientation": "vertical",
+        "components": {
+          "TransformEngines": [ "SQL", "dbt" ],
+          "Orchestration": [ "Prefect" ],
+          "CuratedZone": "Structured claim and policy context",
+          "SemanticZone": "RAG-ready knowledge base",
+          "AgentStores": [ "Vector DB (Faiss)", "Knowledge Graph (Neo4j)" ]
+        }
+      },
+      {
+        "name": "AI & Advanced Analytical Layer",
+        "purpose": "Power FNOL automation and claim inquiry agents using prompt orchestration and retrieval.",
+        "orientation": "vertical",
+        "components": {
+          "LLMsAndSLMs": [ "Intent Detection", "Dialogue Management", "Claim Classification" ],
+          "RAGAndVectorPipelines": true,
+          "PromptAndAgentWorkflow": true,
+          "ModelOptimization": [ "Prompt Engineering", "Few-shot examples" ]
+        }
+      },
+      {
+        "name": "Data Governance & Control Fabric",
+        "purpose": "Protect sensitive claim data and enforce access governance and compliance.",
+        "orientation": "horizontal",
+        "components": {
+          "AccessControls": [ "RBAC" ],
+          "DataCatalog": true,
+          "Lineage": true,
+          "PolicyBasedGovernance": true
+        }
+      },
+      {
+        "name": "Platform Ops & Observability Layer",
+        "purpose": "Monitor agent workflows, detect failures, and ensure platform resilience.",
+        "orientation": "horizontal",
+        "components": {
+          "MonitoringAndAlerting": [ "Agent Logs", "Claim Submission Success", "API Failures" ],
+          "CI_CD": true,
+          "DevSecOps": true,
+          "MLAndLLMOps": [ "Model Registry", "Drift Monitoring" ]
+        }
+      },
+      {
+        "name": "Experience, Insights & Consumption Layer",
+        "purpose": "Expose FNOL automation and claim status experience across digital channels.",
+        "orientation": "vertical",
+        "components": {
+          "ChatbotsAndAssistants": true,
+          "PortalsAndDashboards": true,
+          "EmbeddedAPIs": true
+        }
+      }
+    ]
+  }
+}

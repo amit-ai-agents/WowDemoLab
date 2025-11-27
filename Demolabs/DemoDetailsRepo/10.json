@@ -1,0 +1,105 @@
+{
+  "id": 10,
+  "demoID": "GenAI_MarketingCopy",
+  "UseCaseTitle": "Generative AI for Marketing Copy",
+  "Purpose": "To automate the creation of personalized and SEO-optimized marketing content across digital channels, enhancing engagement and accelerating campaign execution.",
+  "ExecSummary": "Marketing teams face growing pressure to produce high-quality, tailored content for increasingly segmented audiences. Manual copywriting is time-consuming, hard to scale, and limits speed-to-market. This demo shows how a Generative AI engine can dynamically create contextual, brand-aligned marketing copy using LLMs and prompt engineering.",
+  "ExecSummaryKeyAsks": [
+    "Automate generation of marketing content for products and promotions",
+    "Improve time-to-market for digital campaigns",
+    "Boost engagement through personalized messaging",
+    "Ensure consistency across SEO, email, and ad copy"
+  ],
+  "BusinessObjectives": [
+    "Accelerate campaign launches with AI-generated content",
+    "Support A/B testing with on-demand variations",
+    "Drive brand consistency and quality at scale",
+    "Empower marketers with prompt-based copy generation"
+  ],
+  "BusinessBenefits": [
+    "Up to 70% faster content production lifecycle",
+    "Increased personalization without additional headcount",
+    "SEO-optimized copy out-of-the-box",
+    "Consistent brand tone across all channels"
+  ],
+  "overview": "This solution showcases a GenAI-powered content engine tailored for marketing teams. It combines prompt templates, large language models, and simple APIs to generate SEO-rich, channel-specific marketing content dynamically. It can be integrated into content management systems or marketing automation pipelines.",
+  "business": "Retail and media sectors require frequent, high-volume, and tailored copy for products, offers, blogs, and social content. Manual writing slows down launches and introduces inconsistency. By introducing an AI co-writer, teams can speed up go-to-market timelines while maintaining brand voice.",
+  "approach": "The system uses Mistral-7B as the core LLM with domain-tuned prompt templates. Flask provides a lightweight API for integration. Marketers can input product specs or goals, and the system generates optimized copy for landing pages, emails, or social posts.",
+  "BusinessDrivers": [
+    "Personalized campaigns at scale",
+    "Rapid iteration for A/B testing and localization",
+    "Marketing ops automation with minimal IT dependency",
+    "Reducing creative bottlenecks in campaign planning"
+  ],
+  "BusinessChallanges": [
+    "Time-consuming manual content creation",
+    "Difficulty maintaining consistent tone and SEO alignment",
+    "Limited ability to personalize across demographics",
+    "High dependency on external creative teams or agencies"
+  ],
+  "FunctionalOverview": [
+    "Input form or API to provide product/category/context info",
+    "Prompt template selector based on campaign type (e.g., email, SEO, PPC)",
+    "LLM generation via Mistral-7B",
+    "Real-time preview and content scoring (optional)",
+    "Feedback loop to refine and regenerate content"
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Content Generation Engine",
+      "Description": "Takes structured product or campaign inputs and produces optimized copy for various channels.",
+      "KeyFeatures": [
+        "SEO-friendly templates with customizable tone/style",
+        "Multilingual support for global campaigns",
+        "Content type variations (headline, body, CTA)",
+        "Integration-ready APIs for CMS/CRM tools"
+      ],
+      "BusinessImpact": [
+        "Cuts down time to generate ad/email copy",
+        "Empowers marketers with self-service content creation",
+        "Improves campaign effectiveness via personalization"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Prompt Template Manager",
+      "Description": "Houses modular prompt structures for different marketing scenarios.",
+      "KeyFeatures": [
+        "Predefined templates for social media, blogs, product descriptions, and ads",
+        "Marketer-friendly UI for template customization",
+        "Campaign goal tagging (awareness, conversion, etc.)"
+      ],
+      "BusinessImpact": [
+        "Ensures consistency across campaigns",
+        "Reduces prompt engineering complexity",
+        "Improves content alignment with business goals"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Mistral-7B model hosted via API backend (Flask)",
+    "Prompt templating layer for brand-compliant generation",
+    "Optional scoring/ranking module for content effectiveness",
+    "Integration hooks into CMS, CRM, or campaign automation systems"
+  ],
+  "SolutionComponents": [
+    "Prompt Template Engine",
+    "Mistral-7B LLM",
+    "Content Scoring Module (Optional)",
+    "Flask-based API Gateway",
+    "Frontend UI for Marketers (Optional)"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Marketer inputs campaign requirements through a UI or API. Prompt template is selected based on content type. The prompt is merged with input data and passed to the Mistral LLM. Generated content is optionally scored and previewed before being published or exported.",
+  "design": "The system is built as a modular service with stateless API components. It can scale horizontally and plug into CI/CD flows or martech stacks. All templates are stored in version-controlled repositories to ensure traceability and compliance.",
+  "effort": {
+    "Architecture & Design": "1 week",
+    "Model & Prompt Engineering": "2 weeks",
+    "Integration & APIs": "1 week",
+    "UI Development": "1 week",
+    "Testing & Launch": "1 week"
+  },
+  "cost": {
+    "CAPEX": "30,000 - covers LLM tuning, backend setup, and UI development",
+    "OPEX": "3,000/month - includes model inference, hosting, and support"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "ModernDataAIReferenceArchitecture": {
+    "Layers": [
+      {
+        "name": "Data Sources Layer",
+        "purpose": "Origination point for all biological data: omics files, literature corpora, and model interaction logs.",
+        "orientation": "vertical",
+        "components": {
+          "InternalSystems": [ "Omics File Uploads", "SQLite Omics DB" ],
+          "ExternalSources": [ "Biomedical Literature", "Protein Databases", "Gene Ontologies" ],
+          "AgenticInputs": [ "Embeddings", "Attention Maps", "Hypothesis Ranks" ],
+          "GenAISignals": [ "Prompt history", "Session embeddings", "Prediction trails" ]
+        }
+      },
+      {
+        "name": "Data Ingestion & Acquisition Layer",
+        "purpose": "Parse and ingest multi-modal omics data and biomedical references.",
+        "orientation": "vertical",
+        "components": {
+          "FileAndBlobIngestion": true,
+          "APIIngestion": true,
+          "AgenticTriggers": true
+        }
+      },
+      {
+        "name": "Unified Data Consolidation & Transformation Layer",
+        "purpose": "Normalize and convert raw omics files into structured and vectorized forms.",
+        "orientation": "vertical",
+        "components": {
+          "TransformEngines": [ "BioPython", "SQL" ],
+          "Orchestration": [ "Prefect" ],
+          "CuratedZone": "Structured Omics Data",
+          "SemanticZone": "Biomedical Embeddings & Metadata",
+          "AgentStores": [ "Vector DB (Faiss)", "Knowledge Graphs (Bio Ontologies)" ]
+        }
+      },
+      {
+        "name": "AI & Advance Analytical Layer",
+        "purpose": "Generate and explain omics-to-target hypotheses using generative and retrieval models.",
+        "orientation": "vertical",
+        "components": {
+          "LLMsAndSLMs": [ "Biomedical Transformers (HuggingFace)" ],
+          "RAGAndVectorPipelines": true,
+          "PromptAndAgentWorkflow": true,
+          "ModelOptimization": [ "Prompt Engineering", "Few-shot Biomedical Examples" ]
+        }
+      },
+      {
+        "name": "Data Governance & Control Fabric",
+        "purpose": "Ensure traceability and reproducibility of AI-generated hypotheses.",
+        "orientation": "horizontal",
+        "components": {
+          "AccessControls": [ "RBAC" ],
+          "Lineage": true,
+          "PolicyBasedGovernance": true
+        }
+      },
+      {
+        "name": "Platform Ops & Observability Layer",
+        "purpose": "Monitor hypothesis generation pipeline, embedding service, and compute utilization.",
+        "orientation": "horizontal",
+        "components": {
+          "MonitoringAndAlerting": [ "Model Inference Logs", "Pipeline Failures", "Embedding Drift" ],
+          "CI_CD": true,
+          "DevSecOps": true,
+          "MLAndLLMOps": [ "Model Registry", "Versioning", "Drift Monitoring" ]
+        }
+      },
+      {
+        "name": "Experience, Insights & Consumption Layer",
+        "purpose": "Expose AI-generated targets and supporting evidence through interactive tools.",
+        "orientation": "vertical",
+        "components": {
+          "PortalsAndDashboards": true,
+          "ChatbotsAndAssistants": false,
+          "PromptDrivenBI": false,
+          "EmbeddedAPIs": true
+        }
+      }
+    ]
+  }
+}

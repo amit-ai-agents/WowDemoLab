@@ -1,0 +1,109 @@
+{
+  "id": 11,
+  "demoID": "AIAgent_NetworkIncident",
+  "UseCaseTitle": "AI-powered Network Incident Prediction and Resolution",
+  "Purpose": "To proactively predict, diagnose, and resolve network outages in telecom and IT service operations using graph-based AI agents, reducing downtime and improving network reliability.",
+  "ExecSummary": "Telecom and IT service providers face increasing complexity in managing network infrastructure with frequent outages causing significant operational disruptions and customer dissatisfaction. Traditional reactive approaches lead to longer downtimes and higher costs. This demo showcases an autonomous multi-agent system leveraging graph AI, contextual memory, and dynamic workflows to predict incidents early and enable automated troubleshooting.",
+  "ExecSummaryKeyAsks": [
+    "Enable proactive network incident prediction",
+    "Automate root cause analysis and resolution workflows",
+    "Reduce mean time to repair (MTTR)",
+    "Improve network uptime and customer satisfaction"
+  ],
+  "BusinessObjectives": [
+    "Minimize network downtime and service impact",
+    "Automate repetitive troubleshooting tasks",
+    "Enhance operational efficiency and scalability",
+    "Support real-time incident visibility and reporting"
+  ],
+  "BusinessBenefits": [
+    "40-60% reduction in network outage duration",
+    "Faster incident detection and resolution",
+    "Lower operational costs through automation",
+    "Improved SLA compliance and customer experience"
+  ],
+  "overview": "This demo implements an end-to-end Agentic AI framework designed for intelligent telecom network operations. It uses graph neural network models (via NetworkX and Neo4j) combined with multi-agent orchestration through LangGraph to autonomously handle complex incident prediction and troubleshooting tasks.",
+  "business": "Network outages cause revenue loss and customer churn in telecom and IT service companies. Manual incident management is slow and error-prone. There is a growing need for AI-driven autonomous systems that leverage graph analytics and contextual knowledge to predict and resolve issues before they escalate.",
+  "approach": "The solution integrates graph analytics for network topology and incident modeling, LangGraph for orchestrating multi-agent workflows, Faiss for semantic search of incident knowledge, and Neo4j as a contextual knowledge graph. Agents communicate indirectly via contextual memory to maintain modularity and traceability.",
+  "BusinessDrivers": [
+    "Drive proactive network management to reduce outages",
+    "Automate incident workflows to reduce manual efforts",
+    "Provide real-time network health visibility",
+    "Scale operations without linear increases in manpower"
+  ],
+  "BusinessChallanges": [
+    "Complex and dynamic network topologies",
+    "Delayed incident detection and response",
+    "Fragmented knowledge across tools and teams",
+    "High operational costs due to manual troubleshooting",
+    "Difficulty in maintaining consistent incident resolutions"
+  ],
+  "FunctionalOverview": [
+    "Incident Prediction: Analyze network telemetry and topology graphs to forecast potential outages.",
+    "Root Cause Analysis: AI agents autonomously identify probable causes using graph-based reasoning.",
+    "Automated Troubleshooting: Execute resolution workflows via multi-agent collaboration.",
+    "Contextual Memory: Maintain state and history of incidents across agents and time.",
+    "Multi-channel Notifications: Provide real-time alerts and incident updates to stakeholders."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Incident Prediction Module",
+      "Description": "Monitors network data streams and applies graph neural networks to predict potential failures before they impact services.",
+      "KeyFeatures": [
+        "Real-time network telemetry ingestion",
+        "Graph-based anomaly detection",
+        "Risk scoring and alert generation"
+      ],
+      "BusinessImpact": [
+        "Reduces unplanned outages",
+        "Enables proactive remediation",
+        "Improves overall network reliability"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Root Cause Analysis and Troubleshooting Module",
+      "Description": "Automatically identifies root causes of incidents using Neo4j knowledge graph and orchestrates multi-agent troubleshooting workflows with LangGraph.",
+      "KeyFeatures": [
+        "Contextual incident correlation",
+        "Automated diagnostic steps",
+        "Integration with existing network management tools"
+      ],
+      "BusinessImpact": [
+        "Shortens incident resolution times",
+        "Reduces manual troubleshooting workload",
+        "Increases accuracy of problem diagnosis"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Graph Neural Network models for network anomaly detection",
+    "Multi-agent orchestration via LangGraph for autonomous workflows",
+    "Semantic search using Faiss-powered RAG on historical incident data",
+    "Contextual memory stored in Neo4j for knowledge persistence",
+    "Real-time incident alerting and status updates"
+  ],
+  "SolutionComponents": [
+    "Incident Prediction Agent",
+    "Root Cause Analysis Agent",
+    "Troubleshooting Agent",
+    "Notification Agent",
+    "Neo4j Knowledge Graph",
+    "Vector Store with RAG (Faiss)",
+    "Contextual Memory Store",
+    "LangGraph Execution Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Network telemetry and topology data feed into the Incident Prediction Agent, which flags potential outages. Root Cause Analysis Agent queries Neo4j knowledge graph and triggers Troubleshooting Agent workflows. All agents share state via contextual memory. Notifications are sent to operators with resolution updates.",
+  "design": "Each agent runs in isolated containers orchestrated by LangGraph, executing event-triggered state machines. Data integrations with telemetry and network management tools support real-time workflows. A supervisor agent monitors agent health and fallback mechanisms.",
+  "effort": {
+    "Architecture & Design": "3 weeks",
+    "Agent Development": "4 weeks",
+    "Testing & Validation": "2 weeks",
+    "UI/UX + Dashboard": "2 weeks",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "80,000 - includes design, agent development, infrastructure, and integration",
+    "OPEX": "7,500/month - covers compute resources, monitoring, and support"
+  }
+}

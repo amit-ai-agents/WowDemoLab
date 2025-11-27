@@ -1,0 +1,123 @@
+{
+  "id": 18,
+  "demoID": "AIAgent_LegalDocSummarization",
+  "UseCaseTitle": "Legal Document Summarization and Risk Detection Agent",
+  "Purpose": "To automate the summarization of lengthy legal documents and flag risky clauses, enabling faster review cycles, reducing legal overhead, and improving compliance and risk management.",
+  "ExecSummary": "Financial and IT services firms are increasingly overwhelmed by voluminous legal contracts and documents that require careful scrutiny. Manual review is time-consuming, costly, and prone to oversight. The Legal Document Summarization Agent leverages advanced NLP models to produce concise summaries and highlight potentially risky contract clauses, streamlining legal operations.",
+  "ExecSummaryKeyAsks": [
+    "Automate contract summarization",
+    "Identify and flag risky or non-compliant clauses",
+    "Reduce legal review time and manual effort",
+    "Enhance contract compliance and risk mitigation"
+  ],
+  "BusinessObjectives": [
+    "Accelerate contract review and turnaround times",
+    "Improve accuracy in detecting legal risks",
+    "Reduce reliance on manual legal resources",
+    "Support regulatory compliance through automated checks"
+  ],
+  "BusinessBenefits": [
+    "50% reduction in time spent reviewing legal documents",
+    "Early detection of high-risk clauses before contract execution",
+    "Improved contract quality and reduced legal disputes",
+    "Cost savings on legal operations"
+  ],
+  "overview": "This demo showcases a next-generation AI agent that uses GPT-J and LangChain to parse and analyze legal documents. It generates easy-to-understand summaries and highlights clauses that deviate from standard templates or pose risks, facilitating faster and safer contract handling.",
+  "business": "The finance and IT sectors face rigorous regulatory environments and complex contracting processes. Legal teams struggle to keep pace with the volume and complexity of documents. This solution addresses these challenges by augmenting legal operations with intelligent summarization and risk detection.",
+  "approach": "The system uses GPT-J for advanced language understanding and LangChain to orchestrate document parsing, clause extraction, and summarization workflows. Flask serves as the interface for users to upload documents and receive actionable insights. Risk clauses are detected via pattern matching and semantic analysis supported by a knowledge base.",
+  "BusinessDrivers": [
+    "Need for faster contract lifecycle management",
+    "Pressure to reduce legal costs and bottlenecks",
+    "Regulatory compliance and risk mitigation",
+    "Growing volume and complexity of legal documents"
+  ],
+  "BusinessChallanges": [
+    "High manual workload for legal teams",
+    "Risk of missing critical clauses or compliance issues",
+    "Difficulty standardizing contract reviews",
+    "Limited scalability of traditional legal review processes"
+  ],
+  "FunctionalOverview": [
+    "Document Upload & Parsing: Users upload contracts which are parsed into sections and clauses.",
+    "Automated Summarization: Generates concise summaries focusing on key points and obligations.",
+    "Risk Clause Detection: Flags clauses that differ from standard templates or contain risky language.",
+    "Interactive Review Interface: Allows users to drill down into flagged areas and summaries.",
+    "Contextual Memory: Retains document history and user annotations for continuous improvement."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Document Parsing and Preprocessing Module",
+      "Description": "Breaks down uploaded legal documents into structured components such as clauses, sections, and annexures.",
+      "KeyFeatures": [
+        "Optical Character Recognition (OCR) support for scanned documents",
+        "Text normalization and cleaning",
+        "Clause segmentation using NLP techniques",
+        "Metadata extraction (dates, parties, signatures)"
+      ],
+      "BusinessImpact": [
+        "Improves data quality for subsequent analysis",
+        "Enables targeted summarization and risk detection",
+        "Reduces manual document preparation time"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Summarization and Risk Detection Module",
+      "Description": "Uses GPT-J to generate concise summaries and applies rule-based plus semantic analysis to identify risky clauses.",
+      "KeyFeatures": [
+        "Multi-level summarization (section-wise and overall)",
+        "Customizable risk rules and patterns",
+        "Integration with legal knowledge bases",
+        "Confidence scoring for flagged clauses"
+      ],
+      "BusinessImpact": [
+        "Accelerates legal reviews",
+        "Enhances accuracy of risk identification",
+        "Supports consistent contract quality"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "User Interface and Review Module",
+      "Description": "Provides an interactive web interface using Flask for document upload, viewing summaries, and inspecting flagged risks.",
+      "KeyFeatures": [
+        "Highlighting and annotation tools",
+        "Searchable clause repository",
+        "Version tracking and audit logs",
+        "Role-based access and collaboration features"
+      ],
+      "BusinessImpact": [
+        "Improves collaboration among legal teams",
+        "Facilitates audit and compliance documentation",
+        "Enhances user experience and adoption"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "An AI-powered legal document analysis agent leveraging GPT-J and LangChain",
+    "Automates contract summarization and risk clause detection",
+    "Provides an intuitive Flask-based user interface for easy adoption",
+    "Utilizes contextual memory to maintain knowledge across document reviews",
+    "Integrates with enterprise document management and compliance systems"
+  ],
+  "SolutionComponents": [
+    "Document Parsing Agent",
+    "Summarization Agent (GPT-J powered)",
+    "Risk Clause Detection Agent",
+    "User Interface Module (Flask)",
+    "Contextual Memory Store",
+    "LangChain Orchestration Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Documents uploaded by users are parsed and processed by the Parsing Agent, which structures the content. The Summarization Agent then generates summaries, while the Risk Detection Agent flags potentially problematic clauses. Results are stored in contextual memory and presented via the Flask UI for user review and further action.",
+  "design": "The solution is modular with loosely coupled agents interacting through contextual memory managed by LangChain. Each agent focuses on a distinct function—parsing, summarization, or risk detection—allowing independent scaling and upgrades. The architecture supports integration with legal knowledge bases and enterprise compliance systems.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "3 weeks",
+    "Testing & Validation": "1 week",
+    "UI/UX + Dashboard": "1 week",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "60,000 - includes model fine-tuning, development, and integration costs",
+    "OPEX": "6,000/month - for hosting, monitoring, and periodic updates"
+  }
+}

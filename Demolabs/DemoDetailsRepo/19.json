@@ -1,0 +1,124 @@
+{
+  "id": 19,
+  "demoID": "AIAgent_SmartManufacturing",
+  "UseCaseTitle": "Smart Manufacturing Agent for Predictive Maintenance",
+  "Purpose": "To predict and prevent machine downtime by leveraging real-time sensor data, edge AI, and advanced analytics, thereby improving manufacturing efficiency and reducing operational costs.",
+  "ExecSummary": "Manufacturing plants face significant challenges due to unexpected machine failures, causing costly downtime and lost productivity. Traditional maintenance approaches are often reactive or scheduled without precise insights. This Smart Manufacturing Agent utilizes edge AI and IoT sensor data to deliver predictive maintenance that minimizes downtime and maximizes asset utilization.",
+  "ExecSummaryKeyAsks": [
+    "Continuously monitor machine health using sensor data",
+    "Predict imminent failures before they cause downtime",
+    "Enable timely maintenance scheduling based on actual machine conditions",
+    "Reduce unplanned downtime and maintenance costs"
+  ],
+  "BusinessObjectives": [
+    "Increase overall equipment effectiveness (OEE)",
+    "Minimize unplanned production halts",
+    "Optimize maintenance resource allocation",
+    "Enhance worker safety by preventing catastrophic failures"
+  ],
+  "BusinessBenefits": [
+    "Reduced machine downtime by 30-50%",
+    "Lower maintenance and repair costs",
+    "Improved production throughput and reliability",
+    "Extended equipment lifetime through proactive care"
+  ],
+  "overview": "This demo presents a Smart Manufacturing Agent that leverages Edge AI deployed on factory-floor devices, combined with real-time sensor data streaming and MQTT for communication. The system predicts machine health anomalies and triggers maintenance workflows autonomously.",
+  "business": "The manufacturing industry is rapidly adopting Industry 4.0 technologies to drive automation and efficiency. However, legacy maintenance processes often fail to prevent costly breakdowns. Predictive maintenance powered by AI and IoT is critical to unlocking operational excellence and competitive advantage.",
+  "approach": "Our solution deploys lightweight TensorFlow Lite models on edge devices for real-time anomaly detection from sensor streams. MQTT ensures low-latency communication with central systems. Maintenance alerts and scheduling recommendations are orchestrated via agent workflows with contextual memory, enabling seamless integration into plant operations.",
+  "BusinessDrivers": [
+    "Digital transformation and Industry 4.0 adoption",
+    "High costs and risks from unplanned downtime",
+    "Need for real-time operational visibility",
+    "Demand for data-driven maintenance strategies"
+  ],
+  "BusinessChallanges": [
+    "Siloed machine data and limited real-time insights",
+    "Reactive or time-based maintenance inefficiencies",
+    "Integration complexities between edge devices and enterprise systems",
+    "Resistance to adopting AI-driven operational changes"
+  ],
+  "FunctionalOverview": [
+    "Edge Sensor Data Collection: Real-time ingestion of temperature, vibration, pressure, and other signals.",
+    "On-Device AI Inference: Edge AI models analyze sensor data locally to detect anomalies instantly.",
+    "MQTT Messaging: Efficient communication of alerts and metrics between edge and cloud/central systems.",
+    "Predictive Maintenance Alerts: Automatic generation of maintenance work orders before failure.",
+    "Dashboard & Reporting: Visualization of machine health trends, predictions, and maintenance history."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Edge AI Inference Module",
+      "Description": "Runs lightweight TensorFlow Lite models on edge devices to perform real-time anomaly detection on sensor data streams.",
+      "KeyFeatures": [
+        "Low-latency local processing",
+        "Support for diverse sensor modalities (vibration, temperature, etc.)",
+        "Continuous learning and model updates",
+        "Failsafe mode to transmit raw data on anomalies"
+      ],
+      "BusinessImpact": [
+        "Enables instant detection of potential failures",
+        "Reduces data transmission bandwidth",
+        "Ensures reliability even with intermittent network connectivity"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "MQTT Communication Module",
+      "Description": "Facilitates lightweight and scalable message exchange between edge devices and central monitoring systems.",
+      "KeyFeatures": [
+        "Publish/subscribe messaging model",
+        "Quality of Service (QoS) levels for reliable delivery",
+        "Integration with enterprise IoT platforms",
+        "Secure transmission with TLS encryption"
+      ],
+      "BusinessImpact": [
+        "Supports scalable deployment across factory floors",
+        "Ensures timely and reliable alert delivery",
+        "Maintains security and compliance"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Maintenance Orchestration and Dashboard",
+      "Description": "Centralized system for alert aggregation, visualization, and triggering of maintenance workflows based on predictive insights.",
+      "KeyFeatures": [
+        "Real-time dashboards with KPIs and machine status",
+        "Automated work order generation and tracking",
+        "Historical analytics and trend analysis",
+        "Role-based access control for operators and managers"
+      ],
+      "BusinessImpact": [
+        "Improves operational transparency",
+        "Accelerates maintenance response times",
+        "Supports continuous improvement through data insights"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "AI-powered predictive maintenance agent using Edge AI and IoT sensor data",
+    "Real-time anomaly detection via TensorFlow Lite on edge devices",
+    "Robust MQTT-based communication for messaging and alerting",
+    "Centralized dashboard and alerting system for maintenance management",
+    "Integration with existing manufacturing execution systems (MES) and ERP"
+  ],
+  "SolutionComponents": [
+    "Edge AI Inference Agent",
+    "MQTT Messaging Broker",
+    "Predictive Maintenance Orchestrator Agent",
+    "Dashboard & Alerting Interface",
+    "TensorFlow Lite Models",
+    "Contextual Memory Store",
+    "LangGraph Execution Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Sensor data is continuously collected and processed locally on edge devices by TensorFlow Lite models. Anomalies trigger MQTT messages sent to the central orchestrator, which updates the contextual memory. Maintenance agents analyze the data, generate alerts, and update the dashboard while triggering automated maintenance workflows.",
+  "design": "The architecture uses modular agents containerized for scalability. Edge AI ensures low latency, while MQTT provides lightweight communication. Agents interact through contextual memory managed by LangGraph, supporting resilient and traceable operations. The design supports easy integration with legacy and modern factory systems.",
+  "effort": {
+    "Architecture & Design": "3 weeks",
+    "Agent Development": "4 weeks",
+    "Testing & Validation": "2 weeks",
+    "UI/UX + Dashboard": "2 weeks",
+    "Integration & Infra Setup": "2 weeks"
+  },
+  "cost": {
+    "CAPEX": "75,000 - includes edge device deployment, AI model development, and system integration",
+    "OPEX": "7,000/month - for ongoing monitoring, model updates, and support"
+  }
+}

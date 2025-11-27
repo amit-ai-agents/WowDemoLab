@@ -1,0 +1,106 @@
+{
+  "id": 3,
+  "demoID": "GenAI_DrugDiscoveryAssistant",
+  "UseCaseTitle": "Generative AI Assistant for Omics-Driven Drug Discovery",
+  "Purpose": "To accelerate early-stage drug discovery by mapping complex omics data to potential therapeutic targets using generative AI, aiding life sciences R&D teams in faster, more precise hypothesis generation.",
+  "ExecSummary": "Life sciences R&D faces a growing challenge of translating multi-dimensional omics data into actionable drug discovery insights. Traditional methods are manual, time-consuming, and limited in scope. This AI-powered assistant automates hypothesis generation, enabling scientists to identify and validate drug targets more effectively.",
+  "ExecSummaryKeyAsks": [
+    "Enable AI-assisted mapping of omics data to known targets",
+    "Accelerate early-stage drug discovery workflows",
+    "Ensure interpretability and traceability of AI-generated hypotheses",
+    "Facilitate collaboration between data scientists and biologists"
+  ],
+  "BusinessObjectives": [
+    "Shorten target discovery cycles by leveraging generative AI",
+    "Automate the mining of complex omics data",
+    "Provide biologists with interpretable, evidence-based hypotheses",
+    "Reduce cost and time of early-phase R&D efforts"
+  ],
+  "BusinessBenefits": [
+    "30-50% reduction in exploratory research time",
+    "Improved hit-to-lead ratio through smarter target prediction",
+    "Enhanced collaboration between wet-lab and dry-lab teams",
+    "Reusable architecture across therapeutic domains"
+  ],
+  "overview": "This demo showcases a generative AI framework that leverages biological embeddings and vector search to suggest potential drug targets from large-scale omics datasets. It integrates structured and unstructured data sources, enabling hypothesis generation grounded in biomedical evidence.",
+  "business": "Drug discovery is increasingly reliant on omics data, but interpreting these high-dimensional datasets remains a key bottleneck. Researchers need tools that intelligently navigate this data to suggest biologically relevant targets. The assistant helps pharma and biotech companies shorten discovery cycles and prioritize higher-confidence targets.",
+  "approach": "The solution integrates HuggingFace models fine-tuned on biomedical corpora, Faiss for high-speed similarity search, SQLite for structured omics data, and BioPython for sequence handling. A generative engine proposes likely target associations, supported by prior literature and biological embeddings.",
+  "BusinessDrivers": [
+    "Need for faster target identification in competitive pipelines",
+    "Omics datasets are under-utilized due to complexity",
+    "AI can bridge the gap between data scale and scientific insight",
+    "Improved model interpretability leads to greater adoption by R&D teams"
+  ],
+  "BusinessChallanges": [
+    "High-dimensional omics data are hard to interpret manually",
+    "Fragmented storage of experimental and reference data",
+    "Low reproducibility in early-stage hypothesis generation",
+    "Need for domain-specific AI models trained on life sciences data"
+  ],
+  "FunctionalOverview": [
+    "Omics-to-Target Mapping: Takes multi-modal omics data and outputs associated biological targets",
+    "Generative Hypothesis Engine: Suggests novel target-disease relationships based on learned patterns",
+    "Evidence Linking: Retrieves supportive studies or embeddings from biomedical knowledge bases",
+    "Interactive Results Explorer: Allows scientists to filter, explore, and refine AI-suggested hypotheses"
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Omics Ingestion & Parsing Module",
+      "Description": "Handles raw data ingestion from genomic, proteomic, and transcriptomic sources, formatting it for downstream analysis.",
+      "KeyFeatures": [
+        "Supports standard formats like FASTA, GTF, VCF",
+        "BioPython integration for sequence validation",
+        "SQLite-backed lightweight omics repository",
+        "Data normalization and feature vector generation"
+      ],
+      "BusinessImpact": [
+        "Simplifies onboarding of lab-generated data",
+        "Improves consistency across experiments",
+        "Reduces time to pipeline readiness"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Target Hypothesis Generator",
+      "Description": "Utilizes transformer models to embed omics signatures and generate ranked target suggestions with interpretability.",
+      "KeyFeatures": [
+        "Biomedical transformers via HuggingFace",
+        "Similarity search through Faiss RAG pipeline",
+        "Scored predictions with pathway and disease context",
+        "Explainable outputs using attention visualization"
+      ],
+      "BusinessImpact": [
+        "Enables fast, AI-assisted target exploration",
+        "Increases confidence in novel therapeutic hypotheses",
+        "Fosters collaboration across computational and biology teams"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Generative model stack combining transformers + Faiss vector search",
+    "Semantic search over public and internal biomedical databases",
+    "Pipeline orchestrated to handle ingestion, analysis, and visualization",
+    "Optimized for small to mid-sized pharma/biotech deployments"
+  ],
+  "SolutionComponents": [
+    "Omics Ingestion Engine (BioPython + SQLite)",
+    "Embedding Generator (HuggingFace Transformers)",
+    "Target Mapping Module",
+    "Faiss Vector Search (RAG)",
+    "Evidence Retrieval & Ranker",
+    "Interactive Hypothesis Dashboard"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Raw omics files are uploaded into the ingestion pipeline. BioPython parses and structures the data into feature vectors stored in SQLite. These are embedded and passed through Faiss to retrieve nearest biological entities. A generative model outputs target predictions, which are ranked and linked to literature evidence before being displayed on a dashboard.",
+  "design": "Modules are containerized and built using a loosely coupled microservice architecture. Generative logic is decoupled from the UI to allow model upgrades. Embedding services and vector stores are accessible via internal APIs. Logging and audit trails ensure explainability of results.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Data Pipelines & Ingestion": "2 weeks",
+    "Model Integration & Tuning": "3 weeks",
+    "UI/UX for Dashboard": "1 week",
+    "Testing & Deployment": "1 week"
+  },
+  "cost": {
+    "CAPEX": "40,000 - includes initial design, biological model integration, data pipeline build-out, and dashboard",
+    "OPEX": "3,500/month - covers cloud compute, GPU inference, storage, monitoring, and ongoing model support"
+  }
+}

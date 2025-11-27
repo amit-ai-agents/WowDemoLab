@@ -1,0 +1,82 @@
+{
+  "ModernDataAIReferenceArchitecture": {
+    "Layers": [
+      {
+        "name": "Data Sources Layer",
+        "purpose": "Origination point for all support-related signals and contextual knowledge.",
+        "orientation": "vertical",
+        "components": {
+          "InternalSystems": [ "CRM", "Ticketing System" ],
+          "AgenticInputs": [ "Agent logs", "Execution states", "Intent flows" ],
+          "GenAISignals": [ "Chat transcripts", "Sentiment scores", "Interaction memory" ]
+        }
+      },
+      {
+        "name": "Data Ingestion & Acquisition Layer",
+        "purpose": "Enable streaming and real-time ingestion of interaction and sentiment data.",
+        "orientation": "vertical",
+        "components": {
+          "RealTimeStreams": true,
+          "AgenticTriggers": true,
+          "APIIngestion": true
+        }
+      },
+      {
+        "name": "Unified Data Consolidation & Transformation Layer",
+        "purpose": "Transform incoming data for semantic search and agent memory updates.",
+        "orientation": "vertical",
+        "components": {
+          "TransformEngines": [ "dbt", "SQL" ],
+          "Orchestration": [ "Prefect" ],
+          "CuratedZone": "Agent-optimized Memory Store",
+          "SemanticZone": "RAG-ready context",
+          "AgentStores": [ "Vector DB (Faiss)", "Knowledge Graph (Neo4j)" ]
+        }
+      },
+      {
+        "name": "AI & Advanced Analytical Layer",
+        "purpose": "Power the multi-agent system, troubleshooting, and escalation logic.",
+        "orientation": "vertical",
+        "components": {
+          "LLMsAndSLMs": [ "Intent classification", "Sentiment detection" ],
+          "RAGAndVectorPipelines": true,
+          "PromptAndAgentWorkflow": true,
+          "ModelOptimization": [ "Prompt Engineering", "SLM fine-tuning" ]
+        }
+      },
+      {
+        "name": "Data Governance & Control Fabric",
+        "purpose": "Track and control memory states, access logs, and model usage.",
+        "orientation": "horizontal",
+        "components": {
+          "DataCatalog": true,
+          "Lineage": true,
+          "AccessControls": [ "RBAC" ],
+          "PolicyBasedGovernance": true
+        }
+      },
+      {
+        "name": "Platform Ops & Observability Layer",
+        "purpose": "Monitor agent performance, failures, escalations, and cost metrics.",
+        "orientation": "horizontal",
+        "components": {
+          "MonitoringAndAlerting": [ "Agent Logs", "Sentiment Drift", "Escalation Triggers" ],
+          "CI_CD": true,
+          "DevSecOps": true,
+          "MLAndLLMOps": [ "Model Registry", "Drift Monitoring" ],
+          "CostOps": true
+        }
+      },
+      {
+        "name": "Experience, Insights & Consumption Layer",
+        "purpose": "Expose agent outcomes and support insights to users and supervisors.",
+        "orientation": "vertical",
+        "components": {
+          "ChatbotsAndAssistants": true,
+          "PortalsAndDashboards": true,
+          "PromptDrivenBI": true
+        }
+      }
+    ]
+  }
+}
