@@ -1,0 +1,169 @@
+{
+  "Assumptions": [
+    {
+      "ID": "A1",
+      "Assumption": "Policyholder data (policy number, contact, claim type) is accessible via secure APIs."
+    },
+    {
+      "ID": "A2",
+      "Assumption": "Claim system backend supports real-time APIs for status retrieval and claim initiation."
+    },
+    {
+      "ID": "A3",
+      "Assumption": "Required documents can be uploaded and stored securely via integrated DMS (Document Management System)."
+    },
+    {
+      "ID": "A4",
+      "Assumption": "Conversational AI engine supports contextual handoff, entity recognition, and user intent classification."
+    },
+    {
+      "ID": "A5",
+      "Assumption": "OTP or authentication system is in place for policyholder identity verification."
+    },
+    {
+      "ID": "A6",
+      "Assumption": "Customer is already aware of digital channels like web or app as a point of interaction."
+    }
+  ],
+  "InScope": [
+    {
+      "ID": "IS1",
+      "Component": "FNOL Automation",
+      "Scope": "End-to-end conversational workflow for claim initiation including data capture, document upload, and validation."
+    },
+    {
+      "ID": "IS2",
+      "Component": "Claim Status Inquiry",
+      "Scope": "Real-time claim status fetch using backend integration with categorization logic and guided next steps."
+    },
+    {
+      "ID": "IS3",
+      "Component": "Conversational Agent",
+      "Scope": "Context-aware AI agent built using LangGraph + Mistral, orchestrated through RAG pipeline."
+    },
+    {
+      "ID": "IS4",
+      "Component": "Web/Mobile UI",
+      "Scope": "Simple Bootstrap-based UI to demonstrate interaction with the AI agent."
+    },
+    {
+      "ID": "IS5",
+      "Component": "Integration with Authentication Layer",
+      "Scope": "Integration of OTP/policy check mechanism to validate customer identity."
+    },
+    {
+      "ID": "IS6",
+      "Component": "Document Upload & Parsing",
+      "Scope": "Support for uploading basic formats (e.g., JPEG, PDF) for FNOL submission."
+    },
+    {
+      "ID": "IS7",
+      "Component": "Audit Logging",
+      "Scope": "Logging of conversational transcripts for compliance and traceability."
+    }
+  ],
+  "OutOfScope": [
+    {
+      "ID": "OS1",
+      "OutOfScopeItem": "Manual claim adjudication",
+      "Rationale": "Handled post-FNOL by claim processors; not part of conversational flow."
+    },
+    {
+      "ID": "OS2",
+      "OutOfScopeItem": "Payment disbursal logic",
+      "Rationale": "FNOL and status tracking do not involve financial disbursal orchestration."
+    },
+    {
+      "ID": "OS3",
+      "OutOfScopeItem": "Voice-based IVR bots",
+      "Rationale": "The scope is limited to chat-based/textual interfaces."
+    },
+    {
+      "ID": "OS4",
+      "OutOfScopeItem": "Deep fraud detection",
+      "Rationale": "Basic validations exist, but advanced fraud analytics is not in this phase."
+    },
+    {
+      "ID": "OS5",
+      "OutOfScopeItem": "End-user app development",
+      "Rationale": "UI mockups and interactions are for demo purposes only, not production-level apps."
+    }
+  ],
+  "RisksAndMitigations": [
+    {
+      "RiskID": "R1",
+      "RiskDescription": "Backend claim systems don�t expose real-time APIs",
+      "Impact": "High",
+      "Likelihood": "Medium",
+      "MitigationStrategy": "Define fallback workflows (email triggers, escalation queues). Engage early with IT team."
+    },
+    {
+      "RiskID": "R2",
+      "RiskDescription": "AI may misinterpret user intent or skip critical fields",
+      "Impact": "High",
+      "Likelihood": "High",
+      "MitigationStrategy": "Use LangGraph for deterministic flow modeling; include fallbacks and user confirmation prompts."
+    },
+    {
+      "RiskID": "R3",
+      "RiskDescription": "Low customer trust in chatbot vs. human",
+      "Impact": "Medium",
+      "Likelihood": "Medium",
+      "MitigationStrategy": "Highlight escalation to human agent; show transparency (e.g., �Bot is fetching info�)."
+    },
+    {
+      "RiskID": "R4",
+      "RiskDescription": "Data leakage due to improper access control",
+      "Impact": "High",
+      "Likelihood": "Low",
+      "MitigationStrategy": "Integrate strict access control, authentication layer, and data masking."
+    },
+    {
+      "RiskID": "R5",
+      "RiskDescription": "Document parsing failure or low quality uploads",
+      "Impact": "Medium",
+      "Likelihood": "Medium",
+      "MitigationStrategy": "Provide retry prompts and real-time file format validations."
+    },
+    {
+      "RiskID": "R6",
+      "RiskDescription": "Adoption resistance from legacy claim teams",
+      "Impact": "Medium",
+      "Likelihood": "High",
+      "MitigationStrategy": "Run co-piloted pilots; show time-savings & reduced manual effort in POC metrics."
+    },
+    {
+      "RiskID": "R7",
+      "RiskDescription": "Peak loads or outages during disaster events",
+      "Impact": "High",
+      "Likelihood": "Medium",
+      "MitigationStrategy": "Ensure autoscaling and fallback messaging during downtimes. Consider hybrid cloud deployment."
+    }
+  ],
+  "BusinessProblemMapping": [
+    {
+      "BusinessProblem": "High call center volume",
+      "FunctionalComponent": "Claim Status Inquiry with real-time APIs"
+    },
+    {
+      "BusinessProblem": "Manual and delayed FNOL submissions",
+      "FunctionalComponent": "FNOL Automation with dynamic questioning and document uploads"
+    },
+    {
+      "BusinessProblem": "Low CX due to limited status visibility",
+      "FunctionalComponent": "Claim Status Inquiry with timeline and status category"
+    },
+    {
+      "BusinessProblem": "Repetitive tasks reducing staff efficiency",
+      "FunctionalComponent": "Conversational AI agent with contextual logic"
+    },
+    {
+      "BusinessProblem": "Inaccurate data capture in FNOL",
+      "FunctionalComponent": "Real-time validations + AI-led structured conversation"
+    },
+    {
+      "BusinessProblem": "Scaling customer support during surge",
+      "FunctionalComponent": "Always-on AI system with autoscaling and low TAT"
+    }
+  ]
+}

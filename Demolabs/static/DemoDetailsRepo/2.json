@@ -1,0 +1,115 @@
+{
+  "demoID": "AIAgent_TelecomSupport",
+  "UseCaseTitle": "Conversational AI for Insurance Claims",
+  "Purpose": "To automate the First Notice of Loss (FNOL) process and claims status inquiries in insurance, enhancing customer experience and operational efficiency.",
+  "ExecSummary": "Insurance firms today face a dual challenge: rising customer expectations for instant support and mounting pressure to reduce operational costs. Traditional call centers and manual FNOL intake are expensive, error-prone, and non-scalable.",
+  "ExecSummaryKeyAsks": [
+    "Automate FNOL capture",
+    "Handle claims status inquiries",
+    "Enhance CX through natural, human-like interactions",
+    "Ensure faster resolution and reduce call center loads"
+  ],
+  "BusinessObjectives": [
+    "Improve Customer Satisfaction by reducing wait times and offering 24/7 support",
+    "Handle claims status inquiries",
+    "Enhance CX through natural, human-like interactions",
+    "Ensure faster resolution and reduce call center loads"
+  ],
+  "BusinessBenefits": [
+    "30-40% Reduction in call center volume",
+    "Faster FNOL registration (from 15 mins to <2 mins)",
+    "Higher accuracy in FNOL submissions",
+    "24/7 automated engagement"
+  ],
+
+  "overview": "This demo showcases an end-to-end Agentic AI framework that autonomously handles complex enterprise tasks using multi-agent systems with contextual memory and dynamic decision graphs. It reflects a production-grade architecture for intelligent telecom support.",
+  "business": "The insurance industry is increasingly driven by digital transformation due to rising customer expectations, competition from insurtechs, and operational inefficiencies in traditional processes. Claims processing, particularly the FNOL phase and status inquiries, remains heavily manual, error-prone, and costly.",
+  "approach": "The solution leverages LangGraph for orchestrating agent workflows, Faiss for semantic search via RAG, and Neo4j for contextual knowledge graph storage. Each agent interacts indirectly through contextual memory, ensuring modularity and traceability.",
+  "BusinessDrivers": [
+    "Improve first-contact resolution.",
+    "Enhance customer experience through always-on digital channels.",
+    "Automate repetitive and structured conversations.",
+    "Provide real-time claim visibility and reduce operational delays",
+    "Enable scalability without proportional increases in headcount."
+  ],
+  "BusinessChallanges": [
+    "High contact center costs due to repetitive claim-related queries.",
+    "Delayed FNOL submission and response times",
+    "Inconsistent and fragmented communication channels",
+    "Poor customer satisfaction due to lack of real-time status updates",
+    "Difficulty in scaling customer support during peak claim periods (e.g., natural disasters)"
+  ],
+  "FunctionalOverview": [
+    "FNOL Automation: Collects all essential info to initiate an insurance claim (e.g., name, policy number, incident details).",
+    "Claim Status Inquiry: Customers can ask about the real-time status of existing claims using natural language.",
+    "Follow-up & Clarifications: If information is missing/incomplete, the bot intelligently prompts users.",
+    "Contextual Memory: Maintains conversation state across turns and even across channels (optional).",
+    "Multi-turn Dialogue: Intelligent handling of back-and-forth queries over the lifecycle of the claim."
+
+
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "FNOL Automation Module",
+      "Description": "Guides users through structured conversation to capture all required claim details for initiating FNOL.",
+      "KeyFeatures": [
+        "Policyholder verification (via OTP, policy number, etc.)",
+        "Dynamic questioning based on claim type (e.g., auto, health, property)",
+        "Document upload (photos, reports)",
+        "Real-time validation of key data (location, time, etc.)",
+        "Summarized claim intake confirmation"
+      ],
+      "BusinessImpact": [
+        "Reduces errors in FNOL data.",
+        "Accelerates claim initiation process.",
+        "Improves user experience with personalized, conversational interface."
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Claim Status Inquiry Module",
+      "Description": "Answers user queries about claim status through real-time API integration.",
+      "KeyFeatures": [
+        "Status categorization (e.g., submitted, under review, approved, rejected)",
+        "Timeline estimates and next-step guidance",
+        "Authentication layer to protect sensitive data"
+      ],
+      "BusinessImpact": [
+        "Reduces inbound call volume to support centers.",
+        "Enables customers to self-serve their claim status 24/7",
+        "Enhances transparency and builds trust."
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "A Conversational AI agent powered by Mistral LLM + RAG",
+    "Intelligently engage with users across digital channels (web, mobile, WhatsApp, IVR)",
+    "Handle FNOL capture through a dynamic conversation",
+    "Answer claim status queries with real-time backend integration",
+    "Use LangGraph for managing conversational flow logic and state",
+    "Retrieve policy-related data using a RAG approach from internal KBs"
+  ],
+  "SolutionComponents": [
+    "Intent Detection Agent",
+    "Troubleshooting Agent",
+    "Escalation Agent",
+    "Supervisor Agent",
+    "Neo4j Knowledge Graph",
+    "Vector Store with RAG (Faiss)",
+    "Contextual Memory Store",
+    "LangGraph Execution Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "User queries flow into the Intent Detection Agent, which determines the required response or escalation. Data is enriched via the contextual memory, using Faiss for RAG and Neo4j for past resolutions. Agents collaboratively process and update the memory before responding.",
+  "design": "Each agent follows a state-based execution triggered by events using LangGraph. They are containerized for scalability and interact with tools (e.g., vector DB, KG, APIs) indirectly. Failures are tracked using a supervisor agent with fallback mechanisms.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "3 weeks",
+    "Testing & Validation": "1 week",
+    "UI/UX + Dashboard": "1 week",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "50,000 - covers initial design, development, and cloud infra provisioning",
+    "OPEX": "5,000/month - includes GPU inference, storage, monitoring, and support"
+  }
+}

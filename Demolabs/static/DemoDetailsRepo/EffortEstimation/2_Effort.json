@@ -1,0 +1,116 @@
+﻿{
+  "TechnologyConstraints": [
+    {
+      "Constraint": "Mistral models require GPU-backed infra for real-time responses"
+    },
+    {
+      "Constraint": "Some legacy claim systems may not expose APIs → adapter layers needed"
+    },
+    {
+      "Constraint": "Claims processes vary across product lines and regions → requires abstraction"
+    }
+  ],
+  "EffortEstimation": [
+    {
+      "Task": "Discovery & Design",
+      "Timeline": "2 weeks"
+    },
+    {
+      "Task": "Knowledge Base Prep",
+      "Timeline": "1 week"
+    },
+    {
+      "Task": "RAG Pipeline Setup",
+      "Timeline": "2 weeks"
+    },
+    {
+      "Task": "Mistral Integration",
+      "Timeline": "1 week"
+    },
+    {
+      "Task": "LangGraph Flow Build",
+      "Timeline": "2 weeks"
+    },
+    {
+      "Task": "CMS API Integration",
+      "Timeline": "2 weeks"
+    },
+    {
+      "Task": "Testing & UAT",
+      "Timeline": "2 weeks"
+    },
+    {
+      "Task": "Total Estimated Time",
+      "Timeline": "10–12 weeks"
+    }
+  ],
+  "CostBreakdown": {
+    "CAPEX": {
+      "Items": [
+        {
+          "Item": "Mistral Model Fine-tuning + GPU Hosting Setup",
+          "CostUSD": 12000
+        },
+        {
+          "Item": "Initial Dev & Deployment (3 devs x 12 weeks)",
+          "CostUSD": 36000
+        },
+        {
+          "Item": "Knowledge Base Curation & RAG Setup",
+          "CostUSD": 8000
+        },
+        {
+          "Item": "Integration & Testing",
+          "CostUSD": 10000
+        }
+      ],
+      "TotalUSD": 66000
+    },
+    "OPEX": {
+      "Items": [
+        {
+          "Item": "GPU Hosting (2x A100 via Lambda Labs)",
+          "MonthlyUSD": 1200,
+          "AnnualUSD": 14400
+        },
+        {
+          "Item": "Vector DB, Logging infra",
+          "MonthlyUSD": 400,
+          "AnnualUSD": 4800
+        },
+        {
+          "Item": "Support & Maintenance",
+          "MonthlyUSD": 2000,
+          "AnnualUSD": 24000
+        }
+      ],
+      "TotalAnnualUSD": 43200
+    }
+  },
+  "ROIJustification": {
+    "KPIs": [
+      {
+        "KPI": "FNOL Time",
+        "PreAI": "15-20 mins",
+        "PostAI": "2-3 mins"
+      },
+      {
+        "KPI": "Call Center Load",
+        "PreAI": "100% human",
+        "PostAI": "40-50% offloaded"
+      },
+      {
+        "KPI": "Claim Accuracy",
+        "PreAI": "~80%",
+        "PostAI": "~95%"
+      },
+      {
+        "KPI": "Cost Per FNOL",
+        "PreAI": "$6",
+        "PostAI": "<$1"
+      }
+    ],
+    "EstimatedAnnualROISavingsUSD": 250000,
+    "AssumedPolicyholderBase": "1M"
+  }
+}

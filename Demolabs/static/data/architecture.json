@@ -1,0 +1,97 @@
+{
+  "ModernDataAIReferenceArchitecture": {
+    "Layers": [
+      {
+        "name": "Data Sources Layer",
+        "purpose": "Origination point for all data: operational, external, and machine-generated.",
+        "orientation": "vertical",
+        "components": {
+          "InternalSystems": [ "ERP", "CRM", "HRMS", "SCM", "Finance" ],
+          "ExternalSources": [ "Weather APIs", "Geolocation", "IoT Devices", "Social Data", "Open Data", "Partner Feeds" ],
+          "AgenticInputs": [ "Autonomous agents generating logs, summaries, or interaction signals" ],
+          "GenAISignals": [ "Prompt history", "Chat transcripts", "Interaction logs", "Embeddings" ]
+        }
+      },
+      {
+        "name": "Data Ingestion & Acquisition Layer",
+        "purpose": "Seamless ingestion from all internal and external data sources.",
+        "orientation": "vertical",
+        "components": {
+          "RealTimeStreams": true,
+          "BatchIngestion": true,
+          "AgenticTriggers": true,
+          "APIIngestion": true,
+          "FileAndBlobIngestion": true
+        }
+      },
+
+      {
+        "name": "Unified Data Consolidation & Transformation Layer",
+        "purpose": "Cleanse, validate, enrich and transform data to make it analytics- and AI-ready.",
+        "orientation": "vertical",
+        "components": {
+          "TransformEngines": [ "SQL", "Spark", "dbt" ],
+          "Orchestration": [ "DAGs", "Airflow", "Prefect" ],
+          "RawZone": "Immutable Golden Copy",
+          "CuratedZone": "Domain Aligned",
+          "SemanticZone": "Analytics-Ready",
+          "Agent Stores": [ "Knowledge Graphs", "Vector DB" ]
+        }
+      },
+      {
+        "name": "AI & Advance Analytical Layer",
+        "purpose": "Expose reusable business logic and models for unified access.",
+        "orientation": "vertical",
+        "components": {
+          "DataModels": [ "Star Schemas", "Dimensions", "Marts" ],
+          "BusinessViews": [ "Logical Views", "Entity Models" ],
+          "MetricLayer": "Headless BI",
+          "TraditionalModels": [ "Forecasting", "Scoring", "Clustering" ],
+          "LLMsAndSLMs": [ "Summarization", "Chat", "Classification" ],
+          "RAGAndVectorPipelines": true,
+          "PromptAndAgentWorkflow": true,
+          "ModelOptimization": [ "Fine-Tuning", "PEFT", "Prompt Engineering" ]
+        }
+      },
+      {
+        "name": "Data Governance & Control Fabric",
+        "purpose": "Trust, compliance, lineage, security, and policy enforcement across layers.",
+        "orientation": "horizontal",
+        "components": {
+          "DataCatalog": true,
+          "Lineage": true,
+          "MasterDataManagement": true,
+          "DataQualityRules": true,
+          "AccessControls": [ "RBAC", "ABAC", "Zero Trust" ],
+          "LifecycleMgmt": [ "Retention", "Archival", "Purging" ],
+          "PolicyBasedGovernance": true
+        }
+      },
+      {
+        "name": "Platform Ops & Observability Layer",
+        "purpose": "Ensure reliability, scalability, automation, and secure operations of the platform.",
+        "orientation": "horizontal",
+        "components": {
+          "MonitoringAndAlerting": [ "Data Ops", "Infra Ops" ],
+          "IaC": true,
+          "CI_CD": true,
+          "DevSecOps": true,
+          "MLAndLLMOps": [ "Model Registry", "Pipeline Versioning", "Drift Monitoring" ],
+          "CostOps": true
+        }
+      },
+      {
+        "name": "Experience, Insights & Consumption Layer",
+        "purpose": "Empower end users with self-service data access and insights.",
+        "orientation": "vertical",
+        "components": {
+          "BIAndVisualization": [ "Power BI", "Looker", "Tableau" ],
+          "EmbeddedAPIs": true,
+          "ChatbotsAndAssistants": true,
+          "PortalsAndDashboards": true,
+          "PromptDrivenBI": true
+        }
+      }
+    ]
+  }
+}

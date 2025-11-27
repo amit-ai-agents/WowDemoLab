@@ -1,0 +1,71 @@
+body {
+    background: #f4f6fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: #1e293b;
+    padding-top: 2rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .sidebar i {
+        font-size: 1.5rem;
+        color: #cbd5e1;
+        margin: 1.2rem 0;
+        cursor: pointer;
+        transition: color 0.2s;
+    }
+
+        .sidebar i:hover, .sidebar i.active {
+            color: #38bdf8;
+        }
+
+.content-area {
+    margin-left: 100px;
+    padding: 2rem;
+    transition: all 0.3s;
+}
+
+.section {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+    .section.active {
+        display: block;
+    }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section h2 {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tooltip-inner {
+    background-color: #1e293b !important;
+    color: #f8fafc;
+}
+
+.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+    border-right-color: #1e293b !important;
+}
