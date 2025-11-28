@@ -1,24 +1,23 @@
-﻿az webapp deploy --resource-group WoW-Demo-Lab-RG --name WowDemoLab --src-path myapp12.zip --type zip
-	
-DemoFactory/       			# Project root directory
-	└── Web/          			# Flask Frontend
-		├── routes/        		# All routes 
-		│   ├── __init__.py     # register all routes for all:: def register_routes(app):
-		│   ├── auth_route.py   # indisvidual routes
-		│   └── ....py			# ....
-		├── static/        # CSS, JS, Images
-		│   ├── css/       # Bootstrap and custom styles
-		│   ├── js/        # Custom JavaScript
-		│   └── images/    # Icons, logos, etc.
-		├── templates/     # Jinja2 templates
-		│   ├── layouts/   # Base templates (header, footer, navigation)
-		│   └── pages/     # Specific screens (Dashboard, Maintenance, Fault Management)
-		├── main.py         # Flask entry point for the frontend, running at port = 2006
-		└── config.py      # Configuration for the frontend (e.g., API URLs)
-	
 
 
-DemoFactory/
+
+#  WDL Demo  – Unified Architecture 
+
+This repository contains  main module :
+
+*    WDL Demo
+     → Backend / API Layer
+     → Frontend (Flask-based UI)
+
+Both modules follow a  modular and scalable architecture  for enterprise-grade applications.
+
+
+   📂 Project Structure 
+
+   1️⃣ WDLDemo – Backend (API Layer) 
+
+
+WDLDemo/
 │
 ├── application.py           # Main backend entry point (Flask app)
 ├── requirements.txt         # Python dependencies
@@ -45,5 +44,50 @@ DemoFactory/
 │   └── images/
 │
 └── templates/               # Jinja2 templates
-    ├── pages/               # HTML screens
-    └── partials/            # HTML partials (header, footer)
+|    ├── pages/               # HTML screens
+|    └── partials/            # HTML partials (header, footer)
+├── main.py         # Flask entry point for the frontend, running at port = 2006
+└── config.py      # Configuration for the frontend (e.g., API URLs)
+
+   
+ *
+
+   🔗 Integration 
+
+*    Frontend (DemoFactory)  communicates with  Backend  via REST APIs.
+*   API URLs configured in `DemoFactory/Web/config.py`.
+
+   🖼 Architecture Diagram 
+
+!Unified Architecture
+   🚀 Deployment 
+
+ #  Azure WebApp Deployment Example 
+
+```bash
+az webapp deploy \
+  --resource-group WoW-Demo-Lab-RG \
+  --name WowDemoLab \
+  --src-path myapp.zip \
+  --type zip
+```
+
+ *
+
+   ✅ Installation & Setup 
+
+ #  Backend 
+
+```bash
+cd WDLDemo
+pip install -r requirements.txt
+python application.py
+```
+
+ #  Frontend 
+
+```bash
+cd WDLDemo
+pip install -r requirements.txt
+python application.py
+```
