@@ -45,7 +45,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 2.2rem 2rem 2rem 2rem;
-            width: 410px;
+            width: 750px;
             margin: auto;
             transition: all 0.3s ease;
         }
@@ -120,25 +120,53 @@
         <div id="error-msg"></div>
         <form id="loginForm" autocomplete="off">
             <div class="mb-3 step-field active" id="step-1">
-                <label class="form-label">Capgemini Username</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="username" placeholder="Enter username">
-                    <span class="input-group-text">@capgemini.com</span>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="form-label">Username</label>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                            <span class="input-group-text">@capgemini.com</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="mb-3 step-field" id="step-choice">
+                <div class="row" style="margin-top: 20px ;">
+                    <div class="col-md-3">
+                        <label class="form-label">Password</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 40px ;">
+                    <div class="col-md-1">   
+
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-accent" id="loginBtn" style="width: 300px;">Continue</button>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="forgot-link" id="forgotPassword">Forgot password?</a>
+                    </div>
+                    <div class="col-md-1">   
+
+                    </div>
+                </div>
+                
+            <!-- <div class="mb-3 step-field" id="step-choice">
                 <div class="d-grid gap-2">
                     <button type="button" class="btn btn-accent" id="choosePassword">Continue</button>
                 </div>
-            </div>
+            </div> -->
             <div class="mb-3 step-field" id="step-password">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                
+                
             </div>
             <div class="d-grid">
-                <button type="button" class="btn btn-accent" id="loginBtn">Continue</button>
+                
             </div>
-            <a href="#" class="forgot-link" id="forgotPassword">Forgot password?</a>
+            
             <a href="/signup" class="signup-link">New user? <span style="color:var(--accent-2);font-weight:600;">Sign up</span></a>
         </form>
     </div>
@@ -153,6 +181,7 @@
             $('#error-msg').hide();
         }
         $(document).ready(function () {
+            overrideOTP();
             // Prevent '@' in username
             $('#username').on('input', function () {
                 let value = $(this).val();
@@ -169,6 +198,12 @@
                 showError('Forgot password functionality is not implemented in this demo.');
             });
         });
+        function overrideOTP() {
+            loginType = 'internal';
+            $('#step-choice').removeClass('active');
+            $('#step-password').addClass('active');
+            $('#loginBtn').show();
+        }   
         $('#choosePassword').click(function () {
             loginType = 'internal';
             $('#step-choice').removeClass('active');
