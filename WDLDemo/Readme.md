@@ -8,8 +8,7 @@ This repository contains  main module :
 
 Both modules follow a  modular and scalable architecture  for enterprise-grade applications.
 
-
-**📂 Project Structure **
+📂 Project Structure 
 
 1️⃣ WDLDemo – Backend (API Layer) ,Frontend
 
@@ -47,15 +46,12 @@ WDLDemo/
 └── config.py      # Configuration for the frontend (e.g., API URLs)
 
    
-** 🔗 Integration **
+🔗 Integration
 
 *   Frontend communicates with  Backend  via REST APIs.
 *   API URLs configured in `WDLDemo/Web/config.py`.
 
-   🖼 Architecture Diagram 
-
-!Unified Architecture
-   🚀 Deployment 
+🚀 Deployment 
 
  #  Azure WebApp Deployment Example 
 
