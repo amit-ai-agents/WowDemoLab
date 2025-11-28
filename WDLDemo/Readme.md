@@ -1,7 +1,4 @@
-
-
-
-#  WDL Demo  – Unified Architecture 
+**WDL Demo  – Unified Architecture **
 
 This repository contains  main module :
 
@@ -12,9 +9,9 @@ This repository contains  main module :
 Both modules follow a  modular and scalable architecture  for enterprise-grade applications.
 
 
-   📂 Project Structure 
+**📂 Project Structure **
 
-   1️⃣ WDLDemo – Backend (API Layer) 
+1️⃣ WDLDemo – Backend (API Layer) ,Frontend
 
 
 WDLDemo/
@@ -50,12 +47,10 @@ WDLDemo/
 └── config.py      # Configuration for the frontend (e.g., API URLs)
 
    
- *
+** 🔗 Integration **
 
-   🔗 Integration 
-
-*    Frontend (DemoFactory)  communicates with  Backend  via REST APIs.
-*   API URLs configured in `DemoFactory/Web/config.py`.
+*   Frontend communicates with  Backend  via REST APIs.
+*   API URLs configured in `WDLDemo/Web/config.py`.
 
    🖼 Architecture Diagram 
 
