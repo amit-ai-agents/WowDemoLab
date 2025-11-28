@@ -83,6 +83,7 @@ def validate_password():
             session['role_type'] = 'Internal_Employee'
             session['name'] = user_data['name']
             session['role'] = user_data['role']
+            session['expires_at'] = (datetime.utcnow() + timedelta(minutes=1)).timestamp()
 
             role_redirect_map = {
                 'general_employee': "/main",
@@ -116,6 +117,7 @@ def validate_otp():
     if otp == shared_otp and expiry_dt > datetime.now().timestamp():
         session['role_type'] = 'External_Employee'
         session['role'] = 'contractual'
+        session['expires_at'] = (datetime.utcnow() + timedelta(minutes=1)).timestamp()
         return jsonify(success=True, redirect="/Ext/")
     else:
         return jsonify(success=False, message="Invalid or expired OTP.")
