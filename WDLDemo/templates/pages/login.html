@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WDL Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #080c13;
+            --bg-elev: rgba(255,255,255,0.04);
+            --glass: rgba(255,255,255,0.06);
+            --stroke: rgba(255,255,255,0.12);
+            --accent: #5ee6eb;
+            --accent-2: #7aa2ff;
+            --text: #eef2f6;
+            --text-dim: rgba(238,242,246,0.72);
+            --shadow: 0 10px 30px rgba(0,0,0,0.4);
+            --radius: 18px;
+            --footer-h: 64px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: radial-gradient(1200px 600px at 20% -10%, rgba(94,230,235,0.18), transparent), radial-gradient(1000px 600px at 100% 0%, rgba(122,162,255,0.14), transparent), var(--bg-dark);
+            color: var(--text);
+            padding-bottom: calc(var(--footer-h) + 12px);
+            letter-spacing: 0.1px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        a:hover {
+            color: #39d9dd;
+        }
+
+        .glass-card {
+            background: var(--bg-elev);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2.2rem 2rem 2rem 2rem;
+            width: 410px;
+            margin: auto;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(94,230,235,0.5);
+        }
+
+        .btn-accent {
+            --bs-btn-color: #061017;
+            --bs-btn-bg: var(--accent);
+            --bs-btn-border-color: var(--accent);
+            --bs-btn-hover-bg: #39d9dd;
+            --bs-btn-hover-border-color: #39d9dd;
+            border-radius: 999px;
+            padding: 0.55rem 1.05rem;
+            font-weight: 600;
+        }
+        .btn-ghost {
+            border: 1px solid var(--stroke);
+            color: var(--text);
+            border-radius: 999px;
+            padding: 0.55rem 1.05rem;
+            font-weight: 600;
+            background: transparent;
+        }
+        .btn-ghost:hover {
+            background: var(--glass);
+        }
+        #error-msg {
+            color: #ff6b6b;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+            display: none;
+            text-align: center;
+        }
+        .login-title {
+            font-size: 2.1rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .form-label {
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+        .input-group-text {
+            background: var(--glass);
+            color: var(--accent-2);
+            border: none;
+        }
+        .forgot-link {
+            display: block;
+            text-align: right;
+            margin-top: 0.5rem;
+            font-size: 0.98rem;
+        }
+        .signup-link {
+            display: block;
+            text-align: center;
+            margin-top: 1.2rem;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <div class="login-title">🔐 WDL Login</div>
+        <div id="error-msg"></div>
+        <form id="loginForm" autocomplete="off">
+            <div class="mb-3 step-field active" id="step-1">
+                <label class="form-label">Capgemini Username</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="username" placeholder="Enter username">
+                    <span class="input-group-text">@capgemini.com</span>
+                </div>
+            </div>
+            <div class="mb-3 step-field" id="step-choice">
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-accent" id="choosePassword">Login with password</button>
+                    <button type="button" class="btn btn-ghost" id="chooseOtp">Login with OTP</button>
+                </div>
+            </div>
+            <div class="mb-3 step-field" id="step-password">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            </div>
+            <div class="mb-3 step-field" id="step-otp">
+                <label class="form-label">OTP</label>
+                <input type="text" class="form-control" id="otp" placeholder="Enter OTP">
+            </div>
+            <div class="d-grid">
+                <button type="button" class="btn btn-accent" id="loginBtn">Continue</button>
+            </div>
+            <a href="#" class="forgot-link" id="forgotPassword">Forgot password?</a>
+            <a href="/signup" class="signup-link">New user? <span style="color:var(--accent-2);font-weight:600;">Sign up</span></a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        let loginType = "";
+        function showError(message) {
+            $('#error-msg').text(message).show();
+        }
+        function clearError() {
+            $('#error-msg').hide();
+        }
+        $(document).ready(function () {
+            // Prevent '@' in username
+            $('#username').on('input', function () {
+                let value = $(this).val();
+                if (value.includes('@')) {
+                    $(this).val(value.replace('@', ''));
+                    showError('Please do not include "@" in the username.');
+                } else {
+                    clearError();
+                }
+            });
+            // Forgot password click
+            $('#forgotPassword').on('click', function(e){
+                e.preventDefault();
+                showError('Forgot password functionality is not implemented in this demo.');
+            });
+        });
+        $('#choosePassword').click(function () {
+            loginType = 'internal';
+            $('#step-choice').removeClass('active');
+            $('#step-password').addClass('active');
+            $('#loginBtn').show();
+        });
+        $('#chooseOtp').click(function () {
+            loginType = 'external';
+            $('#step-choice').removeClass('active');
+            $('#step-otp').addClass('active');
+            $('#loginBtn').show();
+            showError('OTP sent to your mobile (simulated)');
+        });
+        $('#loginBtn').click(function () {
+            let username = $('#username').val().trim();
+            if (username) {
+                username += '@capgemini.com';
+            }
+            const password = $('#password').val();
+            const otp = $('#otp').val();
+            clearError();
+            if (!loginType) {
+                // Step 1: Identify user type
+                $.ajax({
+                    url: '/auth/identify_user',
+                    method: 'POST',
+                    data: { username },
+                    success: function (res) {
+                        if (res.type === 'internal' || res.type === 'external') {
+                            $('#step-1').removeClass('active');
+                            $('#step-choice').addClass('active');
+                            $('#loginBtn').hide();
+                        } else {
+                            showError(res.message || "User not found.");
+                        }
+                    },
+                    error: function (xhr) {
+                        showError(xhr.responseJSON?.message || "Error identifying user.");
+                    }
+                });
+            } else if (loginType === 'internal') {
+                if (!password) return showError("Please enter your password.");
+                $.ajax({
+                    url: '/auth/validate_password',
+                    method: 'POST',
+                    data: { username, password },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = res.redirect;
+                        } else {
+                            showError(res.message || "Invalid credentials.");
+                        }
+                    },
+                    error: function (xhr) {
+                        showError(xhr.responseJSON?.message || "Login failed.");
+                    }
+                });
+            } else if (loginType === 'external') {
+                if (!otp) return showError("Please enter the OTP.");
+                $.ajax({
+                    url: '/auth/validate_otp',
+                    method: 'POST',
+                    data: { username, otp },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = res.redirect;
+                        } else {
+                            showError(res.message || "Invalid or expired OTP.");
+                        }
+                    },
+                    error: function (xhr) {
+                        showError(xhr.responseJSON?.message || "OTP validation failed.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

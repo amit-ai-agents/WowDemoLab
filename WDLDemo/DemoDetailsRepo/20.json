@@ -1,0 +1,122 @@
+{
+  "id": 20,
+  "demoID": "AIAgent_DataQualityMonitoringAssistant",
+  "UseCaseTitle": "Data Quality Monitoring Assistant",
+  "Purpose": "To continuously monitor enterprise data pipelines, detect anomalies and data drift, and provide actionable alerts to maintain high data quality and trustworthiness.",
+  "ExecSummary": "Data-driven enterprises face critical challenges ensuring the quality and integrity of their data pipelines amidst increasing volumes and velocity. Manual monitoring is reactive, inconsistent, and unable to scale, leading to costly errors and degraded analytics outcomes. This AI-powered assistant automates anomaly detection and provides real-time insights to data engineers and stakeholders.",
+  "ExecSummaryKeyAsks": [
+    "Continuous automated monitoring of data pipelines",
+    "Early detection of anomalies and data drift",
+    "Actionable alerting and reporting on data quality issues",
+    "Seamless integration with existing data infrastructure"
+  ],
+  "BusinessObjectives": [
+    "Improve overall data quality and reliability",
+    "Reduce time to detect and resolve data issues",
+    "Increase confidence in data-driven decisions",
+    "Automate repetitive monitoring tasks to free up data engineering resources"
+  ],
+  "BusinessBenefits": [
+    "Significant reduction in data errors impacting analytics",
+    "Faster root cause identification and resolution",
+    "Improved compliance with data governance standards",
+    "Lower operational costs through proactive monitoring"
+  ],
+  "overview": "This demo showcases a robust data quality monitoring assistant built with open-source tools like Great Expectations for validation, Apache Airflow for orchestration, and Flask for alerting dashboards. The solution leverages AI and rule-based checks for continuous pipeline scanning and anomaly detection.",
+  "business": "IT Services and Consulting firms struggle with maintaining high data quality across complex, distributed pipelines. Poor data quality leads to business risks, inaccurate reporting, and compliance issues. Automating data quality monitoring is vital for modern data-driven enterprises to stay competitive and compliant.",
+  "approach": "The solution orchestrates scheduled validations and anomaly detection tasks using Airflow, executes rule-based and AI-driven data quality checks via Great Expectations, and exposes alerts and reports through a Flask-based dashboard. Integration with notification systems ensures timely stakeholder awareness.",
+  "BusinessDrivers": [
+    "Growing complexity and volume of data pipelines",
+    "Need for proactive data quality assurance",
+    "Regulatory compliance and audit requirements",
+    "Demand for reliable data for business intelligence and analytics"
+  ],
+  "BusinessChallanges": [
+    "Manual and reactive data quality management",
+    "Lack of scalable, automated monitoring solutions",
+    "Difficulty in correlating data anomalies with root causes",
+    "Limited visibility into pipeline health for non-technical stakeholders"
+  ],
+  "FunctionalOverview": [
+    "Pipeline Scanning: Periodic checks on data streams and batch jobs to validate schema, completeness, and value distributions.",
+    "Anomaly Detection: Identifies unexpected changes, outliers, and data drift using configurable rules and ML models.",
+    "Alerting & Reporting: Generates actionable alerts sent via email/slack and detailed dashboards for monitoring trends.",
+    "Root Cause Analysis Assistance: Provides insights linking anomalies to upstream pipeline components or recent changes.",
+    "Historical Data Quality Trends: Tracks and visualizes quality metrics over time for audit and continuous improvement."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Data Validation Module",
+      "Description": "Implements automated validation checks using Great Expectations on incoming datasets.",
+      "KeyFeatures": [
+        "Schema conformity checks",
+        "Completeness and null value detection",
+        "Range and distribution validations",
+        "Customizable expectation suites per pipeline"
+      ],
+      "BusinessImpact": [
+        "Ensures data consistency and correctness",
+        "Reduces downstream data errors",
+        "Supports compliance with data governance policies"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Pipeline Orchestration Module",
+      "Description": "Schedules and manages validation workflows using Apache Airflow.",
+      "KeyFeatures": [
+        "Automated periodic execution of data checks",
+        "Dependency management between pipeline stages",
+        "Integration with monitoring and alerting tools"
+      ],
+      "BusinessImpact": [
+        "Enables scalable, reliable monitoring",
+        "Facilitates operational visibility",
+        "Reduces manual intervention and errors"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Alerting & Dashboard Module",
+      "Description": "Provides real-time alerts and visualizes data quality status through a Flask-based web dashboard.",
+      "KeyFeatures": [
+        "Configurable alert thresholds and channels",
+        "Interactive data quality trend charts",
+        "User role-based access controls"
+      ],
+      "BusinessImpact": [
+        "Improves stakeholder responsiveness",
+        "Enhances transparency of data health",
+        "Supports data-driven decision-making"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "An autonomous data quality assistant powered by open-source tools",
+    "Scheduled validations with Great Expectations and Airflow",
+    "AI-enhanced anomaly detection to identify subtle data issues",
+    "Alerting and visualization through user-friendly dashboards",
+    "Integration with enterprise notification and incident management"
+  ],
+  "SolutionComponents": [
+    "Data Validation Agent",
+    "Pipeline Orchestration Agent",
+    "Anomaly Detection Agent",
+    "Alerting & Notification Agent",
+    "Flask Dashboard",
+    "Apache Airflow Scheduler",
+    "Great Expectations Validation Framework"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Data pipelines emit datasets that are automatically validated by the Data Validation Agent orchestrated via Airflow. Anomaly Detection Agent analyzes validation outputs and pipeline metrics to detect deviations. Alerts are triggered and visualized on the dashboard. Users can drill down into alerts for root cause analysis.",
+  "design": "Each agent is modular and containerized, interacting through a shared contextual memory store. The orchestration engine schedules tasks and manages state transitions. Alerting is extensible via plugins for multiple communication channels.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "3 weeks",
+    "Testing & Validation": "1 week",
+    "UI/UX + Dashboard": "1 week",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "50,000 - includes initial development, infrastructure, and deployment",
+    "OPEX": "5,000/month - covers monitoring, maintenance, and support"
+  }
+}

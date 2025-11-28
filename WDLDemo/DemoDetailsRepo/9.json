@@ -1,0 +1,107 @@
+{
+  "id": 9,
+  "demoID": "AIAgent_NetworkTroubleshooting",
+  "UseCaseTitle": "Autonomous Agent AI for Telecom Network Troubleshooting",
+  "Purpose": "To autonomously identify, diagnose, and resolve telecom network issues in real-time, reducing operational overhead and improving service continuity.",
+  "ExecSummary": "Telecom operators face increasing complexity in managing dynamic networks, with rising incidents, subscriber churn, and operational costs. Manual troubleshooting is slow and non-scalable. This solution deploys a multi-agent AI system that leverages LangGraph, Neo4j, and specialized lightweight models to handle network diagnostics autonomously.",
+  "ExecSummaryKeyAsks": [
+    "Automate identification of network issues",
+    "Diagnose root causes with minimal human intervention",
+    "Enable real-time remediation and alerting",
+    "Reduce Mean Time to Repair (MTTR) and improve uptime"
+  ],
+  "BusinessObjectives": [
+    "Improve operational efficiency through automation",
+    "Reduce network downtime",
+    "Lower the cost of L1/L2 technical support",
+    "Enable proactive network issue detection and resolution"
+  ],
+  "BusinessBenefits": [
+    "Up to 50% reduction in average resolution time (MTTR)",
+    "20�30% fewer escalations to human engineers",
+    "Real-time alerting and diagnostics",
+    "Improved SLA compliance and customer experience"
+  ],
+  "overview": "This demo presents a fully autonomous agent-based system for telecom network issue resolution. Agents are trained to detect anomalies, correlate logs and telemetry, diagnose faults using graph reasoning, and initiate resolution actions through APIs or human-in-the-loop prompts.",
+  "business": "Modern telecom networks are becoming increasingly complex with 5G, IoT, and cloud-native infrastructure. Manual diagnostics can�t keep up with scale or pace. Automating the troubleshooting lifecycle enables faster, consistent, and more reliable operations while reducing dependency on human experts.",
+  "approach": "We leverage LangGraph to manage agent state transitions, Neo4j to model network elements and historical incidents, and Python-based micro-agents to perform diagnostics. Agents access contextual data via memory graphs and interact with external APIs or CLI-based systems to suggest or execute remediations.",
+  "BusinessDrivers": [
+    "Accelerate root cause analysis and fix cycles",
+    "Reduce reliance on human L1/L2 support teams",
+    "Improve SLA compliance with real-time detection",
+    "Enhance service continuity and QoE for users"
+  ],
+  "BusinessChallanges": [
+    "High costs due to manual diagnostics and issue tracking",
+    "Delayed resolutions leading to SLA breaches",
+    "Fragmented data across tools and platforms",
+    "Lack of real-time visibility into service-impacting issues"
+  ],
+  "FunctionalOverview": [
+    "Anomaly Detection Agent: Continuously monitors for faults in logs and telemetry",
+    "Root Cause Diagnosis: Identifies likely failure points using KG reasoning",
+    "Remediation Orchestration: Suggests or executes corrective actions",
+    "Alerting & Reporting: Notifies support teams or auto-closes resolved tickets",
+    "Context Memory: Tracks issue history and recurring fault patterns"
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Anomaly Detection Agent",
+      "Description": "Analyzes log streams and telemetry for real-time detection of faults and anomalies.",
+      "KeyFeatures": [
+        "Supports structured (logs) and unstructured (alerts, alarms) data",
+        "Threshold + pattern-based detection using SLMs",
+        "Stream integration for real-time insights"
+      ],
+      "BusinessImpact": [
+        "Enables early detection before customer impact",
+        "Reduces time spent on manual log reviews",
+        "Improves proactive maintenance planning"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Root Cause Analysis Agent",
+      "Description": "Performs root cause tracing through a graph of devices, alerts, and historical cases stored in Neo4j.",
+      "KeyFeatures": [
+        "Graph traversal to correlate symptoms",
+        "Uses contextual data for hypothesis generation",
+        "Matches against previous similar failures"
+      ],
+      "BusinessImpact": [
+        "Accelerates RCA by eliminating guesswork",
+        "Improves fix accuracy",
+        "Builds long-term diagnostics knowledge base"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "A multi-agent system using Python-based agents and LangGraph",
+    "Graph-based correlation using Neo4j",
+    "Streaming ingestion of logs and metrics",
+    "Real-time alert triage and prioritization",
+    "Closed-loop remediation with optional human review"
+  ],
+  "SolutionComponents": [
+    "Anomaly Detection Agent",
+    "Root Cause Diagnosis Agent",
+    "Remediation Orchestration Agent",
+    "Alerting Agent",
+    "Neo4j Knowledge Graph",
+    "LangGraph Execution Engine",
+    "Contextual Memory Store"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Logs and telemetry are streamed into the Anomaly Detection Agent, which flags issues and triggers the RCA Agent. Using Neo4j, the agent explores past similar cases and identifies root causes. Resolution steps are proposed via the Orchestration Agent and executed or escalated as needed. Status and memory are updated for future learning.",
+  "design": "Agents operate in a containerized microservice model, each triggered by event-based workflows. LangGraph manages transitions between detection, diagnosis, and resolution. Contextual memory ensures continuity and traceability. System is extensible to multiple network domains (core, access, transport).",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "3 weeks",
+    "Testing & Validation": "2 weeks",
+    "Integration & Infra Setup": "1 week",
+    "Operationalization": "1 week"
+  },
+  "cost": {
+    "CAPEX": "60,000 - includes agent development, telemetry integration, and cloud infra",
+    "OPEX": "6,500/month - covers GPU compute, stream processing, monitoring, and support"
+  }
+}

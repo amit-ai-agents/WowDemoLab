@@ -1,0 +1,124 @@
+{
+  "id": 17,
+  "demoID": "AIAgent_ITAssetOptimization",
+  "UseCaseTitle": "AI-Driven IT Asset Optimization and Cost Efficiency",
+  "Purpose": "To monitor IT asset utilization metrics continuously and provide intelligent recommendations for decommissioning or consolidation, thereby improving cost efficiency and resource management in IT operations.",
+  "ExecSummary": "IT organizations often struggle to manage and optimize their asset portfolios efficiently. Underutilized or redundant assets lead to unnecessary costs and operational complexity. This agent leverages real-time telemetry and AI-driven insights to optimize IT resources dynamically, helping enterprises reduce waste and improve ROI.",
+  "ExecSummaryKeyAsks": [
+    "Automate monitoring of IT asset utilization",
+    "Provide actionable recommendations for asset decommissioning or consolidation",
+    "Reduce operational and infrastructure costs",
+    "Enhance IT resource allocation and planning"
+  ],
+  "BusinessObjectives": [
+    "Improve IT cost efficiency by eliminating redundant or underutilized assets",
+    "Enhance visibility into asset performance and utilization",
+    "Support strategic decision-making with data-driven insights",
+    "Reduce operational overhead through automation"
+  ],
+  "BusinessBenefits": [
+    "15-30% reduction in IT operational costs",
+    "Improved asset lifecycle management and utilization rates",
+    "Faster decision-making with automated recommendations",
+    "Reduced risks from asset sprawl and resource wastage"
+  ],
+  "overview": "This demo demonstrates an end-to-end Agentic AI framework integrating real-time monitoring tools (Prometheus, Grafana) with AI-powered agents that analyze IT assets, detect inefficiencies, and recommend optimization actions such as consolidation or decommissioning.",
+  "business": "As IT environments grow increasingly complex, enterprises face challenges in tracking and optimizing asset usage effectively. Traditional manual audits are insufficient and costly. This solution automates asset monitoring and leverages AI to drive cost-saving decisions, essential in competitive and budget-conscious markets.",
+  "approach": "The solution uses Prometheus for collecting utilization metrics and Grafana for visualization. AI agents built with Python and Agentic AI frameworks analyze telemetry data, detect underutilization patterns, and suggest optimization actions. LangGraph manages agent workflows, while contextual memory maintains state and historical data for trend analysis.",
+  "BusinessDrivers": [
+    "Need to reduce IT operational expenditures",
+    "Drive efficiency through automation and AI insights",
+    "Improve transparency and governance of IT assets",
+    "Enable proactive resource management and capacity planning"
+  ],
+  "BusinessChallanges": [
+    "Lack of real-time visibility into asset utilization",
+    "Manual and error-prone asset management processes",
+    "Difficulty correlating disparate telemetry data sources",
+    "Inefficient resource allocation leading to cost overruns"
+  ],
+  "FunctionalOverview": [
+    "Continuous collection of IT asset metrics via Prometheus",
+    "Real-time dashboards and alerts through Grafana",
+    "AI-driven analysis to identify underutilized or redundant assets",
+    "Automated recommendations for consolidation or decommissioning",
+    "Contextual memory to track historical trends and decisions"
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Telemetry Data Collection Module",
+      "Description": "Collects real-time utilization and performance data from IT assets using Prometheus exporters.",
+      "KeyFeatures": [
+        "Integration with multiple asset types and platforms",
+        "Customizable metrics collection intervals",
+        "Data normalization and aggregation",
+        "High availability and fault tolerance"
+      ],
+      "BusinessImpact": [
+        "Ensures accurate and timely asset monitoring",
+        "Provides foundational data for AI analysis",
+        "Reduces blind spots in asset utilization"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "AI Analysis and Recommendation Engine",
+      "Description": "Analyzes telemetry data to detect underutilization, inefficiencies, and opportunities for consolidation or decommissioning.",
+      "KeyFeatures": [
+        "Utilization threshold-based anomaly detection",
+        "Trend analysis and forecasting",
+        "Cost-benefit evaluation for asset actions",
+        "Integration with IT service management tools"
+      ],
+      "BusinessImpact": [
+        "Drives data-backed optimization decisions",
+        "Reduces IT costs and complexity",
+        "Improves asset lifecycle management"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Visualization and Reporting Module",
+      "Description": "Presents actionable insights, alerts, and historical trends through Grafana dashboards and automated reports.",
+      "KeyFeatures": [
+        "Customizable dashboards for stakeholders",
+        "Alerting on critical utilization thresholds",
+        "Automated summary reports for IT management",
+        "Role-based access and collaboration features"
+      ],
+      "BusinessImpact": [
+        "Enhances transparency and accountability",
+        "Facilitates informed decision-making",
+        "Supports audit and compliance requirements"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "A multi-agent AI framework integrating real-time telemetry and analytics",
+    "Automated asset monitoring with Prometheus and Grafana",
+    "AI-driven detection of optimization opportunities",
+    "Contextual memory for trend analysis and historical data",
+    "LangGraph orchestration for scalable agent workflows"
+  ],
+  "SolutionComponents": [
+    "Telemetry Collection Agent",
+    "Optimization Recommendation Agent",
+    "Alerting and Reporting Agent",
+    "Contextual Memory Store",
+    "LangGraph Execution Engine",
+    "Prometheus Monitoring System",
+    "Grafana Dashboard"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Prometheus collects real-time utilization data from IT assets, which the Telemetry Collection Agent ingests and preprocesses. The Optimization Recommendation Agent analyzes this data, applies AI models to identify underutilization or consolidation opportunities, and generates actionable recommendations. Grafana visualizes metrics and alerts. Contextual memory stores historical states and decisions to improve future analysis.",
+  "design": "Agents are modular and loosely coupled, communicating via contextual memory managed by LangGraph. Each agent handles specific functional responsibilities enabling easy scalability and maintainability. The design supports integration with existing ITSM tools and can be deployed on-prem or in the cloud.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "3 weeks",
+    "Testing & Validation": "1 week",
+    "UI/UX + Dashboard": "1 week",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "45,000 - covering design, development, and infrastructure provisioning",
+    "OPEX": "4,500/month - for monitoring, support, and updates"
+  }
+}

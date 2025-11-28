@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wow Demo Lab</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #0b0f17;
+            --accent: #5ee6eb; /* teal/cyan accent */
+            --glass: rgba(255,255,255,0.06);
+            --text-dim: rgba(255,255,255,0.7);
+        }
+
+        html, body {
+            height: 100%;
+            background: var(--bg-dark);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Layered background: gradient + faint imagery + animated network */
+        .bg-wrap {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
+            background: radial-gradient(1200px 800px at 70% 20%, rgba(94,230,235,0.08), transparent 60%), radial-gradient(1000px 700px at 20% 70%, rgba(139,92,246,0.10), transparent 60%), linear-gradient(180deg, #0b0f17 0%, #06080d 100%);
+        }
+
+        /* ultra subtle watermark images */
+        .bg-watermarks {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.05;
+            filter: blur(2px) grayscale(100%);
+            background-image: url('https://images.unsplash.com/photo-1559757175-08e3948a6272?q=80&w=1920&auto=format&fit=crop'), /* circuits */
+            url('https://images.unsplash.com/photo-1551281044-8d8d0d8b8b9a?q=80&w=1920&auto=format&fit=crop'); /* city grid */
+            background-size: cover, cover;
+            background-position: center, center;
+            mix-blend-mode: screen;
+        }
+
+        /* Animated network canvas */
+        #networkCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.18;
+        }
+
+        /* Foreground content */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+        }
+
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .5rem .75rem;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+            border: 1px solid rgba(255,255,255,.1);
+            color: var(--text-dim);
+            backdrop-filter: blur(8px);
+        }
+
+        .hero h1 {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            text-shadow: 0 8px 40px rgba(94,230,235,0.15);
+        }
+
+        .typewriter {
+            font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+            color: var(--text-dim);
+            min-height: 3.5rem; /* reserve space; avoids layout shift */
+            border-right: 2px solid var(--accent);
+            white-space: pre-wrap;
+            overflow: hidden;
+            animation: caret 1s steps(1) infinite;
+        }
+
+        @keyframes caret {
+            50% {
+                border-right-color: transparent;
+            }
+        }
+
+        .cta-btn {
+            border-radius: 14px;
+            padding: .9rem 1.25rem;
+            font-weight: 600;
+            background: linear-gradient(90deg, rgba(94,230,235,0.15), rgba(139,92,246,0.15));
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #fff;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+            backdrop-filter: blur(6px);
+        }
+
+            .cta-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 30px rgba(94,230,235,0.25);
+            }
+
+        /* KPI cards */
+        .kpi-wrap {
+            position: relative;
+            z-index: 1;
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(5, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .kpi-wrap {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .kpi-wrap {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .kpi-card {
+            text-decoration: none;
+            color: #fff;
+            padding: 1rem 1.1rem;
+            border-radius: 18px;
+            position: relative;
+            background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+            border: 1px solid rgba(255,255,255,.12);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+            .kpi-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 16px 40px rgba(0,0,0,.35);
+                border-color: rgba(94,230,235,0.35);
+            }
+
+        .kpi-title {
+            font-size: .85rem;
+            color: var(--text-dim);
+            margin: 0;
+        }
+
+        .kpi-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* Subtle footer note */
+        .footnote {
+            color: var(--text-dim);
+            font-size: .85rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Layers -->
+    <div class="bg-wrap">
+        <canvas id="networkCanvas" aria-hidden="true"></canvas>
+        <div class="bg-watermarks" aria-hidden="true"></div>
+    </div>
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                    aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="#principles" style="color:white;">Principles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#impact" style="color:white;">Impact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#leadership" style="color:white;">Leadership</a></li>
+                    <li class="nav-item"><a class="btn btn-ghost" href="#brief">About Lab</a></li>
+                    <li class="nav-item"><a class="btn btn-accent ms-lg-2" href="#book">Request a CXO Demo</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="hero">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-9 text-center">
+                    <span class="mb-4">
+
+                        <a class="navbar-brand fw-bold" href="/" style="letter-spacing: -0.3px; color: var(--accent);font-size:72px;">
+                            <i class="bi bi-stars me-1" style="color:var(--accent)"></i> Wow Demo Lab
+                        </a>
+
+                    </span>
+                    <br />
+                    <p>
+                        A fast, client-specific <b>Agentic AI Demo Factory</b> — built to showcase
+                        how <span style="color: var(--accent)">Agentic&nbsp;AI</span> solves real business problems.
+                    </p>
+                    <br />
+                    <!-- MESSAGE SECTION -->
+                    <section class="container py-5">
+                        <div class="row text-center mb-5">
+                            <div class="col">
+                                <h2 class="fw-bold">Purpose</h2>
+                                <p class="lead">
+                                    Client-targeted demos — crafted to highlight
+                                    end-to-end solutions for specific business needs.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-md-4">
+                                <div class="usp-card h-100">
+                                    <h4 class="fw-bold">🎯 Targeted</h4>
+                                    <p>
+                                        Every demo is tailored to a <b>specific client problem</b> —
+                                        showing how Agentic AI can solve their unique challenge.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="usp-card h-100">
+                                    <h4 class="fw-bold">⚡ Fast</h4>
+                                    <p>
+                                        Built quickly for <b>RFPs</b> or proactive conversations — giving business leaders
+                                        a head-start in client discussions.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="usp-card h-100">
+                                    <h4 class="fw-bold">🌐 End-to-End</h4>
+                                    <p>
+                                        Showcases how <b>technical bits integrate</b> into a
+                                        seamless solution — making it tangible for CXOs.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!--<p id="typewriter" class="typewriter mx-auto"></p>-->
+
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <a href="/home" class="btn cta-btn btn-lg"><i class="bi bi-grid-3x3-gap me-2"></i>Explore Catalog</a>
+                        <a href="/about" class="btn btn-outline-light btn-lg" style="border-radius:14px"><i class="bi bi-play-circle me-2"></i>See How It Works</a>
+                    </div>
+
+                    <!-- KPI Cards -->
+                    <section class="kpi-wrap mx-auto">
+                        <!-- Use data-* for dynamic counts; you can inject via Jinja -->
+                        <a class="kpi-card" href="/home?filter=industry" data-kpi="Industry Demos" data-count="{{ industry_count|default(15) }}">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="kpi-title mb-2"><i class="bi bi-globe2 me-1"></i>Industry Demos</p>
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                            <div class="kpi-value">{{ industry_count|default(15) }}</div>
+                        </a>
+
+                        <a class="kpi-card" href="/home?filter=domain" data-kpi="Domain Demos" data-count="{{ domain_count|default(20) }}">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="kpi-title mb-2"><i class="bi bi-layers me-1"></i>Domain Demos</p>
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                            <div class="kpi-value">{{ domain_count|default(20) }}</div>
+                        </a>
+
+                        <a class="kpi-card" href="/home?filter=data-ai" data-kpi="Data & AI" data-count="{{ data_ai_count|default(12) }}">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="kpi-title mb-2"><i class="bi bi-cpu me-1"></i>Data &amp; AI</p>
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                            <div class="kpi-value">{{ data_ai_count|default(12) }}</div>
+                        </a>
+
+                        <a class="kpi-card" href="/home?filter=client-ready" data-kpi="Client Ready" data-count="{{ client_ready_count|default(5) }}">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="kpi-title mb-2"><i class="bi bi-rocket-takeoff me-1"></i>Client Ready</p>
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                            <div class="kpi-value">{{ client_ready_count|default(5) }}</div>
+                        </a>
+
+                        <a class="kpi-card" href="/home?filter=live" data-kpi="Live" data-count="{{ live_count|default(6) }}">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <p class="kpi-title mb-2"><i class="bi bi-broadcast-pin me-1"></i>Live</p>
+                                <i class="bi bi-chevron-right"></i>
+                            </div>
+                            <div class="kpi-value">{{ live_count|default(6) }}</div>
+                        </a>
+                    </section>
+
+                    <p class="footnote mt-4">Built for clarity and speed — so your leadership sees value in seconds.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- jQuery + Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        // ---------------------- Typewriter ----------------------
+        const lines = [
+            "Explore live, client-ready demos across industries.",
+            "Every demo engineered to deliver a Wow moment for the Client.",
+            "Agentic AI orchestrating decisions. Data turning into action.",
+            "A catalog built for CXOs — simple, credible, and powerful."
+        ];
+
+        const twEl = document.getElementById('typewriter');
+        let lineIdx = 0, charIdx = 0;
+
+        function typeNext() {
+            if (lineIdx >= lines.length) return; // done
+            const current = lines[lineIdx];
+            twEl.textContent = current.substring(0, charIdx++);
+            if (charIdx <= current.length) {
+                setTimeout(typeNext, 20 + Math.random() * 35); // humanized speed
+            } else {
+                setTimeout(() => { charIdx = 0; lineIdx++; typeNext(); }, 600);
+            }
+        }
+        window.addEventListener('load', typeNext);
+
+        // ---------------------- Background Network (lightweight) ----------------------
+        (function () {
+            const canvas = document.getElementById('networkCanvas');
+            const ctx = canvas.getContext('2d');
+            let width, height, particles = [];
+            const NUM = 70; // tuned to be subtle
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize); resize();
+
+            function init() {
+                particles = Array.from({ length: NUM }, () => ({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                }));
+            }
+            init();
+
+            function step() {
+                ctx.clearRect(0, 0, width, height);
+                // dots
+                for (const p of particles) {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > width) p.vx *= -1;
+                    if (p.y < 0 || p.y > height) p.vy *= -1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(255,255,255,0.6)'; ctx.fill();
+                }
+                // lines
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.hypot(dx, dy);
+                        if (dist < 120) {
+                            ctx.strokeStyle = `rgba(94,230,235, ${0.12 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.7; ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+            step();
+        })();
+
+        // ---------------------- Optional: Animate KPI counters on load ----------------------
+        $(function () {
+            $('.kpi-card').each(function () {
+                const $val = $(this).find('.kpi-value');
+                const target = parseInt($(this).data('count'), 10) || 0;
+                let n = 0; const step = Math.max(1, Math.ceil(target / 30));
+                const timer = setInterval(() => {
+                    n += step; if (n >= target) { n = target; clearInterval(timer); }
+                    $val.text(n);
+                }, 30);
+            });
+        });
+    </script>
+</body>
+</html>

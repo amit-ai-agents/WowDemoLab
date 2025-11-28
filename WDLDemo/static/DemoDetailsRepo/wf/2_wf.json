@@ -1,0 +1,74 @@
+﻿{
+  "title": "Functional Workflows - Conversational AI for Insurance Operations",
+  "description": "Explore AI-driven automation in customer engagement across the insurance claim lifecycle — from First Notification of Loss (FNOL) to post-submission support.",
+  "modules": [
+    {
+      "id": "fnol",
+      "icon": "📝",
+      "tabTitle": "FNOL Automation",
+      "moduleTitle": "Module - First Notification of Loss (FNOL) Automation",
+      "functionalOverview": "Enables seamless, AI-guided intake of claims via structured, dynamic conversations — eliminating manual errors and improving experience.",
+      "features": [
+        {
+          "title": "Identity Verification",
+          "detail": "OTP, policy number, or biometric authentication"
+        },
+        {
+          "title": "Context-Aware Questions",
+          "detail": "Auto-customized based on type (e.g., Auto, Health, Property)"
+        },
+        {
+          "title": "Document Collection",
+          "detail": "Upload damage photos, FIRs, medical reports etc."
+        },
+        {
+          "title": "Geo & Time Validation",
+          "detail": "Real-time validation of location and incident time"
+        },
+        {
+          "title": "Claim Summary Confirmation",
+          "detail": "Summary generated and reviewed before submission"
+        }
+      ],
+      "benefits": [
+        "🚀 60–80% faster FNOL process",
+        "✅ Reduction in incomplete or incorrect submissions",
+        "🧠 Higher CSAT with intuitive AI assistance",
+        "🔁 24x7 claims intake without manual agents"
+      ],
+      "mermaid": "graph TD\nStart([User Initiates Chat]) --> Verify[Policyholder Verification<br />OTP / Policy #]\nVerify --> TypeCheck{Claim Type?}\nTypeCheck -->|Auto| AutoQ[Auto-specific Questions]\nTypeCheck -->|Health| HealthQ[Health-specific Questions]\nTypeCheck -->|Property| PropertyQ[Property-specific Questions]\nAutoQ --> Upload[Upload Required Documents]\nHealthQ --> Upload\nPropertyQ --> Upload\nUpload --> Validate[Validate Location / Time]\nValidate --> Summary[Summarized Intake View]\nSummary --> Confirm[User Confirms and Submits]"
+    },
+    {
+      "id": "status",
+      "icon": "📍",
+      "tabTitle": "Claim Status Inquiry",
+      "moduleTitle": "Module - Claim Status Inquiry",
+      "functionalOverview": "Uses real-time API integrations to respond to claim status inquiries conversationally, securely, and instantly.",
+      "features": [
+        {
+          "title": "Status Retrieval",
+          "detail": "Via secure, authenticated backend API calls"
+        },
+        {
+          "title": "Status Classification",
+          "detail": "Submitted, In Review, Approved, Rejected, etc."
+        },
+        {
+          "title": "Proactive Communication",
+          "detail": "Shows timelines, next steps, and resolution expectations"
+        },
+        {
+          "title": "Security Layer",
+          "detail": "Multi-factor authentication to safeguard sensitive claim data"
+        }
+      ],
+      "benefits": [
+        "📉 40–50% reduction in support center calls",
+        "📆 Real-time updates on-demand, 24x7",
+        "🔒 Stronger compliance & data protection",
+        "🌟 Builds trust with transparent communication"
+      ],
+      "mermaid": "flowchart TD\nStart([\"User Inquires Claim Status\"]) --> Auth[\"Authenticate User Identity\"]\nAuth --> Fetch[\"Call API to Fetch Claim Data\"]\nFetch --> Categorize{\"Claim Status?\"}\nCategorize -- Submitted --> Info1[\"Display Timeline & Next Actions\"]\nCategorize -- UnderReview --> Info2[\"Ongoing Assessments & SLAs\"]\nCategorize -- Approved --> Info3[\"Payment Date & Disbursement Info\"]\nCategorize -- Rejected --> Info4[\"Rejection Reason & Appeal Options\"]\nInfo1 --> End([\"Done\"])\nInfo2 --> End\nInfo3 --> End\nInfo4 --> End"
+    }
+  ]
+}

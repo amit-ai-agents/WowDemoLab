@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo Details - Agentic AI Showcase</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="static/css/DemoDetailsPage.css" rel="stylesheet" />
+    <link href="static/css/SolutionArchPage.css" rel="stylesheet" />
+    <link href="static/css/functionalWFPage.css" rel="stylesheet" />
+    <link href="static/css/scopeDetails.css" rel="stylesheet" />
+    <link href="static/css/effortEstimation.css" rel="stylesheet" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>    <!-- Custom Dynamic Script -->
+    <!-- Mermaid ES Module v11 -->
+
+</head>
+
+<body>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar text-center">
+        <a href="/home"><i class="fas fa-home" data-target="List" title="Back to the list" data-bs-toggle="tooltip"></i></a>
+
+        <i class="fas fa-info-circle active" data-target="overview" title="Use Case Overview" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-briefcase" data-target="business" title="Business Details" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-cubes" data-target="FunctionalComponents" title="Functional Breakdown" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-lightbulb" data-target="approach" title="Solution Approach" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-sitemap" data-target="architecture" title="Technical Architecture" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-project-diagram" data-target="dataflow" title="Data Flow Diagrams" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-pencil-ruler" data-target="design" title="Design Details" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-clock" data-target="effort" title="Effort Estimation" data-bs-toggle="tooltip"></i>
+        <i class="fas fa-money-bill-wave" data-target="cost" title="CAPEX & OPEX" data-bs-toggle="tooltip"></i>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+        <input type="hidden" id="demo_id" />
+        <div id="overview" class="section active">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 id="UsecaseTitle">
+                    </h1>
+                </div>
+            </div>
+            <p id="UsecasePurpose"></p>
+            <h3>📌 Executive Summary</h3>
+            <hr />
+            <p id="ExecSummary"></p>
+            <!--<h3> Key Asks:: </h3>-->
+            <ul id="ExecSummaryKeyAsks"></ul>
+            <h3> 🎯 Objectives</h3>
+            <hr />
+            <ul id="BusinessObjectives"></ul>
+            <h3> 💼 Benefits</h3>
+            <hr />
+            <ul id="BusinessBenefits"></ul>
+            <!--<h2>Use Case Overview</h2>
+            <p id="demo-overview"></p>-->
+        </div>
+
+        <div id="business" class="section">
+            <h1> 💼 Business Details </h1>
+            <hr />
+            <p id="demo-business"></p>
+            <h3> 📈 Strategic Business Drivers</h3>
+            <hr />
+            <ul id="BusinessDrivers"></ul>
+            <h3> 🛑 Business Challanges</h3>
+            <hr />
+            <ul id="BusinessChallanges"></ul>
+            <h3> 📚 Function Overview </h3>
+            <hr />
+            <ul id="FunctionalOverview"></ul>
+        </div>
+        <div id="FunctionalComponents" class="section">
+            <h1> 🧩 Functional Components Details </h1>
+            <hr />
+            <!--<div class="row">
+                <h3> <label id="functionCompTitle"></label></h3>
+                <p id="functionCompDesc"></p>
+                <h2> ✨ Key Features: </h2>
+                <ul id="functionCompFeatures"></ul>
+                <h2> 📊 Business Impact: </h2>
+                <ul id="functionCompImpact"></ul>
+
+            </div>
+            <ul id="FunctionalComponentDetails"></ul>-->
+        </div>
+
+        <div id="approach" class="section">
+            <h3> 🧠 Solution Approach </h3>
+            <hr />
+            <p id="demo-approach"></p>
+            <h3> ✨ Solution Overview</h3>
+            <hr />
+            <ul id="SolutionOverview"></ul>
+            <h3> 🧩 Solution Components</h3>
+            <hr />
+            <ul id="SolutionComponents"></ul>
+        </div>
+
+
+        <div id="architecture" class="section">
+            <h3>Solution & Technical Architecture</h3>
+            <hr />
+            <div id="architecture" style="background-color:black;" class="col-md-8">
+                <div id="vertical-layers" style="margin-left:10px;"></div>
+                <div id="horizontal-layers"></div>
+            </div>
+        </div>
+
+        <div id="dataflow" class="section">
+            <!--<h2>Functional Flow Diagrams</h2>
+            <p id="demo-dataflow"></p>-->
+            <div id="dynamicContent">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <div id="design" class="section">
+            <h3> 🛠 Design Details</h3>
+            <hr />
+            <p id="ScopeDetails"></p>
+        </div>
+
+        <div id="effort" class="section">
+            <h3> ⏳ Effort Estimation</h3>
+            <hr />
+            <div id="TechnologyConstraints"></div>
+            <div id="EffortEstimation"></div>
+        </div>
+
+        <div id="cost" class="section">
+            <h3> 💰 Cost (CAPEX & OPEX)</h3>
+            <hr />
+            <div id="CostBreakdown"></div>
+            <div id="ROIJustification"></div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script>
+        const demo = {{ demo_data | tojson | safe}};
+
+    </script>
+    <script src="/static/js/fillDemoDetails.js"></script>
+    <script src="/static/js/creatSolutionArchitecture.js"></script>
+    <script src="/static/js/FunctionalWFScript.js"></script>
+    <script src="/static/js/scopeDetails.js"></script>
+    <script src="/static/js/effortEstimation.js"></script>
+</body>
+</html>

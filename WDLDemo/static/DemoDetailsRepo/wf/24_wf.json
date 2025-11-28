@@ -1,0 +1,166 @@
+﻿{
+  "title": "Functional Workflows - ObserverOne Data Observability Platform (Meta)",
+  "description": "Explore AI-driven automation for end-to-end data observability at Meta — from real-time anomaly detection to automated remediation and governance.",
+  "modules": [
+    {
+      "id": "dq",
+      "icon": "📊",
+      "tabTitle": "Data Quality Monitoring",
+      "moduleTitle": "Module - Data Quality Monitoring",
+      "functionalOverview": "Autonomously monitors schema, freshness, completeness, and accuracy of data streams across Meta’s large-scale pipelines.",
+      "features": [
+        {
+          "title": "Schema Drift Detection",
+          "detail": "Detects unexpected schema changes in real time"
+        },
+        {
+          "title": "Freshness Monitoring",
+          "detail": "Identifies delayed data arrivals against defined SLAs"
+        },
+        {
+          "title": "Completeness Checks",
+          "detail": "Flags missing or incomplete records across streams"
+        },
+        {
+          "title": "Accuracy Validation",
+          "detail": "Cross-verifies data against golden sources or baselines"
+        }
+      ],
+      "benefits": [
+        "🚀 70% faster detection of corrupted or missing data",
+        "✅ Higher trust in dashboards and AI models",
+        "📉 Reduced manual data validation workload",
+        "🌐 Always-on monitoring across global pipelines"
+      ],
+      "mermaid": "graph TD\nStart([Ingest Data from Pipelines]) --> Schema[Schema Drift Check]\nStart --> Freshness[Freshness SLA Check]\nStart --> Completeness[Completeness Validation]\nStart --> Accuracy[Accuracy Cross-check]\nSchema --> Alerts[Generate Alerts if Issues]\nFreshness --> Alerts\nCompleteness --> Alerts\nAccuracy --> Alerts\nAlerts --> Memory[Update Contextual Memory & RCA Agent]\nAlerts --> Supervisor[Escalate to Supervisor Agent if Critical]"
+    },
+    {
+      "id": "anomaly",
+      "icon": "⚡",
+      "tabTitle": "Anomaly Detection",
+      "moduleTitle": "Module - Anomaly Detection",
+      "functionalOverview": "Detects anomalies in data volume, distribution, and patterns using AI/ML models and semantic similarity search.",
+      "features": [
+        {
+          "title": "Unsupervised Anomaly Detection",
+          "detail": "Identifies unusual trends without labeled training data"
+        },
+        {
+          "title": "Contextual Baselines",
+          "detail": "Learns seasonal patterns and workload cycles at Meta-scale"
+        },
+        {
+          "title": "Semantic Search",
+          "detail": "Uses Faiss-based RAG to detect similar past anomalies"
+        },
+        {
+          "title": "Adaptive Thresholds",
+          "detail": "Dynamically adjusts sensitivity to reduce false positives"
+        }
+      ],
+      "benefits": [
+        "⚡ Early detection of hidden anomalies",
+        "📈 Reduced downtime by proactive alerts",
+        "🧠 Continuous learning from historical incidents",
+        "🔍 Accurate detection with minimal noise"
+      ],
+      "mermaid": "flowchart TD\nStart([Monitor Metrics, Logs, Events]) --> Detect[Run ML-based Anomaly Detection]\nDetect --> Baseline[Compare Against Historical Baselines]\nBaseline -->|Normal| Store[Log in Contextual Memory]\nBaseline -->|Anomaly| Faiss[Semantic Search in Vector DB]\nFaiss --> Match{Match Found?}\nMatch -- Yes --> RCA[Send to RCA Agent with Context]\nMatch -- No --> NewPattern[Store as New Pattern in Memory]\nRCA --> Supervisor[Escalation if Critical]"
+    },
+    {
+      "id": "rca",
+      "icon": "🔎",
+      "tabTitle": "Root Cause Analysis",
+      "moduleTitle": "Module - Root Cause Analysis (RCA)",
+      "functionalOverview": "Leverages knowledge graphs and contextual memory to trace dependencies across pipelines, identify failure points, and provide actionable insights.",
+      "features": [
+        {
+          "title": "Lineage Graph Traversal",
+          "detail": "Uses Neo4j to trace upstream and downstream dependencies"
+        },
+        {
+          "title": "Cross-Pipeline Correlation",
+          "detail": "Identifies cascading failures across interlinked pipelines"
+        },
+        {
+          "title": "Historical Context",
+          "detail": "Fetches past incidents with similar signatures"
+        },
+        {
+          "title": "Impact Analysis",
+          "detail": "Evaluates downstream business or AI model impact"
+        }
+      ],
+      "benefits": [
+        "🔎 Faster RCA with graph-powered insights",
+        "📉 Reduced MTTR (Mean Time to Resolve)",
+        "🌐 End-to-end pipeline visibility",
+        "💡 Proactive prevention of cascading failures"
+      ],
+      "mermaid": "graph TD\nStart([Anomaly or DQ Alert]) --> Neo4j[Traverse Data Lineage in Neo4j]\nNeo4j --> Trace[Identify Upstream & Downstream Dependencies]\nTrace --> Correlate[Correlate with Other Affected Pipelines]\nCorrelate --> Context[Fetch Historical Incidents from Memory]\nContext --> Impact[Analyze Downstream Impact on Dashboards & AI Models]\nImpact --> Report[Generate RCA Report for Remediation Agent]\nReport --> Supervisor[Escalate if SLA Impact]"
+    },
+    {
+      "id": "remediation",
+      "icon": "🛠️",
+      "tabTitle": "Automated Remediation",
+      "moduleTitle": "Module - Automated Remediation",
+      "functionalOverview": "Executes automated playbooks for common data failures, enabling rapid recovery with minimal human intervention.",
+      "features": [
+        {
+          "title": "Policy-Driven Remediation",
+          "detail": "Executes predefined actions based on issue severity"
+        },
+        {
+          "title": "Rollback & Restart",
+          "detail": "Automates rollback of bad data or pipeline restart"
+        },
+        {
+          "title": "Playbook Orchestration",
+          "detail": "Runs containerized remediation workflows"
+        },
+        {
+          "title": "Escalation Triggers",
+          "detail": "Engages human-in-the-loop if policy thresholds exceeded"
+        }
+      ],
+      "benefits": [
+        "🚀 80% reduction in MTTR",
+        "🛡️ Minimized downtime through self-healing",
+        "👨‍💻 Human intervention only when essential",
+        "📑 Full audit trail of remediation actions"
+      ],
+      "mermaid": "flowchart TD\nStart([RCA Report Available]) --> Check{Issue Severity}\nCheck -- Low --> AutoFix[Run Automated Remediation Playbook]\nCheck -- Medium --> Rollback[Rollback / Restart Pipelines]\nCheck -- High --> Escalate[Escalate to Human-in-Loop]\nAutoFix --> Log[Update Contextual Memory & Compliance Logs]\nRollback --> Log\nEscalate --> Supervisor[Supervisor Agent Oversight]\nSupervisor --> Log"
+    },
+    {
+      "id": "supervisor",
+      "icon": "🧭",
+      "tabTitle": "Supervisor Oversight",
+      "moduleTitle": "Module - Supervisor Agent & Governance",
+      "functionalOverview": "Provides unified monitoring, governance, and oversight across all observability agents with full auditability.",
+      "features": [
+        {
+          "title": "Execution Graph Monitoring",
+          "detail": "Tracks workflows in LangGraph with real-time status"
+        },
+        {
+          "title": "Fallback & Resilience",
+          "detail": "Re-routes tasks if agents fail or stall"
+        },
+        {
+          "title": "Unified Dashboard",
+          "detail": "Visualizes incidents, RCA, remediation, and lineage"
+        },
+        {
+          "title": "Compliance Logging",
+          "detail": "Maintains audit trails for regulatory requirements"
+        }
+      ],
+      "benefits": [
+        "🧭 End-to-end operational visibility",
+        "🛡️ Ensures compliance & governance",
+        "📊 Transparency across observability workflows",
+        "⚙️ Improved resilience with fallback handling"
+      ],
+      "mermaid": "graph TD\nStart([All Agents Running]) --> LangGraph[Monitor LangGraph Execution Graph]\nLangGraph --> Status[Track Agent Health & Failures]\nStatus -->|Failure| Fallback[Trigger Fallback Mechanism]\nStatus -->|Success| Dashboard[Update Supervisor Dashboard]\nFallback --> Dashboard\nDashboard --> Logs[Write Compliance & Audit Logs]\nLogs --> End([Supervisor Oversight Complete])"
+    }
+  ]
+}

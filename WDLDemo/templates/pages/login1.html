@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WDL Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        .step-field {
+            display: none;
+        }
+
+            .step-field.active {
+                display: block;
+            }
+
+        #error-msg {
+            color: red;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h4 class="text-center mb-4">🔐 WDL Login</h4>
+
+        <div id="error-msg"></div>
+
+        
+        <div class="mb-3 step-field active" id="step-1">
+            <label class="form-label">Capgemini Username</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="username" placeholder="Enter username">
+                <span class="input-group-text">@capgemini.com</span>
+            </div>
+        </div>
+
+        
+        <div class="mb-3 step-field" id="step-choice">
+            <div class="d-grid gap-2">
+                <button class="btn btn-success" id="choosePassword">Login with Password</button>
+                <button class="btn btn-info" id="chooseOtp">Login with OTP</button>
+            </div>
+        </div>
+
+
+        <div class="mb-3 step-field" id="step-password">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter your password">
+        </div>
+
+        <div class="mb-3 step-field" id="step-otp">
+            <label class="form-label">OTP</label>
+            <input type="text" class="form-control" id="otp" placeholder="Enter OTP">
+        </div>
+
+        <div class="d-grid">
+            <button class="btn btn-primary" id="loginBtn">Continue</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        let loginType = "";
+
+        function showError(message) {
+            $('#error-msg').text(message).show();
+        }
+
+        function clearError() {
+            $('#error-msg').hide();
+        }
+        
+        $(document).ready(function () {
+            // Prevent '@' in username
+            $('#username').on('input', function () {
+                let value = $(this).val();
+                if (value.includes('@')) {
+                    $(this).val(value.replace('@', '')); // Remove '@'
+                    alert('Please do not include "@" in the username.');
+                }
+            });
+        });
+
+        $('#choosePassword').click(function () {
+            loginType = 'internal';
+            $('#step-choice').removeClass('active');
+            $('#step-password').addClass('active');
+            $('#loginBtn').show();
+        });
+        
+        $('#chooseOtp').click(function () {
+            loginType = 'external';
+            $('#step-choice').removeClass('active');
+            $('#step-otp').addClass('active');
+            $('#loginBtn').show();
+            alert('OTP sent to your mobile (simulated)');
+        });
+
+
+        $('#loginBtn').click(function () {            
+            let username = $('#username').val().trim();
+            if (username) {
+                username += '@capgemini.com';
+            }
+
+            const password = $('#password').val();
+            const otp = $('#otp').val();
+            clearError();
+
+            if (!loginType) {
+                // Step 1: Identify user type
+                $.ajax({
+                    url: '/auth/identify_user',
+                    method: 'POST',
+                    data: { username },
+                    success: function (res) {
+                    if (res.type === 'internal' || res.type === 'external') {
+                            // Show choice buttons
+                            $('#step-1').removeClass('active');
+                            $('#step-choice').addClass('active');
+                            $('#loginBtn').hide();
+                        } else {
+                            showError(res.message || "User not found.");
+                        }
+
+                    },
+                    error: function (xhr) {
+                        showError(xhr.responseJSON?.message || "Error identifying user.");
+                    }
+                });
+            } else if (loginType === 'internal') {
+
+                if (!password) return showError("Please enter your password.");
+                $.ajax({
+                    url: '/auth/validate_password',
+                    method: 'POST',
+                    data: { username, password },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = res.redirect;
+                        } else {
+                            showError(res.message || "Invalid credentials.");
+                        }
+                    },
+                    error: function (xhr) {
+                        showError(xhr.responseJSON?.message || "Login failed.");
+                    }
+                });
+            } else if (loginType === 'external') {
+
+                if (!otp) return showError("Please enter the OTP.");
+                $.ajax({
+                    url: '/auth/validate_otp',
+                    method: 'POST',
+                    data: { username, otp },
+                    success: function (res) {
+                        if (res.success) {
+                            window.location.href = res.redirect;
+                        } else {
+                            showError(res.message || "Invalid or expired OTP.");
+                        }
+                    },
+                    error: function (xhr) {
+                        showError(xhr.responseJSON?.message || "OTP validation failed.");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

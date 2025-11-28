@@ -1,0 +1,121 @@
+{
+  "id": 13,
+  "demoID": "AIAgent_DrugDiscovery",
+  "UseCaseTitle": "Generative AI for Drug Discovery Assistance",
+  "Purpose": "To accelerate drug discovery by mapping multi-omics data to known and novel drug targets using generative AI models, enhancing R&D productivity and enabling drug repurposing.",
+  "ExecSummary": "Life sciences R&D faces enormous data complexity and volume in genomics, proteomics, and pharmacology. Traditional drug discovery processes are slow, costly, and often miss potential target-drug relationships. This demo illustrates an AI-powered assistant that leverages generative models combined with semantic search and knowledge graphs to efficiently analyze omics data and suggest promising drug candidates.",
+  "ExecSummaryKeyAsks": [
+    "Integrate diverse omics datasets for holistic analysis",
+    "Leverage generative AI to identify novel targets and compounds",
+    "Enable drug repurposing by matching existing drugs to new targets",
+    "Improve decision support for research scientists"
+  ],
+  "BusinessObjectives": [
+    "Reduce drug discovery cycle times",
+    "Improve accuracy and relevance of target identification",
+    "Facilitate cross-domain data integration (genomics, proteomics, pharmacology)",
+    "Enable scalable and reproducible research workflows"
+  ],
+  "BusinessBenefits": [
+    "Significant reduction in research lead times",
+    "Higher success rates in target validation",
+    "Cost savings by prioritizing promising compounds earlier",
+    "Enhanced collaboration through shared contextual knowledge"
+  ],
+  "overview": "This demo presents a state-of-the-art Agentic AI framework for life sciences R&D that autonomously processes and integrates complex biological datasets using generative AI, Faiss semantic search, and contextual knowledge graphs stored in SQLite and Neo4j.",
+  "business": "The drug discovery landscape is challenged by massive and heterogeneous datasets, requiring advanced AI tools for actionable insights. Efficient integration of genomics, proteomics, and pharmacological data is crucial for identifying novel targets and repurposing drugs, thereby improving research productivity and innovation.",
+  "approach": "The solution orchestrates multi-agent workflows using LangGraph, employs Faiss for rapid semantic retrieval, uses generative models from HuggingFace to generate hypotheses and mappings, and stores structured contextual knowledge in SQLite and Neo4j. Agents interact via contextual memory for modular and explainable outcomes.",
+  "BusinessDrivers": [
+    "Harness AI to tackle complex biological data integration",
+    "Enable faster and more accurate target identification",
+    "Support repurposing of existing drugs to new indications",
+    "Improve R&D decision-making through AI-driven insights"
+  ],
+  "BusinessChallanges": [
+    "Data heterogeneity and quality issues across omics sources",
+    "Difficulty correlating multi-omics data to actionable targets",
+    "Lengthy and costly experimental validation cycles",
+    "Limited integration between research tools and data silos",
+    "Scalability of AI models to vast biological datasets"
+  ],
+  "FunctionalOverview": [
+    "Omics Data Ingestion: Import and preprocess genomic, proteomic, and pharmacological datasets.",
+    "Generative Target Mapping: Use generative AI to map omics data to known and novel drug targets.",
+    "Drug Repurposing Suggestions: Identify potential new uses for existing drugs based on target similarities.",
+    "Contextual Memory: Maintain integrated knowledge base across agents and datasets for consistent insights.",
+    "Interactive Querying: Allow researchers to query data and AI outputs through natural language or structured interfaces."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Omics Data Processing Module",
+      "Description": "Processes and normalizes raw omics datasets, ensuring compatibility for AI model consumption.",
+      "KeyFeatures": [
+        "Support for diverse formats (FASTQ, proteomics spectra, SQLite databases)",
+        "Data cleaning and quality control",
+        "Standardized schema creation for multi-omics integration"
+      ],
+      "BusinessImpact": [
+        "Ensures high-quality inputs to AI models",
+        "Reduces data preprocessing time",
+        "Improves accuracy of downstream analyses"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Generative AI Target Mapping Module",
+      "Description": "Applies generative models to predict and map biological entities to druggable targets.",
+      "KeyFeatures": [
+        "HuggingFace transformers fine-tuned on biological data",
+        "Semantic embeddings with Faiss for rapid similarity searches",
+        "Integration with Neo4j knowledge graph for relational context"
+      ],
+      "BusinessImpact": [
+        "Accelerates identification of novel targets",
+        "Supports hypothesis generation for experimental validation",
+        "Improves research throughput and innovation"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Drug Repurposing Suggestion Module",
+      "Description": "Matches existing drug compounds to new potential targets based on integrated omics and pharmacological profiles.",
+      "KeyFeatures": [
+        "Semantic similarity searches across compound and target databases",
+        "Ranking and prioritization based on biological relevance",
+        "Contextual explanations for AI-driven suggestions"
+      ],
+      "BusinessImpact": [
+        "Unlocks new therapeutic opportunities",
+        "Reduces R&D costs through repurposing",
+        "Facilitates faster go/no-go decisions"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Multi-agent AI framework orchestrated by LangGraph",
+    "Generative AI models from HuggingFace specialized in life sciences",
+    "Semantic search powered by Faiss for efficient retrieval",
+    "Knowledge graph storage in Neo4j and data persistence in SQLite",
+    "Contextual memory enabling coherent, modular agent collaboration"
+  ],
+  "SolutionComponents": [
+    "Omics Data Acquisition Agent",
+    "Generative Target Mapping Agent",
+    "Drug Repurposing Agent",
+    "Contextual Memory Store (Neo4j + SQLite)",
+    "Faiss Vector Store for Semantic Search",
+    "LangGraph Workflow Orchestration Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Omics data is ingested and preprocessed, then passed to the Generative Target Mapping Agent which generates candidate targets. Drug Repurposing Agent cross-references compounds with targets. Agents share state through contextual memory backed by Neo4j and SQLite, while Faiss accelerates semantic retrieval. Researchers interact with the system via query interfaces.",
+  "design": "Agent workflows are managed by LangGraph, each running as containerized microservices. Data storage combines relational and graph databases to enable rich, contextualized knowledge representation. Failures and workflow exceptions are handled via a supervisor agent.",
+  "effort": {
+    "Architecture & Design": "3 weeks",
+    "Agent Development": "5 weeks",
+    "Testing & Validation": "2 weeks",
+    "UI/UX + Dashboard": "2 weeks",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "90,000 - includes architecture, development, and infrastructure setup",
+    "OPEX": "8,000/month - supports cloud compute, storage, and AI model inference"
+  }
+}

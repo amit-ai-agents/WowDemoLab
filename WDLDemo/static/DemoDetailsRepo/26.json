@@ -1,0 +1,122 @@
+{
+  "id": 26,
+  "demoID": "AIAgent_PharmaMarketIntelligence",
+  "UseCaseTitle": "Pharma Market Intelligence Bot",
+  "Purpose": "To enable life sciences marketing teams to proactively identify emerging competitor drugs and market trends by scanning scientific literature and industry reports, improving strategic decision-making.",
+  "ExecSummary": "Pharma companies operate in a highly competitive environment where timely insights on competitor drugs and market shifts are critical. Traditional manual monitoring of literature and reports is labor-intensive and prone to delays. This AI-powered bot automates the intelligence gathering process, scanning vast unstructured data sources to deliver actionable insights that empower marketing and strategy teams.",
+  "demoURL": "https://insilicodd.azurewebsites.net/",
+  "ExecSummaryKeyAsks": [
+    "Automate monitoring of scientific literature and industry reports",
+    "Detect emerging competitor drugs early",
+    "Provide contextualized market trend analysis",
+    "Deliver timely alerts to decision makers"
+  ],
+  "BusinessObjectives": [
+    "Improve competitive intelligence capabilities",
+    "Accelerate market response times",
+    "Reduce manual effort and operational costs",
+    "Enhance strategic planning with data-driven insights"
+  ],
+  "BusinessBenefits": [
+    "Faster detection of competitor pipeline changes",
+    "Improved market positioning and launch readiness",
+    "Higher efficiency through automation",
+    "Better risk mitigation and opportunity identification"
+  ],
+  "overview": "This demo presents an end-to-end Agentic AI framework leveraging LangChain to orchestrate intelligent agents that scan PubMed and other sources, use semantic search and NLP techniques, and store insights in SQLite for querying and reporting. It demonstrates a scalable architecture for pharma competitive intelligence.",
+  "business": "Life sciences marketing teams face challenges in continuously monitoring a rapidly growing body of scientific publications and market reports. Manual review is costly and slow, causing delayed reactions to competitor moves. Automated AI-driven intelligence extraction is vital to maintain market advantage and align cross-functional strategies.",
+  "approach": "The solution utilizes LangChain to coordinate agents performing literature retrieval via PubMed API, semantic search with vector stores, and summarization. SQLite serves as a persistent store for structured insights. Agents interact via a contextual memory for coherent, incremental knowledge accumulation and decision support.",
+  "BusinessDrivers": [
+    "Increasing volume and complexity of scientific literature",
+    "Pressure to shorten time-to-market and increase launch success",
+    "Need for continuous competitor monitoring and alerting",
+    "Regulatory and compliance requirements in data handling"
+  ],
+  "BusinessChallanges": [
+    "Information overload from diverse unstructured data sources",
+    "Difficulty correlating data across literature and market reports",
+    "Limited scalability of manual monitoring processes",
+    "Ensuring accuracy and relevance of extracted insights"
+  ],
+  "FunctionalOverview": [
+    "Automated Literature Scanning: Continuous retrieval of relevant PubMed articles and reports.",
+    "Semantic Search & Analysis: Vector-based similarity search to find and rank relevant competitor drugs.",
+    "Insight Summarization: NLP-generated concise summaries highlighting key market intelligence.",
+    "Alerting & Reporting: Timely notifications and detailed reports for marketing and strategy teams.",
+    "Contextual Memory: Maintains accumulated knowledge and historical trends for enhanced analysis."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Literature Retrieval Module",
+      "Description": "Automates querying and extraction of scientific publications and industry reports using PubMed API and other data sources.",
+      "KeyFeatures": [
+        "Scheduled and on-demand retrieval",
+        "Keyword and topic-based search filters",
+        "Data normalization and metadata extraction"
+      ],
+      "BusinessImpact": [
+        "Ensures comprehensive and up-to-date data ingestion",
+        "Reduces manual search effort",
+        "Improves data quality and consistency"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Semantic Search and Analysis Module",
+      "Description": "Employs Faiss vector search and LangChain agents to perform semantic relevance ranking and competitor drug identification.",
+      "KeyFeatures": [
+        "Embedding generation for unstructured texts",
+        "Similarity scoring and ranking",
+        "Cross-document entity recognition and correlation"
+      ],
+      "BusinessImpact": [
+        "Enhances detection accuracy of emerging competitor drugs",
+        "Enables deeper contextual understanding",
+        "Facilitates quicker market insights"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Insight Summarization and Alerting Module",
+      "Description": "Generates concise, actionable summaries and delivers alerts to stakeholders via dashboards or communication channels.",
+      "KeyFeatures": [
+        "Natural language summarization of key findings",
+        "Configurable alert thresholds and channels",
+        "Integration with marketing and strategy workflows"
+      ],
+      "BusinessImpact": [
+        "Accelerates decision-making",
+        "Supports proactive market responses",
+        "Improves cross-team collaboration"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Agentic AI system using LangChain for multi-agent orchestration",
+    "PubMed API for authoritative literature retrieval",
+    "Faiss-based semantic vector search and ranking",
+    "SQLite as a structured knowledge repository",
+    "Contextual memory for incremental knowledge aggregation",
+    "NLP summarization for generating concise intelligence reports"
+  ],
+  "SolutionComponents": [
+    "Literature Retrieval Agent",
+    "Semantic Search Agent",
+    "Summarization & Alerting Agent",
+    "Contextual Memory Store",
+    "Vector Store (Faiss)",
+    "LangChain Orchestration Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Agents periodically retrieve new literature via PubMed API, index texts using Faiss embeddings, perform semantic search to identify relevant competitor drugs, and summarize insights. The contextual memory accumulates intelligence over time, enabling trend analysis and alert generation, which is then shared with marketing teams via dashboards and notifications.",
+  "design": "Modular agent design allows scalable deployment. LangChain coordinates workflows and handles state transitions. Agents communicate via shared contextual memory backed by SQLite and Faiss vector store. The system is designed for fault tolerance, easy integration, and extensibility.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "3 weeks",
+    "Testing & Validation": "1 week",
+    "UI/UX + Dashboard": "1 week",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "55,000 - covers architecture, development, and infrastructure provisioning",
+    "OPEX": "6,000/month - includes cloud hosting, API usage, monitoring, and maintenance"
+  }
+}

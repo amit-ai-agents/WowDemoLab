@@ -1,0 +1,139 @@
+{
+  "id": 1,
+  "demoID": "AIAgent_TelecomSupport",
+  "UseCaseTitle": "Agentic AI for Tier-1 Telecom Customer Support",
+  "Purpose": "To automate issue diagnosis, sentiment monitoring, and intelligent escalation within telecom customer service, reducing resolution time and enhancing CX through a multi-agent architecture.",
+  "ExecSummary": "Telecom operators face mounting pressure to improve customer experience while minimizing operational costs. Traditional IVRs and human-dependent resolution models are inefficient and non-scalable. This solution leverages Agentic AI to orchestrate autonomous resolution flows using contextual memory and dynamic state machines.",
+  "ExecSummaryKeyAsks": [
+    "Automate issue classification and resolution",
+    "Enable real-time sentiment tracking",
+    "Trigger intelligent escalations when required",
+    "Provide consistent, always-on support"
+  ],
+  "BusinessObjectives": [
+    "Reduce Average Handling Time (AHT) and First Contact Resolution (FCR) failures",
+    "Enable intelligent, autonomous troubleshooting of technical issues",
+    "Minimize need for human agents for low-to-medium complexity problems",
+    "Improve CSAT and NPS scores via faster response and proactive issue handling"
+  ],
+  "BusinessBenefits": [
+    "60% reduction in resolution time",
+    "Real-time escalation based on sentiment tracking",
+    "Reduced dependency on manual L1/L2 support",
+    "24/7 digital-first support with human-like interactions"
+  ],
+  "overview": "This demo showcases an end-to-end Agentic AI framework that autonomously handles complex enterprise tasks using multi-agent systems with contextual memory and dynamic decision graphs. It reflects a production-grade architecture for intelligent telecom support.",
+  "business": "The demo targets Tier-1 telecom customer support, reducing average resolution time by 60%, enhancing customer satisfaction, and enabling real-time sentiment tracking and intelligent escalation, all without human intervention.",
+  "approach": "The solution leverages LangGraph for orchestrating agent workflows, Faiss for semantic search via RAG, and Neo4j for contextual knowledge graph storage. Each agent interacts indirectly through contextual memory, ensuring modularity and traceability.",
+  "BusinessDrivers": [
+    "Reduce support costs through intelligent automation",
+    "Improve customer retention by resolving issues on first contact",
+    "Enable proactive engagement via real-time sentiment analysis",
+    "Ensure consistent support across digital channels",
+    "Scale operations without increasing human headcount"
+  ],
+  "BusinessChallanges": [
+    "High churn due to unresolved technical issues",
+    "Manual triaging increases MTTR (Mean Time to Resolve)",
+    "Inconsistent handoffs between support levels",
+    "Poor visibility into customer frustration during calls",
+    "Inability to scale support during peak outage events"
+  ],
+  "FunctionalOverview": [
+    "Intent Detection: Identifies customer need (e.g., billing, technical issue, escalation)",
+    "Automated Troubleshooting: Uses dynamic decision trees and semantic search to resolve issues",
+    "Sentiment Monitoring: Analyzes user sentiment mid-conversation",
+    "Smart Escalation: Escalates cases based on emotion or unresolved status",
+    "Contextual Memory: Retains session history for stateful conversation"
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Intent Detection Agent",
+      "Description": "Identifies customer intent from queries to route them to appropriate agents or workflows.",
+      "KeyFeatures": [
+        "Multi-intent classification using SLM",
+        "Context-aware understanding across sessions",
+        "Customizable intents for different telecom domains"
+      ],
+      "BusinessImpact": [
+        "Improves first-time resolution routing",
+        "Reduces misclassification of support needs",
+        "Enables faster triage and resolution flows"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Troubleshooting Agent",
+      "Description": "Diagnoses technical issues using semantic search and state-driven dialogue trees.",
+      "KeyFeatures": [
+        "Device/network issue diagnosis",
+        "Faiss-powered retrieval from known resolutions",
+        "Graph-based troubleshooting flow via LangGraph"
+      ],
+      "BusinessImpact": [
+        "Minimizes need for live agents",
+        "Standardizes issue resolution paths",
+        "Enables self-healing through guided actions"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Escalation Agent",
+      "Description": "Triggers human-in-the-loop escalations based on sentiment, unresolved issues, or policy violations.",
+      "KeyFeatures": [
+        "Sentiment score tracking in real time",
+        "Threshold-based escalation triggers",
+        "Auto-alert generation for supervisors"
+      ],
+      "BusinessImpact": [
+        "Prevents churn by timely escalation",
+        "Boosts CSAT with proactive support",
+        "Improves agent allocation efficiency"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Supervisor Agent",
+      "Description": "Monitors and manages agent workflows, failures, and escalations.",
+      "KeyFeatures": [
+        "Execution graph monitoring via LangGraph",
+        "Fallback mechanism for failed agents",
+        "Audit trails and traceability logs"
+      ],
+      "BusinessImpact": [
+        "Ensures reliability and resilience",
+        "Improves operational transparency",
+        "Streamlines debugging and monitoring"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Multi-agent system with loosely coupled execution via LangGraph",
+    "Semantic search using Faiss-based RAG for resolution matching",
+    "Contextual memory for session continuity and knowledge sharing",
+    "Neo4j-based Knowledge Graph for structured domain knowledge",
+    "Real-time escalation using sentiment signals",
+    "Designed for telecom IVRs, web, and WhatsApp channels"
+  ],
+  "SolutionComponents": [
+    "Intent Detection Agent",
+    "Troubleshooting Agent",
+    "Escalation Agent",
+    "Supervisor Agent",
+    "Neo4j Knowledge Graph",
+    "Vector Store with RAG (Faiss)",
+    "Contextual Memory Store",
+    "LangGraph Execution Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "User queries flow into the Intent Detection Agent, which determines the required response or escalation. Data is enriched via the contextual memory, using Faiss for RAG and Neo4j for past resolutions. Agents collaboratively process and update the memory before responding.",
+  "design": "Each agent follows a state-based execution triggered by events using LangGraph. They are containerized for scalability and interact with tools (e.g., vector DB, KG, APIs) indirectly. Failures are tracked using a supervisor agent with fallback mechanisms.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "3 weeks",
+    "Testing & Validation": "1 week",
+    "UI/UX + Dashboard": "1 week",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "50,000 - covers initial design, development, and cloud infra provisioning",
+    "OPEX": "5,000/month - includes GPU inference, storage, monitoring, and support"
+  }
+}

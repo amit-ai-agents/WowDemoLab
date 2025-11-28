@@ -1,0 +1,200 @@
+{
+  "demoID": "ObserverOne_Meta_DataObservability",
+  "UseCaseTitle": "ObserverOne: Agentic AI for Data Observability at Meta",
+  "Purpose": "To provide real-time, autonomous, and intelligent observability across Meta’s massive data ecosystem using multi-agent AI, reducing downtime, ensuring data reliability, and enabling proactive remediation.",
+  "ExecSummary": "Meta operates one of the world’s largest and most complex data ecosystems, where traditional monitoring and rule-based observability cannot scale. The ObserverOne Platform leverages Agentic AI to autonomously detect, diagnose, and remediate data quality, lineage, and pipeline issues across petabyte-scale infrastructure. It ensures proactive governance, reliability, and compliance through multi-agent orchestration and contextual memory.",
+  "ExecSummaryKeyAsks": [
+    "Enable autonomous data quality monitoring at scale",
+    "Detect anomalies in real-time with contextual insights",
+    "Perform root cause analysis (RCA) using knowledge graphs",
+    "Trigger proactive remediation and escalation",
+    "Ensure compliance and governance across all data pipelines"
+  ],
+  "BusinessObjectives": [
+    "Ensure trust and reliability in Meta’s global data pipelines",
+    "Reduce MTTR (Mean Time to Resolve) for critical data incidents",
+    "Automate anomaly detection and resolution at scale",
+    "Provide end-to-end data lineage and observability",
+    "Enable proactive governance and regulatory compliance"
+  ],
+  "BusinessBenefits": [
+    "70% faster detection and resolution of data issues",
+    "Reduced business impact of bad data in production systems",
+    "Lower operational cost by automating manual monitoring tasks",
+    "Improved trust in data for AI/ML and business analytics",
+    "Always-on, autonomous observability across all domains"
+  ],
+  "overview": "ObserverOne is an enterprise-grade Agentic AI platform built for data observability at Meta. It uses a multi-agent system orchestrated via LangGraph with contextual memory, Neo4j knowledge graphs, and Faiss-powered RAG for semantic anomaly detection and root cause analysis. Agents act autonomously yet collaboratively to ensure resilience, accuracy, and governance.",
+  "business": "The solution is tailored for Meta’s data-driven business, ensuring proactive detection of data quality and pipeline issues, minimizing downtime, and enabling high trust in data for user-facing apps, business intelligence, and AI models.",
+  "approach": "The platform leverages LangGraph for workflow orchestration, Faiss for semantic anomaly search, and Neo4j for lineage-driven contextual knowledge. Each agent interacts indirectly via contextual memory, ensuring modularity, scalability, and traceability across Meta’s massive data infrastructure.",
+  "BusinessDrivers": [
+    "Prevent business impact from corrupted or missing data",
+    "Ensure reliable data pipelines across multiple Meta products",
+    "Enable compliance with privacy and regulatory requirements",
+    "Support AI/ML models with high-quality and trusted datasets",
+    "Reduce operational overhead by automating observability"
+  ],
+  "BusinessChallanges": [
+    "Data volume at Meta exceeds petabytes/day, overwhelming manual monitoring",
+    "Complex dependencies between pipelines cause cascading failures",
+    "Lack of proactive issue detection in legacy observability frameworks",
+    "Manual RCA increases downtime and MTTR",
+    "Difficulty ensuring global compliance across multi-region data"
+  ],
+  "FunctionalOverview": [
+    "Data Quality Monitoring: Identifies missing, corrupted, or delayed data in real-time",
+    "Anomaly Detection: Detects outliers in pipelines, metrics, and events",
+    "Root Cause Analysis: Uses knowledge graphs to trace dependencies",
+    "Smart Remediation: Auto-triggers fix scripts, rollbacks, or escalation",
+    "Contextual Memory: Maintains full lineage and incident history for learning"
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Data Quality Agent",
+      "Description": "Monitors schema, freshness, completeness, and accuracy of data streams across Meta’s ecosystem.",
+      "KeyFeatures": [
+        "Schema drift detection",
+        "Freshness and latency monitoring",
+        "Completeness and null-value anomaly detection"
+      ],
+      "BusinessImpact": [
+        "Improves trust in analytical dashboards",
+        "Prevents propagation of corrupted data",
+        "Reduces manual data validation overhead"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Anomaly Detection Agent",
+      "Description": "Detects anomalies in data pipelines, workloads, and metrics using AI/ML models.",
+      "KeyFeatures": [
+        "Unsupervised anomaly detection at scale",
+        "Context-aware detection using historical baselines",
+        "Faiss-powered semantic pattern matching"
+      ],
+      "BusinessImpact": [
+        "Detects issues before they impact downstream apps",
+        "Reduces false positives in monitoring",
+        "Increases system resilience through early alerts"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Root Cause Analysis (RCA) Agent",
+      "Description": "Uses Neo4j knowledge graphs to trace dependencies across data sources, pipelines, and transformations.",
+      "KeyFeatures": [
+        "Lineage-based dependency tracing",
+        "Neo4j-powered graph traversal for RCA",
+        "Cross-pipeline failure correlation"
+      ],
+      "BusinessImpact": [
+        "Faster resolution of complex issues",
+        "Reduced MTTR and downtime",
+        "Enhanced visibility into hidden dependencies"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Remediation Agent",
+      "Description": "Autonomously resolves incidents through rollback, pipeline restart, or human escalation.",
+      "KeyFeatures": [
+        "Automated remediation playbooks",
+        "Policy-based escalation triggers",
+        "Integration with infra management APIs"
+      ],
+      "BusinessImpact": [
+        "Minimizes downtime with automated recovery",
+        "Reduces need for 24/7 human monitoring",
+        "Ensures compliance with internal SLAs"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Supervisor Agent",
+      "Description": "Oversees all agents, workflows, failures, and escalations with full observability.",
+      "KeyFeatures": [
+        "Execution graph monitoring with LangGraph",
+        "Fallback mechanism for failed agents",
+        "End-to-end observability dashboard"
+      ],
+      "BusinessImpact": [
+        "Ensures operational resilience",
+        "Improves governance and accountability",
+        "Provides unified oversight for all observability tasks"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Multi-agent observability system orchestrated by LangGraph",
+    "Faiss-powered semantic anomaly detection and pattern recognition",
+    "Contextual memory for lineage-aware insights and incident history",
+    "Neo4j knowledge graph for end-to-end pipeline dependency tracing",
+    "Autonomous remediation workflows with policy-based escalation",
+    "Scalable across Meta’s global data infrastructure"
+  ],
+  "SolutionComponents": [
+    "Data Quality Agent",
+    "Anomaly Detection Agent",
+    "Root Cause Analysis (RCA) Agent",
+    "Remediation Agent",
+    "Supervisor Agent",
+    "Neo4j Knowledge Graph",
+    "Vector Store with RAG (Faiss)",
+    "Contextual Memory Store",
+    "LangGraph Orchestration Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7FvPVE0J5O_9SPPjEr8O7A.png",
+  "dataflow": "Pipeline metrics and logs are ingested into ObserverOne, where the Data Quality and Anomaly Detection Agents flag potential issues. The RCA Agent leverages Neo4j to trace dependencies and pinpoint the root cause. If remediation is possible, the Remediation Agent executes automated playbooks; otherwise, Supervisor Agent triggers escalation. All incidents are logged in contextual memory for continuous learning.",
+  "design": "Agents are event-driven and orchestrated by LangGraph with state-based execution. They are containerized for scale, interact via contextual memory, and integrate with tools like Neo4j, Faiss, and infra APIs. The Supervisor Agent ensures resilience, fallback handling, and audit logging for compliance.",
+  "effort": {
+    "Architecture & Design": "3 weeks",
+    "Agent Development": "4 weeks",
+    "Testing & Validation": "2 weeks",
+    "UI/UX + Dashboard": "2 weeks",
+    "Integration & Infra Setup": "2 weeks"
+  },
+  "cost": {
+    "CAPEX": "120,000 - covers architecture, agent development, infra setup across Meta-scale workloads",
+    "OPEX": "15,000/month - includes GPU inference, data storage, monitoring, compliance logging, and support"
+  },
+  "DemoSteps": [
+    {
+      "id": 0,
+      "title": "Business Deep Dive",
+      "input": "Simulate a Modern Day Data pipeline on Azure",
+      "output": "This step will provision/create a data pipeline on azure with layers (Data Ingestion | Storage | Processing | Analytics | Visualization)",
+      "nextSteps": [ "Proceed to Step 2", "Cancel Process" ]
+    },
+    {
+      "id": 1,
+      "title": "Configure & Deploy",
+      "input": "Configure & deploy the ObserveOne agents ",
+      "output": "See all the agents, configure them for their respective steps and deploy them to see the action",
+      "nextSteps": [ "Proceed to Step 2", "Redeploy Agents" ]
+    },
+    {
+      "id": 2,
+      "title": "Discover Data Pipline",
+      "input": "Simulate a Modern Day Data pipeline on Azure",
+      "output": "This step will provision/create a data pipeline on azure with layers (Data Ingestion | Storage | Processing | Analytics | Visualization)",
+      "nextSteps": [ "Proceed to Step 3", "Retry Discovery" ]
+    },
+    {
+      "id": 3,
+      "title": "Data Deep Dive",
+      "input": "Dive into the Data gathered by the agents",
+      "output": "Once the agents are deployed, they will update the KPIs and stats for various Pillars of Data Observability",
+      "nextSteps": [ "Proceed to Step 4", "Download Raw Data" ]
+    },
+    {
+      "id": 4,
+      "title": "Discover Business Value",
+      "input": "From RAW data to business Insigths for each pillar of DO",
+      "output": "Raw Data is categorized into business buckets, so that insights can be drawn",
+      "nextSteps": [ "Download Receipt", "Start Over" ]
+    },
+    {
+      "id": 5,
+      "title": "Enable Business Insights",
+      "input": "Generating CXO level dashboards",
+      "output": "KPI generation for the CXO and leadership teams to deep dive into the insights generated",
+      "nextSteps": [ "Download Receipt", "Start Over" ]
+    }
+  ]
+}

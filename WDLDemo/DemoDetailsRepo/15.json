@@ -1,0 +1,120 @@
+{
+  "id": 15,
+  "demoID": "AIAgent_FinancialAdvisory",
+  "UseCaseTitle": "Contextual AI for Financial Advisors",
+  "Purpose": "To empower financial advisors with AI-driven, context-aware investment insights leveraging RAG over market and portfolio data, improving advisory quality and client engagement.",
+  "ExecSummary": "Financial advisors face increasing client demands for personalized, data-driven advice amidst volatile markets and growing data complexity. Traditional methods are often reactive and siloed. This demo showcases an AI assistant that integrates real-time market data, portfolio analytics, and client context to generate actionable investment insights, improving advisory efficiency and client satisfaction.",
+  "ExecSummaryKeyAsks": [
+    "Provide personalized portfolio analysis",
+    "Generate actionable investment insights",
+    "Enable dynamic, context-aware advisory",
+    "Improve client engagement with data-driven recommendations"
+  ],
+  "BusinessObjectives": [
+    "Enhance advisor productivity through AI augmentation",
+    "Increase client satisfaction by offering personalized recommendations",
+    "Reduce time spent on data aggregation and manual analysis",
+    "Support compliance and risk management with transparent AI outputs"
+  ],
+  "BusinessBenefits": [
+    "Faster, more accurate investment decision-making",
+    "Improved portfolio performance via timely insights",
+    "Scalable advisory services with consistent quality",
+    "Reduced operational costs through automation"
+  ],
+  "overview": "This demo implements an AI-powered financial advisory assistant that uses semantic search with Faiss and GPT-Neo generative models, integrated via Flask APIs, to provide contextual, real-time investment insights based on client portfolios and market data.",
+  "business": "The financial advisory industry is rapidly transforming with digital tools to meet client demands for personalized advice. AI-driven contextual analysis over diverse data sources is essential to deliver differentiated advisory services, reduce operational overhead, and comply with regulatory requirements.",
+  "approach": "The solution employs LangGraph to orchestrate multi-agent workflows, Faiss for vector similarity search over historical market and portfolio data, and GPT-Neo for natural language generation of insights and recommendations. Agents interact through a shared contextual memory to maintain client context and portfolio state.",
+  "BusinessDrivers": [
+    "Demand for personalized, real-time investment advice",
+    "Need to process large volumes of complex market data",
+    "Pressure to reduce advisory operational costs",
+    "Compliance and risk management imperatives"
+  ],
+  "BusinessChallanges": [
+    "Data silos hindering holistic portfolio analysis",
+    "Advisor overload due to manual data synthesis",
+    "Rapid market changes requiring quick, accurate responses",
+    "Maintaining client trust with transparent AI recommendations"
+  ],
+  "FunctionalOverview": [
+    "Portfolio Data Aggregation: Collect and normalize client portfolio and market data.",
+    "Contextual Insight Generation: Generate investment insights based on portfolio context and market trends.",
+    "Natural Language Advisory: Provide advisors with easy-to-understand reports and recommendations.",
+    "Client Query Handling: Support advisor queries about portfolio performance and market outlook.",
+    "Contextual Memory: Maintain client interaction context across sessions."
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Portfolio Aggregation Module",
+      "Description": "Aggregates client portfolio holdings, transactions, and market data to create a unified view for analysis.",
+      "KeyFeatures": [
+        "Support for multiple data formats and sources",
+        "Data normalization and quality checks",
+        "Real-time market data integration"
+      ],
+      "BusinessImpact": [
+        "Provides advisors with comprehensive portfolio visibility",
+        "Reduces data preparation time",
+        "Enables accurate, timely analysis"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Insight Generation Module",
+      "Description": "Leverages Faiss semantic search and GPT-Neo to generate actionable investment insights tailored to client portfolios.",
+      "KeyFeatures": [
+        "Semantic retrieval of relevant market trends and historical data",
+        "Natural language generation of analysis and recommendations",
+        "Scenario simulation and risk assessment"
+      ],
+      "BusinessImpact": [
+        "Improves quality and relevance of advice",
+        "Supports data-driven client engagements",
+        "Enhances advisor confidence and efficiency"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Advisor Query & Reporting Module",
+      "Description": "Enables interactive querying and generates detailed reports for client advisory sessions.",
+      "KeyFeatures": [
+        "Natural language question answering about portfolios",
+        "Customizable report generation",
+        "Integration with advisor-facing dashboards"
+      ],
+      "BusinessImpact": [
+        "Streamlines advisory preparation and client communications",
+        "Supports personalized advisory delivery",
+        "Improves client satisfaction and retention"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "AI-driven advisory assistant powered by GPT-Neo and Faiss",
+    "Multi-agent orchestration via LangGraph",
+    "Flask API backend for integration with advisory platforms",
+    "Contextual memory store for client and portfolio state",
+    "Interactive natural language interface for advisors"
+  ],
+  "SolutionComponents": [
+    "Portfolio Aggregation Agent",
+    "Insight Generation Agent",
+    "Query & Reporting Agent",
+    "Contextual Memory Store",
+    "Faiss Vector Search Index",
+    "LangGraph Execution Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*G-ycW5HQEwMnJ9V8sR4seA.png",
+  "dataflow": "Client portfolio and market data are ingested by the Portfolio Aggregation Agent, normalized, and stored. The Insight Generation Agent uses Faiss for semantic similarity and GPT-Neo for generating insights, which are then accessible via the Query & Reporting Agent. All agents share state through contextual memory for coherent advisory interactions.",
+  "design": "Agents are containerized microservices orchestrated by LangGraph. They interact indirectly through a contextual memory layer backed by a vector store and a knowledge graph. The system supports scaling, fault tolerance, and seamless integration with advisor frontends.",
+  "effort": {
+    "Architecture & Design": "2 weeks",
+    "Agent Development": "4 weeks",
+    "Testing & Validation": "2 weeks",
+    "UI/UX + Dashboard": "2 weeks",
+    "Integration & Infra Setup": "1 week"
+  },
+  "cost": {
+    "CAPEX": "70,000 - covers design, development, and infrastructure setup",
+    "OPEX": "7,000/month - supports cloud services, model inference, and maintenance"
+  }
+}

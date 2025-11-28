@@ -1,0 +1,201 @@
+{
+  "demoID": "OptiTravel_RHIM_TnE",
+  "UseCaseTitle": "OptiTravel: Agentic AI for Travel & Expense Process Optimization at RHIM",
+  "Purpose": "To streamline, automate, and optimize RHIM�s travel & expense (T&E) processes using agentic AI, ensuring compliance, reducing leakage, improving employee experience, and delivering real-time financial insights.",
+  "ExecSummary": "RHIM manages a global workforce with high travel frequency, resulting in complex expense management challenges. Traditional rule-based expense auditing is reactive, costly, and prone to errors or leakage. The OptiTravel platform leverages Agentic AI to autonomously validate, optimize, and reconcile T&E claims in real time. Multi-agent collaboration ensures compliance, detects anomalies, and streamlines reimbursements, ultimately lowering operational costs and improving employee satisfaction.",
+  "demoURL": "https://tne.azurewebsites.net/",
+  "ExecSummaryKeyAsks": [
+    "Enable autonomous validation of travel & expense claims",
+    "Detect duplicate, fraudulent, or policy-violating expenses in real-time",
+    "Perform contextual compliance checks against RHIM�s policies and regulations",
+    "Streamline reimbursements through automated workflows",
+    "Provide leadership dashboards with actionable T&E insights"
+  ],
+  "BusinessObjectives": [
+    "Optimize end-to-end travel & expense management",
+    "Reduce financial leakage and fraud in T&E processes",
+    "Ensure policy and regulatory compliance globally",
+    "Improve employee experience with faster reimbursements",
+    "Provide finance teams with real-time T&E insights"
+  ],
+  "BusinessBenefits": [
+    "Up to 40% reduction in T&E processing costs",
+    "Faster reimbursement cycles improving employee satisfaction",
+    "Automated compliance reducing audit risks",
+    "Improved accuracy in financial reporting",
+    "Reduced fraud and duplicate expense claims"
+  ],
+  "overview": "OptiTravel is an enterprise-grade Agentic AI platform for Travel & Expense optimization at RHIM. It combines multi-agent systems, contextual memory, policy knowledge graphs, and semantic anomaly detection to autonomously validate, optimize, and audit T&E submissions. It reduces manual intervention, improves compliance, and ensures financial efficiency.",
+  "business": "The solution is tailored for RHIM�s global workforce and finance teams, reducing T&E inefficiencies, ensuring policy adherence, and delivering real-time insights to leadership.",
+  "approach": "The platform leverages LangGraph for orchestration, Neo4j knowledge graphs for policy/contextual validation, and Faiss-powered anomaly detection for identifying fraudulent or duplicate claims. Agents collaborate via contextual memory to ensure modularity, scalability, and traceability across RHIM�s financial operations.",
+  "BusinessDrivers": [
+    "Prevent financial leakage from fraudulent or duplicate claims",
+    "Ensure compliance with internal policies and regional regulations",
+    "Accelerate reimbursement cycles for employees",
+    "Provide finance leadership with real-time visibility",
+    "Reduce manual effort and audit workload"
+  ],
+  "BusinessChallanges": [
+    "Manual validation of thousands of claims is error-prone",
+    "Fraudulent and duplicate claims bypass current controls",
+    "Complex global compliance requirements across geographies",
+    "Delayed reimbursements reduce employee satisfaction",
+    "High operational costs due to manual expense audits"
+  ],
+  "FunctionalOverview": [
+    "Expense Validation: Automated claim checks for duplicates, fraud, and accuracy",
+    "Policy Compliance: AI-driven validation against company and regional policies",
+    "Anomaly Detection: Identifies unusual spending patterns or outliers",
+    "Smart Reimbursement: Auto-approves or escalates claims",
+    "Contextual Memory: Maintains full expense history for audit readiness"
+  ],
+  "FunctionalComponentDetails": [
+    {
+      "FunctionalComponentTitle": "Expense Validation Agent",
+      "Description": "Validates expense submissions for duplicates, fraud, and missing data.",
+      "KeyFeatures": [
+        "Duplicate claim detection",
+        "Fraudulent vendor/transaction detection",
+        "Cross-checking receipts with bookings"
+      ],
+      "BusinessImpact": [
+        "Prevents financial leakage",
+        "Improves accuracy of reimbursements",
+        "Reduces manual validation effort"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Policy Compliance Agent",
+      "Description": "Validates expenses against RHIM�s travel and expense policies and global compliance rules.",
+      "KeyFeatures": [
+        "Policy knowledge graph-based validation",
+        "Real-time compliance check during claim submission",
+        "Context-aware rule enforcement"
+      ],
+      "BusinessImpact": [
+        "Ensures global compliance",
+        "Reduces audit risks",
+        "Improves employee policy adherence"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Anomaly Detection Agent",
+      "Description": "Detects anomalies and unusual patterns in T&E claims using semantic search and AI models.",
+      "KeyFeatures": [
+        "Unsupervised anomaly detection",
+        "Historical baseline comparisons",
+        "Faiss-powered semantic matching"
+      ],
+      "BusinessImpact": [
+        "Prevents fraud and overspending",
+        "Improves financial forecasting accuracy",
+        "Enhances governance"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Reimbursement Agent",
+      "Description": "Automates reimbursements and escalations based on AI-driven validation outcomes.",
+      "KeyFeatures": [
+        "Auto-approval of compliant claims",
+        "Escalation for high-risk anomalies",
+        "Integration with ERP/finance systems"
+      ],
+      "BusinessImpact": [
+        "Faster reimbursements for employees",
+        "Reduced finance team workload",
+        "Improved transparency and trust"
+      ]
+    },
+    {
+      "FunctionalComponentTitle": "Supervisor Agent",
+      "Description": "Monitors workflows, anomalies, and escalations across all T&E processes.",
+      "KeyFeatures": [
+        "LangGraph-driven workflow orchestration",
+        "Fallback for failed agent tasks",
+        "Unified T&E dashboard"
+      ],
+      "BusinessImpact": [
+        "Ensures resilience and continuity",
+        "Provides real-time T&E oversight",
+        "Improves governance and accountability"
+      ]
+    }
+  ],
+  "SolutionOverview": [
+    "Multi-agent T&E optimization system with LangGraph orchestration",
+    "Faiss-powered anomaly detection for fraudulent/duplicate claims",
+    "Contextual memory for full claim and reimbursement history",
+    "Neo4j knowledge graph for policy and compliance checks",
+    "Automated reimbursement workflows with escalation policies",
+    "Scalable across RHIM�s global financial ecosystem"
+  ],
+  "SolutionComponents": [
+    "Expense Validation Agent",
+    "Policy Compliance Agent",
+    "Anomaly Detection Agent",
+    "Reimbursement Agent",
+    "Supervisor Agent",
+    "Neo4j Policy Knowledge Graph",
+    "Vector Store with RAG (Faiss)",
+    "Contextual Memory Store",
+    "LangGraph Orchestration Engine"
+  ],
+  "architecture_image": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7FvPVE0J5O_9SPPjEr8O7A.png",
+  "dataflow": "Expense claims and receipts are ingested into OptiTravel. The Expense Validation and Policy Compliance Agents flag duplicates or policy violations. The Anomaly Detection Agent identifies fraud or unusual patterns. The Reimbursement Agent auto-approves or escalates claims. The Supervisor Agent oversees workflows and governance, with contextual memory retaining full history for audits.",
+  "design": "Agents are modular, event-driven, and orchestrated by LangGraph. They use contextual memory, integrate with finance/ERP APIs, and employ Neo4j for compliance and Faiss for anomaly detection. Supervisor Agent ensures governance, resilience, and audit readiness.",
+  "effort": {
+    "Architecture & Design": "3 weeks",
+    "Agent Development": "4 weeks",
+    "Testing & Validation": "2 weeks",
+    "UI/UX + Dashboard": "2 weeks",
+    "Integration & Infra Setup": "2 weeks"
+  },
+  "cost": {
+    "CAPEX": "100,000 - covers architecture, agent development, infra setup for RHIM�s scale",
+    "OPEX": "12,000/month - includes GPU inference, compliance logging, ERP integration, and support"
+  },
+  "DemoSteps": [
+    {
+      "id": 0,
+      "title": "Business Deep Dive",
+      "input": "Simulate a modern T&E workflow with sample claims",
+      "output": "This step provisions a travel booking and associated expenses dataset",
+      "nextSteps": [ "Proceed to Step 1", "Cancel Process" ]
+    },
+    {
+      "id": 1,
+      "title": "Configure & Deploy Agents",
+      "input": "Deploy OptiTravel agents for T&E validation",
+      "output": "Agents are deployed and configured for validation, compliance, and reimbursement",
+      "nextSteps": [ "Proceed to Step 2", "Redeploy Agents" ]
+    },
+    {
+      "id": 2,
+      "title": "Discover Expense Patterns",
+      "input": "Run AI-driven anomaly and compliance checks",
+      "output": "Agents analyze claims and detect duplicates, fraud, and policy violations",
+      "nextSteps": [ "Proceed to Step 3", "Retry Discovery" ]
+    },
+    {
+      "id": 3,
+      "title": "Expense Deep Dive",
+      "input": "Dive into AI-detected anomalies and compliance insights",
+      "output": "KPIs and stats are updated for expense optimization pillars",
+      "nextSteps": [ "Proceed to Step 4", "Download Report" ]
+    },
+    {
+      "id": 4,
+      "title": "Discover Business Value",
+      "input": "Map optimized T&E process to business impact",
+      "output": "AI insights are categorized into financial and operational value buckets",
+      "nextSteps": [ "Download Receipt", "Start Over" ]
+    },
+    {
+      "id": 5,
+      "title": "Enable Business Insights",
+      "input": "Generate CFO/Finance dashboards",
+      "output": "KPIs and trends for finance leadership to monitor cost savings and compliance",
+      "nextSteps": [ "Download Receipt", "Start Over" ]
+    }
+  ]
+}
